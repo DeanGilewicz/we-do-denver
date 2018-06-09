@@ -1,2 +1,14 @@
-/*@import 'partials/';*/
+@import 'normalize';
+
+@import 'variables';
+@import 'typography';
+
+@import 'mixins';
+@import 'global';
+
+@import 'buttons';
+@import 'links';
+
+@import './partials/header';
+@import './partials/hero';
 

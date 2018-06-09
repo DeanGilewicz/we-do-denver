@@ -1,0 +1,25 @@
+/* layout */
+
+$medium: 		640px;
+$medium__large: 768px;
+$large: 		1024px;
+$large__xlarge: 1280px;
+$xlarge: 		1440px;
+$xxlarge: 		1920px;
+
+$spacing: 1rem;
+
+/* colors */
+
+$black: #000000;
+$blue: blue;
+$blue_dark: darken($blue, 10%);
+$gray: #eeeeee;
+$orange: orange;
+$red: red;
+$white: #FFFFFF;
+
+// $grey: lighten(grey, 40%);
+// $shad: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+// $grad: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, $yellow 85%, #48ded4 95%);
+// $verticalGrad: linear-gradient(0, #48ded4 0%, #a026bf 20%, #e82c75 60%, $yellow 85%, #48ded4 95%);

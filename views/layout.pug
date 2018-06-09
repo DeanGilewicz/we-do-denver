@@ -6,19 +6,25 @@ html
     //- link(rel="shortcut icon" type="image/png" href="")
     meta(name="viewport" content="width=device-width, initial-scale=1")
   body
-    block header
-      header
-    block messages
-      if locals.flashes
-        - const categories = Object.keys(locals.flashes)
-        each category in categories
-          each message in flashes[category]
-            .flash(class=`flash--${category}`)
-              p.flash__text!= message
-              button.flash__remove(onClick="this.parentElement.remove()") &times;
-    .content
-      block content
+    .wrapper__main
+      block header
+        header.header__main
+          nav.main
+            a.logo(href="/")
+              img(src="logo" alt="We Do Denver logo")
+          nav.authenticate
+            a.link.link--nav(href="#") Login / Sign Up
+      block messages
+        if locals.flashes
+          - const categories = Object.keys(locals.flashes)
+          each category in categories
+            each message in flashes[category]
+              .flash(class=`flash--${category}`)
+                p.flash__text!= message
+                button.flash__remove(onClick="this.parentElement.remove()") &times;
+      .content
+        block content
 
-    block scripts
-      //- script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
-      script(src="/dist/App.bundle.js")
+      block scripts
+        //- script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
+        script(src="/dist/App.bundle.js")

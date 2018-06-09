@@ -1,0 +1,26 @@
+.hero__bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+
+	min-height: 100vh; // minus header
+
+	// min-height: 280px;
+
+	// @media only screen and (min-width: $medium) {
+	// 	min-height: 320px;
+	// }
+	
+	// @media only screen and (min-width: $large) {
+	// 	min-height: 360px;
+	// }
+
+	// @media only screen and (min-width: $xlarge) {
+	// 	min-height: 400px;
+	// }
+
+
+	&.hero__bg--home {
+		background-image: url('http://via.placeholder.com/600x400?text=hero');
+	}
+}

@@ -1,0 +1,60 @@
+// @font-face {
+//     font-family: 'panama';
+//     src: url('/fonts/panama-bold-webfont.woff2') format('woff2'),
+//          url('/fonts/panama-bold-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+html {
+	font-size: 10px;
+}
+
+body {
+	font-size: 1.5rem;
+	color: $black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	// font-family: 'Panama';
+	font-weight: 600;
+	letter-spacing: 2px;
+}
+
+h1 {
+	font-size: 5rem;
+}
+
+h2 {
+	font-size: 4rem;
+}
+
+h3 {
+	font-size: 3rem;
+}
+
+h4 {
+	font-size: 2.6rem;
+}
+
+h5 {
+	font-size: 2.2rem;
+}
+
+h6 {
+	font-size: 1.8rem;
+}
+
+a {
+	text-decoration: none;
+	color: $black;
+	cursor: pointer;
+}
+
+p {
+	margin-top: $spacing*1.6;
+	margin-bottom: $spacing*1.6;
+	font-size: 1.6rem;
+	line-height: 2;
+}
