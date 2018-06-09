@@ -28,5 +28,5 @@ module.exports = (req, res) => {
 		visits: "2"
 	}];
 
-	res.render('places', { places });
+	res.render('places/index', { places });
 };

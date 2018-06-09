@@ -1,0 +1,13 @@
+extends ../layout
+
+include ../mixins/card
+
+block content
+	.hero
+		.hero__bg.hero__bg--home
+			h1 Places
+	.container__places
+		each place in places
+			+card(place)
+		
+
