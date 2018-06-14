@@ -12,8 +12,14 @@ header.header__main {
 		padding: $spacing*1.8 $spacing*2.4;
 	}
 
-	a {
+	a,
+	.divider {
 		color: $gray;
+	}
+
+	.divider {
+		margin-left: 6px;
+		margin-right: 6px;
 	}
 
 }

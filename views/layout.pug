@@ -13,7 +13,9 @@ html
             a.logo(href="/")
               img(src="logo" alt="We Do Denver logo")
           nav.authenticate
-            a.link.link--nav(href="#") Login / Sign Up
+            a.link.link--nav(href="#") Login
+            span.divider |
+            a.link.link--nav(href="#") Sign Up
       block messages
         if locals.flashes
           - const categories = Object.keys(locals.flashes)
