@@ -5,9 +5,8 @@ include ../mixins/card-category
 block content
 	.hero
 		.hero__bg.hero__bg--home
-			h1 Places
+			h1 #{pageTitle}
 	.container__places
 		each place in places
 			+card-category(place)
 		
-

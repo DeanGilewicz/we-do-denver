@@ -1,0 +1,27 @@
+mixin card-single(place = {})
+	.card
+		.card__image
+			img(src="img" alt="")
+		h2.card__name= place.name || what
+		h3.card__category
+			img(src="img" alt="")
+			!="Fuel Me"
+		.card__overview
+			.card__likes
+				img(src="img" alt="")
+				!="5"
+			.card__distance
+				img(src="img" alt="")
+				!="20 miles"
+			.card__visits
+				img(src="img" alt="")
+				!="1"
+		.card__ctas
+			//- .card__ctas--like
+			//- 	img.card__add
+			//- 	!="like"
+			//- .card__ctas--visit
+			//- 	img.card__add
+			//- 	!="visit"
+			.card__ctas--view
+				a(href=`/places/${place.id}` class="button") View

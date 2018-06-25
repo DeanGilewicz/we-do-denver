@@ -1,11 +1,11 @@
-mixin card(place = {})
+mixin card-category(place = {})
 	.card
 		.card__image
 			img(src="img" alt="")
 		h2.card__name= place.name || what
 		h3.card__category
 			img(src="img" alt="")
-			!="Fuel Me"
+			a(href=`/places/${place.category.slug}`)= place.category.name
 		.card__overview
 			.card__likes
 				img(src="img" alt="")
@@ -17,9 +17,5 @@ mixin card(place = {})
 				img(src="img" alt="")
 				!="1"
 		.card__ctas
-			.card__ctas--like
-				img.card__add
-				!="like"
-			.card__ctas--visit
-				img.card__add
-				!="visit"
+			.card__ctas--view
+				a(href=`/place/${place.id}` class="button") View

@@ -1,0 +1,11 @@
+extends ../layout
+
+include ../mixins/card-single
+
+block content
+	.hero
+		.hero__bg.hero__bg--home
+			h1 #{place.name}
+	.container__place
+		+card-single(place)
+		
