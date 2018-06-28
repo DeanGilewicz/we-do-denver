@@ -6,6 +6,7 @@ block content
 	.hero
 		.hero__bg.hero__bg--home
 			h1 Places
+			a(href="/categories" class="button") Categories
 	.places
 		each place, i in places
 			+card-category(place, i)

@@ -1,0 +1,152 @@
+
+/* FLOAT FLEXBOX CSS GRID */
+
+.categories {
+	border: 1px solid blue;
+	/* flexbox */
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+.category {
+	width: 100%;
+	display: table;
+	border: 1px solid red;
+	margin: 1rem 0;
+	/* flexbox */
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+		
+	@media only screen and (min-width: 640px) {
+		float: left;
+		width: 47%;
+		margin: 1rem 3%;
+		
+		&:nth-child(2n+1) {
+			margin-left: 0;
+		}
+		
+		&:nth-child(2n+2) {
+			margin-right: 0;
+		}
+		/* flexbox */
+		flex: 1 0 47%;
+	}
+	@media only screen and (min-width: 1024px) {
+ 		// 3 items
+		width: 30.66666%;
+		margin: 1rem 2%;
+		
+		// override 
+		&:nth-child(2n+1),
+		&:nth-child(2n+2) {
+			margin-left: 2%;
+			margin-right: 2%;
+		}
+		
+		&:nth-child(3n+1) {
+			margin-left: 0;
+		}
+		
+		&:nth-child(3n+3) {
+			margin-right: 0;
+		}
+		/* flexbox */
+		flex: 1 0 30.66666%;
+
+	}
+}
+
+.category__icon {
+	width: 140px;
+	display: table-cell;
+	vertical-align: middle;
+	padding: 10px 16px;
+}
+
+.category__name {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 10px 16px;
+}
+
+@supports (display: grid) {
+	.categories {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(6, 140px);
+		grid-gap: 40px 0;
+	}
+	.category {
+		width: 100%;
+		margin: 0;
+
+		&:nth-child(2n+1),
+		&:nth-child(2n+2),
+		&:nth-child(3n+1),
+		&:nth-child(3n+3) {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+	@media screen and (min-width: 640px) {
+		.categories {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(6, 180px);
+		}
+		.category--2 {
+			grid-column: span 1 / -1;
+			grid-row: 2 / 2;
+		}
+		.category--3 {
+			grid-column: 1 / span 1;
+			grid-row: 3 / 3;
+		}
+		.category--4 {
+			grid-column: span 1 / -1;
+			grid-row: 4 / 4;
+		}
+		.category--5 {
+			grid-column: 1 / span 1;
+			grid-row: 5 / 5;
+		}
+		.category--6 {
+			grid-column: span 1 / -1;
+			grid-row: 6 / 6;
+		}
+	}
+	@media screen and (min-width: 1024px) {
+		.categories {
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(4, 200px);
+		}
+		.category--2 {
+			grid-column: span 1 / -1;
+			grid-row: 1 / 1;
+		}
+		.category--3 {
+			grid-column: 2 / span 1;
+			grid-row: 2 / 2;
+		}
+		.category--4 {
+			grid-column: 1 / 1;
+			grid-row: 3 / 3;
+		}
+		.category--5 {
+			grid-column: span 1 / -1;
+			grid-row: 3 / 3;
+		}
+		.category--6 {
+			grid-column: 2 / 2;
+			grid-row: 4 / 4;
+		}
+	}
+}
