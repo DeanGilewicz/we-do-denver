@@ -1,21 +1,26 @@
-mixin card-category(place = {})
-	.card
-		.card__image
-			img(src="img" alt="")
-		h2.card__name= place.name || what
-		h3.card__category
-			img(src="img" alt="")
+mixin card-category(place = {}, i = 0)
+	div(class="place place--"+(i+1))
+		.place__image
+			img(src="http://via.placeholder.com/600x200?text=hero" alt="")
+		.place__name
+			<h2>#{place.name}</h2>
+		.place__category
+			img(src="http://via.placeholder.com/50x50?text=icon" alt="")
 			a(href=`/places/${place.category.slug}`)= place.category.name
-		.card__overview
-			.card__likes
-				img(src="img" alt="")
-				!="5"
-			.card__distance
-				img(src="img" alt="")
-				!="20 miles"
-			.card__visits
-				img(src="img" alt="")
-				!="1"
-		.card__ctas
-			.card__ctas--view
-				a(href=`/place/${place.id}` class="button") View
+		.place__overview
+			.place__score
+				h3= 7
+				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
+				h4= pts
+			.place__distance
+				h3= 4
+				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
+				h4= miles
+			.place__visits
+				h3= 3
+				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
+				h4= visits
+		.place__cta
+			a(href=`/place/${place.id}` class="button button--cta") View
+
+

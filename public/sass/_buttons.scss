@@ -28,4 +28,10 @@ button,
     &:active {
     	transform: scale(0.96);
     }
+
+    &.button--cta {
+        text-transform: uppercase;
+        width: 100%;
+    }
 }
+
