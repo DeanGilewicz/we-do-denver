@@ -1,13 +1,16 @@
 const places = require('../data/sample.json');
+
 module.exports = (req, res) => {
-	// let cats = [];
-	// const categories = places.filter( place => {
-	// 	if( ! cats.includes(place.category.name) ) {
-	// 		cats.push(place);
-	// 	}
-	// }); // query data for requested category
-	// console.log(cats);
-	// let pageTitle = '';
-	// ( placesInCategory.length > 0 ) ? pageTitle = placesInCategory[0].category.name : '';
-	res.render('categories/index', { categories : places });
+	let uniqueCatSlugs = [];
+	let filteredPlaces = [];
+	places.forEach( place => {
+		if( ! uniqueCatSlugs.includes(place.category.name) ) {
+			uniqueCatSlugs.push(place.category.name);
+			filteredPlaces.push(place);
+		}
+	}); // filter data to get unique categories only
+	console.log(uniqueCatSlugs);
+	console.log(filteredPlaces);
+
+	res.render('categories/index', { places: filteredPlaces, pageTitle: 'Categories' });
 };

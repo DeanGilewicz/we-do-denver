@@ -1,12 +1,15 @@
 extends ../layout
 
 block content
+	.hero
+		.hero__bg.hero__bg--home
+			h1 #{pageTitle}
 	.categories
-		each category, i in categories
-			div(class="category category--#{i}")
+		each place, i in places
+			a(href=`${place.category.slug}` class=`category category--${i+1}`)
 				.category__icon
 					img(src="http://via.placeholder.com/350x200?text=icon" alt="")
 				.category__name
-					h2= Category
+					h2 #{place.category.name}
 		
 
