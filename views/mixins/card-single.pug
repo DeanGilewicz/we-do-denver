@@ -1,27 +1,60 @@
 mixin card-single(place = {})
-	.card
-		.card__image
-			img(src="img" alt="")
-		h2.card__name= place.name || what
-		h3.card__category
-			img(src="img" alt="")
-			!="Fuel Me"
-		.card__overview
-			.card__likes
-				img(src="img" alt="")
-				!="5"
+	div(id="js-card" class="card")
+		.card__hero
+			form(action="" class="card__name")
+				input(type="text" name="name" value="Card Name" class="form__input form__input--name" data-input="name" disabled)
+				span(class="edit edit--trigger" data-trigger="name")
+					img(src="http://via.placeholder.com/100x100?text=E" alt="edit name")
+				span(class="edit edit--cancel" data-cancel="name")
+					img(src="http://via.placeholder.com/100x100?text=C" alt="cancel name")
+				span(class="edit edit--save" data-save="name")
+					img(src="http://via.placeholder.com/100x100?text=S" alt="save name")
+		address(class="card__location")
+			form(action="" class="card__address")
+				textarea(rows="1" name="address" class="form__input form__input--address" data-input="address" disabled) #{place.address}
+				span(class="edit edit--trigger" data-trigger="address")
+					img(src="http://via.placeholder.com/100x100?text=E" alt="edit address")
+				span(class="edit edit--cancel" data-cancel="address")
+					img(src="http://via.placeholder.com/100x100?text=C" alt="cancel address")
+				span(class="edit edit--save" data-save="address")
+					img(src="http://via.placeholder.com/100x100?text=S" alt="save address")
+		div
+			form(action="" class="card__tags")
+				#tag__container
+					input(class="form__input form__input--tag" name="tags-0" value="happy hour" data-input="tags" disabled)
+					input(class="form__input form__input--tag" name="tags-1" value="cheap food" data-input="tags" disabled)
+					input(class="form__input form__input--tag" name="tags-2" value="live music" data-input="tags" disabled)
+					input(class="form__input form__input--tag" name="tags-3" value="good service" data-input="tags" disabled)
+					input(class="form__input form__input--tag" name="tags-4" value="nice vibe" data-input="tags" disabled)
+					input(class="form__input form__input--tag" name="tags-5" value="cool place" data-input="tags" disabled)
+				span(class="edit edit--trigger" data-trigger="tags")
+					img(src="http://via.placeholder.com/100x100?text=E" alt="edit tags")
+				span(class="edit edit--cancel" data-cancel="tags")
+					img(src="http://via.placeholder.com/100x100?text=C" alt="cancel tags")
+				span(class="edit edit--save" data-save="tags")
+					img(src="http://via.placeholder.com/100x100?text=S" alt="save tags")
+				span(class="edit edit--delete" data-delete="tags")
+					img(src="http://via.placeholder.com/100x100?text=D" alt="delete tags")
+				span(class="edit edit--add" data-add="tags")
+					img(src="http://via.placeholder.com/100x100?text=A" alt="add tags")
+		.card__details
+			.card__points
+				img(src="http://via.placeholder.com/50x50" alt="")
+				<h3>9 pts</h3>
 			.card__distance
-				img(src="img" alt="")
-				!="20 miles"
+				img(src="http://via.placeholder.com/50x50" alt="")
+				<h3>4 miles</h3>
 			.card__visits
-				img(src="img" alt="")
-				!="1"
-		.card__ctas
-			//- .card__ctas--like
-			//- 	img.card__add
-			//- 	!="like"
-			//- .card__ctas--visit
-			//- 	img.card__add
-			//- 	!="visit"
-			.card__ctas--view
-				a(href=`/places/${place.id}` class="button") View
+				img(src="http://via.placeholder.com/50x50" alt="")
+				<h3>3 visits</h3>
+			.card__cost
+				img(src="http://via.placeholder.com/50x50" alt="")
+				<h3>2.34 cost</h3>
+			.card__comments
+				img(src="http://via.placeholder.com/50x50" alt="")
+				<h3>5 comments</h3>
+		.card__actions
+			button(class="button button__visits--view") View Visits
+			button(class="button button__visit--add") Add Visit
+	.ajax__response
+		.response__message

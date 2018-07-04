@@ -6,7 +6,7 @@ block content
 			h1 #{pageTitle}
 	.categories
 		each place, i in places
-			a(href=`${place.category.slug}` class=`category category--${i+1}`)
+			a(href=`/places/${place.category.slug}` class=`category category--${i+1}`)
 				.category__icon
 					img(src="http://via.placeholder.com/350x200?text=icon" alt="")
 				.category__name
