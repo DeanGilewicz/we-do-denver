@@ -3,7 +3,6 @@
 	"name": "Cool Food",
 	"address": "123 road, city, state",
 	"distance": "12",
-	"cost": "2.02",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -12,14 +11,34 @@
 	},
 	"tags": [],
 	"rating": "1.4",
-	"visits": "2"
+	"cost": "2.02",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "3",
+			"rating": "2",
+			"comment": "Come on England"
+		},
+		{
+			"id": 2,
+			"cost": "2",
+			"rating": "2",
+			"comment": "very enjoyable"
+		},
+		{
+			"id": 3,
+			"cost": "3",
+			"rating": "3",
+			"comment": "Excellent"
+		}
+	]
+
 },
 {
 	"id": 2,
 	"name": "Fun Outdoor Hike",
 	"address": "444 road, city, state",
 	"distance": "2",
-	"cost": "2.43",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -28,14 +47,51 @@
 	},
 	"tags": [],
 	"rating": "2.71",
-	"visits": "6"
+	"cost": "2.43",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "3",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "3",
+			"rating": "2",
+			"comment": "very enjoyable"
+		},
+		{
+			"id": 3,
+			"cost": "3",
+			"rating": "3",
+			"comment": "Solid"
+		},
+		{
+			"id": 4,
+			"cost": "3",
+			"rating": "3",
+			"comment": "Cool"
+		},
+		{
+			"id": 5,
+			"cost": "3",
+			"rating": "3",
+			"comment": "Excellent"
+		},
+		{
+			"id": 6,
+			"cost": "2",
+			"rating": "3",
+			"comment": ""
+		}
+	]
 },
 {
 	"id": 3,
 	"name": "In Much Need Of",
 	"address": "543 road, city, state",
 	"distance": "4",
-	"cost": "1.67",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -44,14 +100,28 @@
 	},
 	"tags": [],
 	"rating": "1.3",
-	"visits": "2"
+	"cost": "1.67",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "1",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "1",
+			"rating": "3",
+			"comment": ""
+		}
+		
+	]
 },
 {
 	"id": 4,
 	"name": "Ski Destination",
 	"address": "99 road, city, state",
 	"distance": "60",
-	"cost": "2.12",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -60,14 +130,39 @@
 	},
 	"tags": [],
 	"rating": "2.07",
-	"visits": "4"
+	"cost": "2.12",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "2",
+			"rating": "1",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "2",
+			"rating": "3",
+			"comment": ""
+		},
+		{
+			"id": 3,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 4,
+			"cost": "2",
+			"rating": "3",
+			"comment": ""
+		}
+	]
 },
 {
 	"id": 5,
 	"name": "Rockies",
 	"address": "99 road, city, state",
 	"distance": "3",
-	"cost": "1.99",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -76,14 +171,33 @@
 	},
 	"tags": [],
 	"rating": "2.64",
-	"visits": "3"
+	"cost": "1.99",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "3",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 3,
+			"cost": "3",
+			"rating": "3",
+			"comment": ""
+		}
+	]
 },
 {
 	"id": 6,
 	"name": "Outlet Mall",
 	"address": "99 road, city, state",
 	"distance": "7",
-	"cost": "2.32",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -92,14 +206,45 @@
 	},
 	"tags": [],
 	"rating": "2.21",
-	"visits": "5"
+	"cost": "2.32",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 3,
+			"cost": "3",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 4,
+			"cost": "3",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 5,
+			"cost": "2",
+			"rating": "3",
+			"comment": ""
+		}
+	]
 },
 {
 	"id": 7,
 	"name": "Rough Mountain Trail",
 	"address": "52 road, city, state",
 	"distance": "43",
-	"cost": "1.74",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -108,14 +253,33 @@
 	},
 	"tags": [],
 	"rating": "0.94",
-	"visits": "6"
+	"cost": "1.74",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "2",
+			"rating": "1",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "2",
+			"rating": "1",
+			"comment": ""
+		},
+		{
+			"id": 3,
+			"cost": "1",
+			"rating": "1",
+			"comment": ""
+		}
+	]
 },
 {
 	"id": 8,
 	"name": "Red Rocks",
 	"address": "1 road, city, state",
 	"distance": "26",
-	"cost": "2.93",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -124,14 +288,45 @@
 	},
 	"tags": [],
 	"rating": "2.31",
-	"visits": "5"
+	"cost": "2.93",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "3",
+			"rating": "3",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "3",
+			"rating": "3",
+			"comment": ""
+		},
+		{
+			"id": 3,
+			"cost": "3",
+			"rating": "3",
+			"comment": ""
+		},
+		{
+			"id": 4,
+			"cost": "3",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 5,
+			"cost": "2",
+			"rating": "3",
+			"comment": ""
+		}
+	]
 },
 {
 	"id": 9,
 	"name": "Sushi Sushi",
 	"address": "93 road, city, state",
 	"distance": "1",
-	"cost": "2.09",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -140,14 +335,27 @@
 	},
 	"tags": [],
 	"rating": "2.15",
-	"visits": "2"
+	"cost": "2.09",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		}
+	]
 },
 {
 	"id": 10,
 	"name": "Cherry Creek Mall",
 	"address": "99 road, city, state",
 	"distance": "4",
-	"cost": "1.38",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -156,14 +364,27 @@
 	},
 	"tags": [],
 	"rating": "2",
-	"visits": "2"
+	"cost": "1.38",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "1",
+			"rating": "1",
+			"comment": ""
+		}
+	]
 },
 {
 	"id": 11,
 	"name": "Viewhouse",
 	"address": "99 road, city, state",
 	"distance": "3",
-	"cost": "2",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -172,14 +393,21 @@
 	},
 	"tags": [],
 	"rating": "2",
-	"visits": "1"
+	"cost": "2",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		}
+	]
 },
 {
 	"id": 12,
 	"name": "Ski Village Resort",
 	"address": "45 road, city, state",
 	"distance": "50",
-	"cost": "2.32",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
 		"icon": "",
@@ -188,5 +416,43 @@
 	},
 	"tags": [],
 	"rating": "2.21",
-	"visits": "5"
+	"cost": "2.32",
+	"visits": [
+		{
+			"id": 1,
+			"cost": "3",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 2,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 3,
+			"cost": "3",
+			"rating": "3",
+			"comment": ""
+		},
+		{
+			"id": 4,
+			"cost": "2",
+			"rating": "2",
+			"comment": ""
+		},
+		{
+			"id": 5,
+			"cost": "2",
+			"rating": "3",
+			"comment": ""
+		},
+		{
+			"id": 6,
+			"cost": "3",
+			"rating": "2",
+			"comment": ""
+		}
+	]
 }]

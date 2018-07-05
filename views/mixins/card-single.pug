@@ -11,7 +11,9 @@ mixin card-single(place = {})
 					img(src="http://via.placeholder.com/100x100?text=S" alt="save name")
 		address(class="card__location")
 			form(action="" class="card__address")
-				textarea(rows="1" name="address" class="form__input form__input--address" data-input="address" disabled) #{place.address}
+				#address__container
+					textarea(rows="1" name="address" class="form__input form__input--address" data-input="address" disabled) #{place.address}
+					input(name="miles" class="form__input form__input--address" value="4 miles" data-input="address" disabled)
 				span(class="edit edit--trigger" data-trigger="address")
 					img(src="http://via.placeholder.com/100x100?text=E" alt="edit address")
 				span(class="edit edit--cancel" data-cancel="address")
@@ -41,9 +43,6 @@ mixin card-single(place = {})
 			.card__points
 				img(src="http://via.placeholder.com/50x50" alt="")
 				<h3>9 pts</h3>
-			.card__distance
-				img(src="http://via.placeholder.com/50x50" alt="")
-				<h3>4 miles</h3>
 			.card__visits
 				img(src="http://via.placeholder.com/50x50" alt="")
 				<h3>3 visits</h3>
@@ -54,7 +53,7 @@ mixin card-single(place = {})
 				img(src="http://via.placeholder.com/50x50" alt="")
 				<h3>5 comments</h3>
 		.card__actions
-			button(class="button button__visits--view") View Visits
-			button(class="button button__visit--add") Add Visit
+			a(href=`/place/${place.id}/visits` class="button button__visits--view") View Visits
+			a(href=`` class="button button__visit--add") Add Visit
 	.ajax__response
 		.response__message

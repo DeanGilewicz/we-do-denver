@@ -1,0 +1,14 @@
+mixin card-visit(place = {}, visit = {}, i)
+	div(class=`card__visit card__visit--${i}`)
+		.card__visit--rating
+			p Rating: #{visit.rating}
+		.card__visit--cost
+			p Cost: #{visit.cost}
+		-if( visit.comment ) {
+			.card__visit--comment
+				p Comment: #{visit.comment}
+		- }
+		.card__actions
+			button(id="js-visit-delete" class="button button__visits--delete") Delete
+			a(href=`/place/${place.id}/visit/${visit.id}` class="button button__visit--edit") Edit
+

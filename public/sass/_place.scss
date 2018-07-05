@@ -72,6 +72,10 @@
 	}
 }
 
+.form__input--edit {
+	border: 1px solid black;
+}
+
 .form__input--name {
 	font-size: 28px;
 }
@@ -116,7 +120,6 @@
 }
 
 .card__points,
-.card__distance,
 .card__visits,
 .card__cost,
 .card__comments {

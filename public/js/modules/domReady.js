@@ -8,44 +8,58 @@ const domReady = callback => {
 domReady( () => {
    	"use strict";
 
-	const nameOptions = {
-		card: document.querySelector('#js-card'),
-		trigger: document.querySelector('[data-trigger="name"]'),
-		cancel: document.querySelector('[data-cancel="name"]'),
-		save: document.querySelector('[data-save="name"]'),
-		inputs: document.querySelectorAll('[data-input="name"]'),
-		url: 'https://apple.com',
-		response: document.querySelector('.ajax__response'),
-		responseMessage: document.querySelector('.response__message')
-	};
+	// restrict to dom element since hard to do for name of route
 
-	const addressOptions = {
-		card: document.querySelector('#js-card'),
-		trigger: document.querySelector('[data-trigger="address"]'),
-		cancel: document.querySelector('[data-cancel="address"]'),
-		save: document.querySelector('[data-save="address"]'),
-		inputs: document.querySelectorAll('[data-input="address"]'),
-		url: 'https://apple.com',
-		response: document.querySelector('.ajax__response'),
-		responseMessage: document.querySelector('.response__message')
-	};
+   	if( document.querySelector('#js-card') ) {
 
-	const tagsOptions = {
-		card: document.querySelector('#js-card'),
-		trigger: document.querySelector('[data-trigger="tags"]'),
-		cancel: document.querySelector('[data-cancel="tags"]'),
-		save: document.querySelector('[data-save="tags"]'),
-		inputs: document.querySelectorAll('[data-input="tags"]'),
-		multiInputContainer: document.querySelector('#tag__container'),
-		deleteEl: document.querySelector('[data-delete="tags"]'),
-		addEl: document.querySelector('[data-add="tags"]'),
-		url: 'https://apple.com',
-		response: document.querySelector('.ajax__response'),
-		responseMessage: document.querySelector('.response__message')
-	};
+		const nameOptions = {
+			card: document.querySelector('#js-card'),
+			trigger: document.querySelector('[data-trigger="name"]'),
+			cancel: document.querySelector('[data-cancel="name"]'),
+			save: document.querySelector('[data-save="name"]'),
+			inputs: document.querySelectorAll('[data-input="name"]'),
+			url: 'https://apple.com',
+			response: document.querySelector('.ajax__response'),
+			responseMessage: document.querySelector('.response__message')
+		};
 
-	const cardActionsName = new CardActions(nameOptions);
-	const cardActionsAddress = new CardActions(addressOptions);
-	const cardActionsTags = new CardActions(tagsOptions);
+		const addressOptions = {
+			card: document.querySelector('#js-card'),
+			trigger: document.querySelector('[data-trigger="address"]'),
+			cancel: document.querySelector('[data-cancel="address"]'),
+			save: document.querySelector('[data-save="address"]'),
+			inputs: document.querySelectorAll('[data-input="address"]'),
+			multiInputContainer: document.querySelector('#address__container'),
+			url: 'https://apple.com',
+			response: document.querySelector('.ajax__response'),
+			responseMessage: document.querySelector('.response__message')
+		};
+
+		const tagsOptions = {
+			card: document.querySelector('#js-card'),
+			trigger: document.querySelector('[data-trigger="tags"]'),
+			cancel: document.querySelector('[data-cancel="tags"]'),
+			save: document.querySelector('[data-save="tags"]'),
+			inputs: document.querySelectorAll('[data-input="tags"]'),
+			multiInputContainer: document.querySelector('#tag__container'),
+			deleteEl: document.querySelector('[data-delete="tags"]'),
+			addEl: document.querySelector('[data-add="tags"]'),
+			url: 'https://apple.com',
+			response: document.querySelector('.ajax__response'),
+			responseMessage: document.querySelector('.response__message')
+		};
+
+		const cardActionsName = new CardActions(nameOptions);
+		const cardActionsAddress = new CardActions(addressOptions);
+		const cardActionsTags = new CardActions(tagsOptions);
+
+	}
+
+	// restrict to dom element since hard to do for name of route
+
+	if( document.querySelector('#js-visit-form') ) {
+		// focus on first input on single visit form page
+		document.querySelector('input[name="rating"]').focus();
+	}
 
 });

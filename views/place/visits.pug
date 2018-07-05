@@ -1,0 +1,13 @@
+extends ../layout
+
+include ../mixins/card-visit
+
+block content
+	.hero
+		.hero__bg.hero__bg--home
+			h1 #{pageTitle}
+	.container__place
+		//- .place__add--visit
+			a(href=`/places/${:id}/add-visit` class="button button__visit--add")
+		each visit, i in visits
+			+card-visit(place, visit, i)
