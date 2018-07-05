@@ -1,0 +1,10 @@
+extends ../layout
+
+include ../mixins/card-visit-edit
+
+block content
+	.hero
+		.hero__bg.hero__bg--home
+			h1 #{pageTitle}
+	.container__place
+		+card-visit-edit(place)

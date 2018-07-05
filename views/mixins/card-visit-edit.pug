@@ -2,11 +2,11 @@ mixin card-visit-edit(place = {}, visit = {})
 	div(class=`card__visit__edit card__visit--${i}`)
 		form(id="js-visit-form" action="" method="POST" class="card__visit__form")
 			.card__visit--rating
-				input(type="text" name="rating" value=`${visit.rating}` class="form__input form__input--edit form__input--rating")
+				input(type="text" name="rating" value=`${visit.rating || ''}` class="form__input form__input--edit form__input--rating")
 			.card__visit--cost
-				input(type="text" name="cost" value=`${visit.cost}` class="form__input form__input--edit form__input--cost")
+				input(type="text" name="cost" value=`${visit.cost || ''}` class="form__input form__input--edit form__input--cost")
 			.card__visit--comment
-				textarea(rows="1" name="comment" class="form__input form__input--edit form__input--comment") #{visit.comment}
+				textarea(rows="1" name="comment" class="form__input form__input--edit form__input--comment") #{visit.comment || ''}
 			.card__actions
 				a(href=`/place/${place.id}/visits` class="button button__visits--cancel") Cancel
 				button(class="button button__visit--save") Save

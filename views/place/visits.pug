@@ -6,6 +6,7 @@ block content
 	.hero
 		.hero__bg.hero__bg--home
 			h1 #{pageTitle}
+			a(href=`/place/${place.id}` class="button button__visit--back") Back
 	.container__place
 		//- .place__add--visit
 			a(href=`/places/${:id}/add-visit` class="button button__visit--add")

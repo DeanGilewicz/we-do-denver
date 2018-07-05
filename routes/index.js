@@ -16,6 +16,7 @@ router.get('/categories', categoriesController);
 
 router.get('/place/:id', placeController.place);
 router.get('/place/:id/visits', placeController.visits);
+router.get('/place/:id/add-visit', placeController.addVisit);
 router.get('/place/:id/visit/:visitId', placeController.visit);
 
 module.exports = router;

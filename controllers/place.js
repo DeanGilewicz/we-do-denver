@@ -16,3 +16,8 @@ exports.visit = (req, res) => {
 	const visit = place.visits.find( visit => visit.id == req.params.visitId );
 	res.render('place/visit', { pageTitle: visit.id, place, visit });
 };
+
+exports.addVisit = (req, res) => {
+	const place = places.find( place => place.id == req.params.id ); // query data for requested place
+	res.render('place/add-visit', { pageTitle: 'Add Visit', place });
+}

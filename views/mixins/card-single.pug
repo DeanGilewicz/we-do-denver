@@ -54,6 +54,6 @@ mixin card-single(place = {})
 				<h3>5 comments</h3>
 		.card__actions
 			a(href=`/place/${place.id}/visits` class="button button__visits--view") View Visits
-			a(href=`` class="button button__visit--add") Add Visit
+			a(href=`/place/${place.id}/add-visit` class="button button__visit--add") Add Visit
 	.ajax__response
 		.response__message
