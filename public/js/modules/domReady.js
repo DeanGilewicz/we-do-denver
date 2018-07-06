@@ -37,13 +37,13 @@ domReady( () => {
 
 		const tagsOptions = {
 			card: document.querySelector('#js-card'),
-			trigger: document.querySelector('[data-trigger="tags"]'),
-			cancel: document.querySelector('[data-cancel="tags"]'),
-			save: document.querySelector('[data-save="tags"]'),
-			inputs: document.querySelectorAll('[data-input="tags"]'),
+			trigger: document.querySelector('[data-trigger="tag"]'),
+			cancel: document.querySelector('[data-cancel="tag"]'),
+			save: document.querySelector('[data-save="tag"]'),
+			inputs: document.querySelectorAll('[data-input="tag"]'),
 			multiInputContainer: document.querySelector('#tag__container'),
-			deleteEl: document.querySelector('[data-delete="tags"]'),
-			addEl: document.querySelector('[data-add="tags"]'),
+			deleteEl: document.querySelector('[data-delete="tag"]'),
+			addEl: document.querySelector('[data-add="tag"]'),
 			url: 'https://apple.com',
 			response: document.querySelector('.ajax__response'),
 			responseMessage: document.querySelector('.response__message')

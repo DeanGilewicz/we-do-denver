@@ -38,6 +38,10 @@ class CardActions {
 		const triggerElAttr = this.trigger.getAttribute('data-trigger');
 		const cancelElAttr = this.cancel.getAttribute('data-cancel');
 		const saveElAttr = this.save.getAttribute('data-save');
+
+		// set ref to data name for DOM els
+		this.attrValue = triggerElAttr;
+		console.log('attrvalue', this.attrValue);
 		
 		// set up focus event on container of mulitple inputs to keep track of last selected input
 		if( this.formInputs.length > 0 && typeof multiInputContainer !== 'undefined' ) {
@@ -47,7 +51,7 @@ class CardActions {
 			}, true);
 		}
 		// trigger
-		this._eventDelegate(`#${wrapperElId}`, 'click', `[data-trigger=${triggerElAttr}]`, e => {
+		this._eventDelegate(`#${wrapperElId}`, 'click', `[data-trigger=${this.attrValue}]`, e => {
 			this._hideTrigger();
 			this._showCancel();
 			this._showSave();
@@ -56,7 +60,7 @@ class CardActions {
 			this._enableInput();
 		});
 		// cancel
-		this._eventDelegate(`#${wrapperElId}`, 'click', `[data-cancel=${cancelElAttr}]`, e => {
+		this._eventDelegate(`#${wrapperElId}`, 'click', `[data-cancel=${this.attrValue}]`, e => {
 			this._resetInputValue();
 			this._disableInput();
 			this._hideCancel();
@@ -68,20 +72,20 @@ class CardActions {
 			this.response.classList.remove('ajax__response--error');
 		});
 		// save
-		this._eventDelegate(`#${wrapperElId}`, 'click', `[data-save=${saveElAttr}]`, e => {
+		this._eventDelegate(`#${wrapperElId}`, 'click', `[data-save=${this.attrValue}]`, e => {
 			this._saveInputValue();
 		});
 		// delete
 		if( typeof this.deleteInput !== 'undefined' ) {
 			const deleteElAttr = this.deleteInput.getAttribute('data-delete');
-			this._eventDelegate(`#${wrapperElId}`, 'click', `[data-delete=${deleteElAttr}]`, e => {
+			this._eventDelegate(`#${wrapperElId}`, 'click', `[data-delete=${this.attrValue}]`, e => {
 				this._deleteInput();
 			});
 		}
 		// add
 		if( typeof this.addInput !== 'undefined' ) {
 			const addElAttr = this.addInput.getAttribute('data-add');
-			this._eventDelegate(`#${wrapperElId}`, 'click', `[data-add=${addElAttr}]`, e => {
+			this._eventDelegate(`#${wrapperElId}`, 'click', `[data-add=${this.attrValue}]`, e => {
 				this._addInput();
 			});
 		}
@@ -141,7 +145,7 @@ class CardActions {
 		
 		// set up dom
 		const domInputsHtml = updatedArray.map( (el, i) => {
-			return `<input class="form__input form__input--tag" name="tag-${i}" value="${el.value}" data-input="tags" />`
+			return `<input class="form__input form__input--${this.attrValue}" name="${this.attrValue}-${i}" value="${el.value}" data-input="${this.attrValue}" />`
 		});
 		
 	 	// update DOM
@@ -152,10 +156,10 @@ class CardActions {
 
 		// create DOM node
 		const additionalInput = document.createElement('input');
-		additionalInput.classList.add("form__input", "form__input--tag");
-		additionalInput.setAttribute('name', `tag-${this.formInputs.length}`);
+		additionalInput.classList.add("form__input", `form__input--${this.attrValue}`);
+		additionalInput.setAttribute('name', `${this.attrValue}-${this.formInputs.length}`);
 		additionalInput.setAttribute('value', "");
-		additionalInput.setAttribute('data-input', "tags");
+		additionalInput.setAttribute('data-input', `${this.attrValue}`);
 
 		const updatedArray = [...this.formInputs, additionalInput];
 		// console.log(this.formInputs);
@@ -167,14 +171,14 @@ class CardActions {
 
 		// set up dom
 		const domInputsHtml = updatedArray.map( (el, i) => {
-			return `<input class="form__input form__input--tag" name="tag-${i}" value="${el.value}" data-input="tags" />`
+			return `<input class="form__input form__input--${this.attrValue}" name="${this.attrValue}-${i}" value="${el.value}" data-input="${this.attrValue}" />`
 		});
 		
 	 	// update DOM
 		this.multiInputContainer.innerHTML = domInputsHtml.join('');
 		
 		// get reference to dom elements
-		this.formInputs = this.multiInputContainer.querySelectorAll('[data-input="tags"]');
+		this.formInputs = this.multiInputContainer.querySelectorAll(`[data-input="${this.attrValue}"]`);
 		// focus in last input
 		this.formInputs[this.formInputs.length-1].focus();
 
@@ -191,7 +195,7 @@ class CardActions {
 
 		if( this.formInputs.length > 0 && typeof this.multiInputContainer !== 'undefined' ) {
 			// get reference to newly added DOM elements
-			this.formInputs = this.multiInputContainer.querySelectorAll('[data-input="tags"]');
+			this.formInputs = this.multiInputContainer.querySelectorAll(`[data-input="${this.attrValue}"]`);
 		} 
 
 		if( this.formInputs.length > 0 ) {
@@ -211,7 +215,7 @@ class CardActions {
 			this.formInputs = this.rollback;
 			// update DOM
 			this.multiInputContainer.innerHTML = this.formInputs.map( (el, i) => {
-				return `<input class="form__input form__input--tag" name="tag-${i}" value="${el.value}" data-input="tags" disabled />`
+				return `<input class="form__input form__input--${this.attrValue}" name="${this.attrValue}-${i}" value="${el.value}" data-input="${this.attrValue}" disabled />`
 			}).join('');
 		} else if( this.formInputs.length > 0 ) {
 			// reset value
