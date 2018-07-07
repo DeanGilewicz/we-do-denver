@@ -9,7 +9,9 @@ const categoryController = require('../controllers/category');
 
 router.get('/', homeController);
 
-router.get('/places', placesController);
+router.get('/places', placesController.index);
+router.get('/places/add-place', placesController.addPlace);
+
 router.get('/places/:category', categoryController);
 
 router.get('/categories', categoriesController);

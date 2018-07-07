@@ -6,7 +6,9 @@ block content
 	.hero
 		.hero__bg.hero__bg--home
 			h1 #{place.name}
-			a(href="/places" class="button button__visit--back") Places
+	.container__actions
+		a(href="/places" class="button button__visit--back") Back to Places
+		a(href=`/place/${place.id}/add-visit` class="button button__visit--add") Add Visit
 	.container__place
 		+card-single(place)
 		

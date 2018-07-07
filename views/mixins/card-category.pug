@@ -9,17 +9,17 @@ mixin card-category(place = {}, i = 0)
 			a(href=`/places/${place.category.slug}`)= place.category.name
 		.place__overview
 			.place__score
-				h3= 7
+				h3= place.rating
 				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
-				h4= pts
+				h4 pts
 			.place__distance
-				h3= 4
+				h3= place.distance
 				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
-				h4= miles
+				h4 miles
 			.place__visits
-				h3= 3
+				h3= place.tags.length
 				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
-				h4= visits
+				h4 visits
 		.place__cta
 			a(href=`/place/${place.id}` class="button button--cta") View
 

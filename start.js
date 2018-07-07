@@ -18,7 +18,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 // Import all of our models
-// import here
+require('./models/Place');
 
 // Start our app!
 const app = require('./app');

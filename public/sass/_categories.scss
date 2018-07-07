@@ -67,12 +67,14 @@
 
 .category__icon {
 	width: 140px;
+	flex-basis: 40%;
 	display: table-cell;
 	vertical-align: middle;
 	padding: 10px 16px;
 }
 
 .category__name {
+	flex-basis: 60%;
 	display: table-cell;
 	vertical-align: middle;
 	padding: 10px 16px;
@@ -96,6 +98,9 @@
 			margin-left: 0;
 			margin-right: 0;
 		}
+	}
+	.category__icon {
+		width: auto;
 	}
 	@media screen and (min-width: 640px) {
 		.categories {

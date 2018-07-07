@@ -4,6 +4,9 @@ block content
 	.hero
 		.hero__bg.hero__bg--home
 			h1 #{pageTitle}
+	.container__actions
+		a(href="/places" class="button button__visit--back") View Places
+		//- a(href=`/categories` class="button button__visit--back") Categories
 	.categories
 		each place, i in places
 			a(href=`/places/${place.category.slug}` class=`category category--${i+1}`)

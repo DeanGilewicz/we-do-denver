@@ -2,7 +2,7 @@ mixin card-single(place = {})
 	div(id="js-card" class="card")
 		.card__hero
 			form(action="" class="card__name")
-				input(type="text" name="name" value="Card Name" class="form__input form__input--name" data-input="name" disabled)
+				input(type="text" name="name" value=`${place.name}` class="form__input form__input--name" data-input="name" disabled)
 				span(class="edit edit--trigger" data-trigger="name")
 					img(src="http://via.placeholder.com/100x100?text=E" alt="edit name")
 				span(class="edit edit--cancel" data-cancel="name")
@@ -13,7 +13,7 @@ mixin card-single(place = {})
 			form(action="" class="card__address")
 				#address__container
 					textarea(rows="1" name="address" class="form__input form__input--address" data-input="address" disabled) #{place.address}
-					input(name="miles" class="form__input form__input--address" value="4 miles" data-input="address" disabled)
+					input(name="distance" class="form__input form__input--address" value=`${place.distance} miles` data-input="address" disabled)
 				span(class="edit edit--trigger" data-trigger="address")
 					img(src="http://via.placeholder.com/100x100?text=E" alt="edit address")
 				span(class="edit edit--cancel" data-cancel="address")
@@ -23,12 +23,8 @@ mixin card-single(place = {})
 		div
 			form(action="" class="card__tags")
 				#tag__container
-					input(class="form__input form__input--tag" name="tags-0" value="happy hour" data-input="tag" disabled)
-					input(class="form__input form__input--tag" name="tags-1" value="cheap food" data-input="tag" disabled)
-					input(class="form__input form__input--tag" name="tags-2" value="live music" data-input="tag" disabled)
-					input(class="form__input form__input--tag" name="tags-3" value="good service" data-input="tag" disabled)
-					input(class="form__input form__input--tag" name="tags-4" value="nice vibe" data-input="tag" disabled)
-					input(class="form__input form__input--tag" name="tags-5" value="cool place" data-input="tag" disabled)
+					each tag, i in place.tags
+						input(class="form__input form__input--tag" name=`tags-${i}` value=`${tag}` data-input="tag" disabled)
 				span(class="edit edit--trigger" data-trigger="tag")
 					img(src="http://via.placeholder.com/100x100?text=E" alt="edit tags")
 				span(class="edit edit--cancel" data-cancel="tag")
@@ -42,18 +38,19 @@ mixin card-single(place = {})
 		.card__details
 			.card__points
 				img(src="http://via.placeholder.com/50x50" alt="")
-				<h3>9 pts</h3>
+				<h3>#{place.rating} pts</h3>
 			.card__visits
 				img(src="http://via.placeholder.com/50x50" alt="")
-				<h3>3 visits</h3>
+				<h3>#{place.visits.length} visits</h3>
 			.card__cost
 				img(src="http://via.placeholder.com/50x50" alt="")
-				<h3>2.34 cost</h3>
+				<h3>#{place.cost} cost</h3>
 			.card__comments
 				img(src="http://via.placeholder.com/50x50" alt="")
-				<h3>5 comments</h3>
+				- const numOfComments = place.visits.filter( (visit) => visit.comment );
+				- const commentText = ( numOfComments.length == 1 ) ? 'comment' : 'comments';
+				<h3>#{numOfComments.length} #{commentText}</h3>
 		.card__actions
-			a(href=`/place/${place.id}/visits` class="button button__visits--view") View Visits
-			a(href=`/place/${place.id}/add-visit` class="button button__visit--add") Add Visit
+			a(href=`/place/${place.id}/visits` class="button button--cta") Visits
 	.ajax__response
 		.response__message

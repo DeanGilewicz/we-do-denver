@@ -1,7 +1,7 @@
 [{
 	"id": 1,
 	"name": "Cool Food",
-	"address": "123 road, city, state",
+	"address": "123 road, city, state, 80202",
 	"distance": "12",
 	"img": "http://via.placeholder.com/300x300?text=card",
 	"category": {
@@ -9,7 +9,7 @@
 		"name": "Fuel Me",
 		"slug": "fuel-me"
 	},
-	"tags": [],
+	"tags": ["happy hour", "cheap food", "live music", "good service", "nice vibe", "cool place"],
 	"rating": "1.4",
 	"cost": "2.02",
 	"visits": [
@@ -32,7 +32,6 @@
 			"comment": "Excellent"
 		}
 	]
-
 },
 {
 	"id": 2,
@@ -45,7 +44,7 @@
 		"name": "Hike It",
 		"slug": "hike-it"
 	},
-	"tags": [],
+	"tags": ["easy trail", "good scenary", "not too busy"],
 	"rating": "2.71",
 	"cost": "2.43",
 	"visits": [
@@ -98,7 +97,7 @@
 		"name": "Thirst Quenching",
 		"slug": "thirst-quenching"
 	},
-	"tags": [],
+	"tags": ["happy hour", "interesting cocktails"],
 	"rating": "1.3",
 	"cost": "1.67",
 	"visits": [
@@ -128,7 +127,7 @@
 		"name": "On The Slopes",
 		"slug": "on-the-slopes"
 	},
-	"tags": [],
+	"tags": ["beginner options"],
 	"rating": "2.07",
 	"cost": "2.12",
 	"visits": [
@@ -169,7 +168,7 @@
 		"name": "Entertain Us",
 		"slug": "entertain-us"
 	},
-	"tags": [],
+	"tags": ["baseball", "cheap tickets", "sports"],
 	"rating": "2.64",
 	"cost": "1.99",
 	"visits": [
@@ -204,7 +203,7 @@
 		"name": "Shopping Bags",
 		"slug": "shopping-bags"
 	},
-	"tags": [],
+	"tags": ["brands", "outlet"],
 	"rating": "2.21",
 	"cost": "2.32",
 	"visits": [
@@ -251,7 +250,7 @@
 		"name": "Hike It",
 		"slug": "hike-it"
 	},
-	"tags": [],
+	"tags": ["medium trail", "climbing", "long trip"],
 	"rating": "0.94",
 	"cost": "1.74",
 	"visits": [
@@ -286,7 +285,7 @@
 		"name": "Entertain Us",
 		"slug": "entertain-us"
 	},
-	"tags": [],
+	"tags": ["concert", "live music", "nice vibe", "cool place"],
 	"rating": "2.31",
 	"cost": "2.93",
 	"visits": [
@@ -333,7 +332,7 @@
 		"name": "Fuel Me",
 		"slug": "fuel-me"
 	},
-	"tags": [],
+	"tags": ["happy hour", "sushi", "good service"],
 	"rating": "2.15",
 	"cost": "2.09",
 	"visits": [
@@ -362,7 +361,7 @@
 		"name": "Shopping Bags",
 		"slug": "shopping-bags"
 	},
-	"tags": [],
+	"tags": ["designer brands"],
 	"rating": "2",
 	"cost": "1.38",
 	"visits": [
@@ -391,7 +390,7 @@
 		"name": "Thirst Quenching",
 		"slug": "thirst-quenching"
 	},
-	"tags": [],
+	"tags": ["cool place"],
 	"rating": "2",
 	"cost": "2",
 	"visits": [
@@ -414,7 +413,7 @@
 		"name": "On The Slopes",
 		"slug": "on-the-slopes"
 	},
-	"tags": [],
+	"tags": ["scenic"],
 	"rating": "2.21",
 	"cost": "2.32",
 	"visits": [

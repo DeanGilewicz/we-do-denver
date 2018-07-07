@@ -6,7 +6,9 @@ block content
 	.hero
 		.hero__bg.hero__bg--home
 			h1 Places
-			a(href="/categories" class="button") Categories
+	.container__actions
+		a(href="/categories" class="button") View Categories
+		a(href="/places/add-place" class="button") Add Place
 	.places
 		each place, i in places
 			+card-category(place, i)

@@ -1,0 +1,23 @@
+extends ../layout
+
+//- include ../mixins/card-place-add
+
+block content
+	.hero
+		.hero__bg.hero__bg--home
+			h1 #{pageTitle}
+	.container__place
+		div(class="card")
+			.card__hero
+				form(action="" class="card__name")
+					input(type="file" name="image" class="form__input form__input--image")
+					input(type="text" name="name" value="" class="form__input form__input--name")
+					textarea(rows="1" name="address" class="form__input form__input--address")
+					input(name="distance" class="form__input form__input--address" value="")
+					textarea(rows="1" name="tags" class="form__input form__input--tag")
+			.card__actions
+				a(href=`/places` class="button button--cancel") Cancel
+				button(class="button button--save") Save
+		.ajax__response
+			.response__message
+
