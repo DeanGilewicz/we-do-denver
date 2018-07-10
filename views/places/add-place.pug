@@ -7,14 +7,20 @@ block content
 		.hero__bg.hero__bg--home
 			h1 #{pageTitle}
 	.container__place
-		div(class="card")
-			.card__hero
-				form(action="" class="card__name")
-					input(type="file" name="image" class="form__input form__input--image")
-					input(type="text" name="name" value="" class="form__input form__input--name")
-					textarea(rows="1" name="address" class="form__input form__input--address")
-					input(name="distance" class="form__input form__input--address" value="")
-					textarea(rows="1" name="tags" class="form__input form__input--tag")
+		form(action="/places/add-place" method="POST" class="card__name")
+			input(type="file" name="img" class="form__input form__input--image")
+			input(type="text" name="name" class="form__input form__input--name")
+			select(name="category[name]" class="form__input form__input--category")
+				option(value="") - Category -
+				option(value="Entertain Us") Entertain Us
+				option(value="Fuel Me") Fuel Me
+				option(value="Hike It") Hike It
+				option(value="On The Slopes") On The Slopes
+				option(value="Shopping Bags") Shopping Bags
+				option(value="Thirst Quenching") Thirst Quenching
+			textarea(rows="1" name="address" class="form__input form__input--address")
+			input(name="distance" class="form__input form__input--address")
+			textarea(rows="1" name="tags" class="form__input form__input--tag")
 			.card__actions
 				a(href=`/places` class="button button--cancel") Cancel
 				button(class="button button--save") Save

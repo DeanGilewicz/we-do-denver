@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const { catchErrors } = require('../handlers/errorHandlers');
+
 const homeController = require('../controllers/index');
 const placesController = require('../controllers/places');
 const placeController = require('../controllers/place');
@@ -11,6 +13,7 @@ router.get('/', homeController);
 
 router.get('/places', placesController.index);
 router.get('/places/add-place', placesController.addPlace);
+router.post('/places/add-place', catchErrors(placesController.createPlace));
 
 router.get('/places/:category', categoryController);
 

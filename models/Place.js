@@ -26,6 +26,7 @@ const placeSchema = new mongoose.Schema({
 		},
 		slug: String
 	},
+	slug: String,
 	tags: [String],
 	rating: String,
 	cost: String,
