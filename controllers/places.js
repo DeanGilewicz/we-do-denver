@@ -12,9 +12,8 @@ exports.addPlace = (req, res) => {
 
 exports.createPlace = async (req, res) => {
 	const place = new Place(req.body);
-	const tags = place.tags.split(' ');
-	place.tags = tags;
-	
+	const tagsArr = place.tags.map( (tag) => tag.split(/[ ,]+/).filter(Boolean));
+	place.tags = tagsArr[0];
 	await place.save();
 	res.redirect('/places');
 };

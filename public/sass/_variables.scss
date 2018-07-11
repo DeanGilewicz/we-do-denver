@@ -23,3 +23,10 @@ $white: #FFFFFF;
 // $shad: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
 // $grad: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, $yellow 85%, #48ded4 95%);
 // $verticalGrad: linear-gradient(0, #48ded4 0%, #a026bf 20%, #e82c75 60%, $yellow 85%, #48ded4 95%);
+
+form input[type="text"],
+form select,
+form textarea {
+	margin: 10px;
+	border: 1px solid black !important;
+}

@@ -1,6 +1,6 @@
 mixin card-visit-edit(place = {}, visit = {})
 	div(class=`card__visit__edit card__visit--${i}`)
-		form(id="js-visit-form" action="" method="POST" class="card__visit__form")
+		form(id="js-visit-form" action=`/place/${place.id}/add-visit` method="POST" class="card__visit__form")
 			.card__visit--rating
 				input(type="text" name="rating" value=`${visit.rating || ''}` class="form__input form__input--edit form__input--rating")
 			.card__visit--cost
