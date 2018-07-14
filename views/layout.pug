@@ -11,13 +11,14 @@ html
         header.header__main
           nav.main
             a.logo(href="/")
-              img(src="logo" alt="We Do Denver logo")
+              img(src="http://via.placeholder.com/60x40?text=logo" alt="We Do Denver logo")
           nav.authenticate
             a.link.link--nav(href="#") Login
             span.divider |
             a.link.link--nav(href="#") Sign Up
       block messages
         if locals.flashes
+          //- pre= h.dump(locals)
           - const categories = Object.keys(locals.flashes)
           each category in categories
             each message in flashes[category]

@@ -17,10 +17,10 @@ mixin card-category(place = {}, i = 0)
 				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
 				h4 miles
 			.place__visits
-				h3= place.tags.length
+				h3= place.visits.length
 				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
 				h4 visits
 		.place__cta
-			a(href=`/place/${place.id}` class="button button--cta") View
+			a(href=`/place/${place._id}` class="button button--cta") View
 
 

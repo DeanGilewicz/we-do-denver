@@ -11,7 +11,7 @@ const categoryController = require('../controllers/category');
 
 router.get('/', homeController);
 
-router.get('/places', placesController.index);
+router.get('/places', catchErrors(placesController.index));
 router.get('/places/add-place', placesController.addPlace);
 router.post('/places/add-place', catchErrors(placesController.createPlace));
 
@@ -19,8 +19,8 @@ router.get('/places/:category', categoryController);
 
 router.get('/categories', categoriesController);
 
-router.get('/place/:id', placeController.place);
-router.get('/place/:id/visits', placeController.visits);
+router.get('/place/:id', catchErrors(placeController.place));
+router.get('/place/:id/visits', catchErrors(placeController.visits));
 router.get('/place/:id/add-visit', placeController.addVisit);
 router.post('/place/:id/add-visit', catchErrors(placeController.createVisit));
 

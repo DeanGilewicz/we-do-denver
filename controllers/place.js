@@ -2,13 +2,16 @@ const places = require('../data/sample.json');
 const mongoose = require('mongoose');
 const Place = mongoose.model('Place');
 
-exports.place = (req, res) => {
-	const place = places.find( place => place.id == req.params.id ); // query data for requested place
+exports.place = async (req, res) => {
+	// const place = Place.find( place => place.id == req.params.id ); // query data for requested place
+	const place = await Place.findById(req.params.id);
+	// console.log(place);
 	res.render('place/index', { pageTitle: place.name, place });
 };
 
-exports.visits = (req, res) => {
-	const place = places.find( place => place.id == req.params.id ); // query data for requested place
+exports.visits = async (req, res) => {
+	// const place = places.find( place => place.id == req.params.id ); // query data for requested place
+	const place = await Place.findById(req.params.id);
 	const visits = place.visits;
 	res.render('place/visits', { pageTitle: place.name, place, visits });
 };

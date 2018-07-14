@@ -33,5 +33,13 @@ button,
         text-transform: uppercase;
         width: 100%;
     }
+
+    &.flash__remove {
+        color: $black;
+        &:hover,
+        &:focus {
+            background: none;
+        }
+    }
 }
 

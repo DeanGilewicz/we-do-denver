@@ -7,8 +7,8 @@ block content
 		.hero__bg.hero__bg--home
 			h1 #{pageTitle}
 	.container__actions
-		a(href=`/place/${place.id}` class="button button__visit--back") Back
-		a(href=`/place/${place.id}/add-visit` class="button button__visit--add") Add Visit
+		a(href=`/place/${place._id}` class="button button__visit--back") Back
+		a(href=`/place/${place._id}/add-visit` class="button button__visit--add") Add Visit
 	.container__place
 		//- .place__add--visit
 			a(href=`/places/${:id}/add-visit` class="button button__visit--add")

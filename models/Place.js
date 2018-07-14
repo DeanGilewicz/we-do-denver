@@ -57,20 +57,60 @@ const placeSchema = new mongoose.Schema({
 });
 
 placeSchema.pre('save', function(next) {
-	if( !this.isModified('name') || !this.isModified('category.name') ) {
-		next();
-		return;
-		// TODO: make sure slugs are unique
-	} else if( this.isModified('name') && !this.isModified('category.name') ) {
-		this.slug = slug(this.name);
-	} else if( this.isModified('category.name') && !this.isModified('name') ) {
-		this.category.slug = slug(this.category);
-		this.category.icon = categoryIcons[this.category.name]
+	// rating
+	if( typeof this.rating !== "undefined" ) {
+		if( this.isModified('visits.rating') ) {
+			// calculate rating since something has changed
+			const ratingTotal = this.visits.reduce((sV, cV) => ({rating: parseInt(sV.rating,10) + parseInt(cV.rating,10)}));
+			// get average
+			const totalVisits = this.visits.length;
+			const aveRating = (ratingTotal / totalVisits).toFixed(2);
+			console.log('ratingTotal', ratingTotal);
+			console.log('totalVisits', totalVisits);
+			console.log('aveRating', aveRating);
+			this.rating = aveRating;
+		}
 	} else {
+		// blank so set it to "-"
+		this.rating = "-";
+	}
+
+	// cost
+	if( typeof this.cost !== "undefined" ) {
+		if( this.isModified('visits.cost') ) {
+			// calculate rating since something has changed
+			const costTotal = this.visits.reduce((sV, cV) => ({cost: parseInt(sV.cost,10) + parseInt(cV.cost,10)}));
+			// get average
+			const totalVisits = this.visits.length;
+			const aveCost = (costTotal / totalVisits).toFixed(2);
+			console.log('costTotal', costTotal);
+			console.log('totalVisits', totalVisits);
+			console.log('aveCost', aveCost);
+			this.cost = aveCost;
+		}
+	} else {
+		// blank so set it to "-"
+		this.cost = "-";
+	}
+
+	// name and slug - TODO: make sure slugs are unique
+	if( this.isModified('name') ) {
 		this.slug = slug(this.name);
+	} else {
+		// initially set the slug
+		this.slug = slug(this.name);
+	} 
+
+	// category name, category slug, category icon - TODO: make sure slugs are unique
+	if( this.isModified('category.name') ) {
+		this.category.slug = slug(this.category.name);
+		this.category.icon = categoryIcons[this.category.name];
+	} else {
+		// initially set the category slug and category icon
 		this.category.slug = slug(this.category.name);
 		this.category.icon = categoryIcons[this.category.name];
 	}
+
 	next();
 });
 
