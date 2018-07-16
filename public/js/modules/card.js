@@ -1,5 +1,5 @@
 class CardActions {
-	constructor({card, trigger, cancel, save, inputs = [], multiInputContainer = undefined, deleteEl = undefined, addEl = undefined, url, response, responseMessage} = {}) {
+	constructor({card, trigger, cancel, save, inputs = [], multiInputContainer = undefined, deleteEl = undefined, addEl = undefined, endpointUrl, redirectUrl, response, responseMessage} = {}) {
 		
 		/* constants */
 		
@@ -20,7 +20,8 @@ class CardActions {
 		this.addInput = addEl; 
 
 		// handle persist data
-		this.postUrl = url;
+		this.endpointUrl = endpointUrl;
+		this.redirectUrl = redirectUrl;
 		this.response = response;
 		this.responseMessage = responseMessage;
 		
@@ -41,7 +42,7 @@ class CardActions {
 
 		// set ref to data name for DOM els
 		this.attrValue = triggerElAttr;
-		console.log('attrvalue', this.attrValue);
+		// console.log('attrvalue', this.attrValue);
 		
 		// set up focus event on container of mulitple inputs to keep track of last selected input
 		if( this.formInputs.length > 0 && typeof multiInputContainer !== 'undefined' ) {
@@ -133,7 +134,6 @@ class CardActions {
 
 		// convert to array
 		const inputsArray = Array.from(this.formInputs);
-
 		const inputsStart = inputsArray.slice(0, this.inputIndex);
 		const inputsEnd = inputsArray.slice(this.inputIndex+1, this.formInputs.length);
 
@@ -231,18 +231,44 @@ class CardActions {
 		if( this.formInputs.length > 0 ) {
 			const data = {};
 			this.formInputs.forEach( (formInput) => {
-				data[formInput.name] = formInput.value;
+				// handle tags differently since data structure is { tags: ['this','is','it'] }
+				if( formInput.name.indexOf('tag') > -1 ) {
+					if( typeof data.tags === 'undefined' ) {
+						// create a tags property as an array if doesn't already exist
+						data.tags = [];
+						data.tags.push(formInput.value);
+					} else {
+						data.tags.push(formInput.value);
+					}
+				} else {
+					data[formInput.name] = formInput.value;
+				}
 			});
-			this._ajaxPost('POST', this.postUrl, JSON.stringify(data))
+			// console.log('DATA', data);
+			this._ajaxPost('POST', this.endpointUrl, data)
 				.then( (res) => {
 					console.log('res', res);
 					this.responseMessage.textContent = "Update successful!";
 					this.response.classList.add('ajax__response--success');
+					const uiTimeOut = setTimeout( () => {
+						this.response.classList.remove('ajax__response--success');
+						this.responseMessage.textContent = "";
+						window.clearTimeout(uiTimeOut);
+						if( this.redirectUrl ) {
+							window.location.href = this.redirectUrl;
+						}
+					}, 1000);
+					
 				})
 				.catch( (err) => {
 					console.error('err', err);
 					this.responseMessage.textContent = "Unable to update. Please try again.";
 					this.response.classList.add('ajax__response--error');
+					const uiTimeOut = setTimeout( () => {
+						this.response.classList.remove('ajax__response--error');
+						this.responseMessage.textContent = "";
+						window.clearTimeout(uiTimeOut);
+					}, 1000);
 				});
 		}
 	}
@@ -287,8 +313,8 @@ class CardActions {
 		const promiseObj = new Promise( (resolve, reject) => {
 			const xhr = new XMLHttpRequest();
 			xhr.open(methodType, url, true);
-			// xhr.setRequestHeader('Content-Type', 'application/json');
-			xhr.send(data);
+			xhr.setRequestHeader('Content-Type', 'application/json');
+			xhr.send(JSON.stringify(data));
 			xhr.onreadystatechange = () => {
 				if( xhr.readyState === 4 ) {
 					if( xhr.status === 200 ) {

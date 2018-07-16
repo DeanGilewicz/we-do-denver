@@ -95,22 +95,32 @@ placeSchema.pre('save', function(next) {
 
 	// name and slug - TODO: make sure slugs are unique
 	if( this.isModified('name') ) {
+		// console.log("NAME IS MODIFIED");
 		this.slug = slug(this.name);
-	} else {
+	} else if( !this.isModified('name') && typeof this.slug === 'undefined') {
 		// initially set the slug
 		this.slug = slug(this.name);
+		// console.log("NAME NOT MODIFIED");
 	} 
 
 	// category name, category slug, category icon - TODO: make sure slugs are unique
 	if( this.isModified('category.name') ) {
 		this.category.slug = slug(this.category.name);
 		this.category.icon = categoryIcons[this.category.name];
-	} else {
+	} else if( !this.isModified('category.name') && typeof this.category.name === 'undefined') {
 		// initially set the category slug and category icon
 		this.category.slug = slug(this.category.name);
 		this.category.icon = categoryIcons[this.category.name];
 	}
 
+	next();
+});
+
+placeSchema.pre('findOneAndUpdate', function(next) {
+	// need to update slug automatically if name is modified
+	if( this.getUpdate().name ) {
+		this.findOneAndUpdate({}, { $set: { slug: slug(this.getUpdate().name) } });
+	}
 	next();
 });
 

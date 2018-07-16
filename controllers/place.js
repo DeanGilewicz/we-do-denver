@@ -1,12 +1,28 @@
 const places = require('../data/sample.json');
 const mongoose = require('mongoose');
 const Place = mongoose.model('Place');
+const slug = require('slugs');
 
 exports.place = async (req, res) => {
 	// const place = Place.find( place => place.id == req.params.id ); // query data for requested place
 	const place = await Place.findById(req.params.id);
 	// console.log(place);
 	res.render('place/index', { pageTitle: place.name, place });
+};
+
+exports.updatePlace = async (req, res) => {
+	// console.log(req.body);
+	const place = await Place.findOneAndUpdate(
+		{ _id: req.params.id },
+		req.body,
+		{
+			new: true, // return the new Place (updated one)
+			runValidators: true
+		}
+	).exec();
+	res.json(req.body); // send JSON back!
+	// req.flash('success', `Successfully updated <strong>${place.name}</strong>`);
+	// res.redirect(`/place/${place._id}`);
 };
 
 exports.visits = async (req, res) => {
@@ -34,13 +50,14 @@ exports.createVisit = async (req, res) => {
 	// 	console.log('err', err);
 	// 	console.log('doc', doc);
 	// });
-	Place.findById('5b458a14a258a22046f9c66e', async (err, doc) => {
-		if( err ) throw err;
-		doc.visits.push(req.body);
-		await doc.save();
-		res.redirect(`/place/${req.params.id}`);
-	});
-	
+	// Place.findById('5b458a14a258a22046f9c66e', async (err, doc) => {
+	// 	if( err ) throw err;
+	// 	doc.visits.push(req.body);
+	// 	await doc.save();
+	// 	res.redirect(`/place/${req.params.id}`);
+	// });
+	console.log('NEED TO FIX CREATE VISIT LOGIC');
+	res.redirect(`/place/${req.params.id}`);
 
 	// const tagsArr = place.tags.map( (tag) => tag.split(/[ ,]+/).filter(Boolean));
 	// place.tags = tagsArr[0];

@@ -12,13 +12,17 @@ domReady( () => {
 
    	if( document.querySelector('#js-card') ) {
 
+   		const urlArr = window.location.pathname.split('/');
+		const urlId = urlArr[urlArr.length-1];	// need to grab id to use when posting data (record that is being modified / deleted)
+
 		const nameOptions = {
 			card: document.querySelector('#js-card'),
 			trigger: document.querySelector('[data-trigger="name"]'),
 			cancel: document.querySelector('[data-cancel="name"]'),
 			save: document.querySelector('[data-save="name"]'),
 			inputs: document.querySelectorAll('[data-input="name"]'),
-			url: 'https://apple.com',
+			endpointUrl: `/place/${urlId}/update-place`,
+			redirectUrl: `/place/${urlId}`,
 			response: document.querySelector('.ajax__response'),
 			responseMessage: document.querySelector('.response__message')
 		};
@@ -30,7 +34,8 @@ domReady( () => {
 			save: document.querySelector('[data-save="address"]'),
 			inputs: document.querySelectorAll('[data-input="address"]'),
 			multiInputContainer: document.querySelector('#address__container'),
-			url: 'https://apple.com',
+			endpointUrl: `/place/${urlId}/update-place`,
+			redirectUrl: `/place/${urlId}`,
 			response: document.querySelector('.ajax__response'),
 			responseMessage: document.querySelector('.response__message')
 		};
@@ -44,7 +49,8 @@ domReady( () => {
 			multiInputContainer: document.querySelector('#tag__container'),
 			deleteEl: document.querySelector('[data-delete="tag"]'),
 			addEl: document.querySelector('[data-add="tag"]'),
-			url: 'https://apple.com',
+			endpointUrl: `/place/${urlId}/update-place`,
+			redirectUrl: `/place/${urlId}`,
 			response: document.querySelector('.ajax__response'),
 			responseMessage: document.querySelector('.response__message')
 		};

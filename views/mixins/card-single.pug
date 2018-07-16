@@ -13,7 +13,7 @@ mixin card-single(place = {})
 			form(action="" class="card__address")
 				#address__container
 					textarea(rows="1" name="address" class="form__input form__input--address" data-input="address" disabled) #{place.address}
-					input(name="distance" class="form__input form__input--address" value=`${place.distance} miles` data-input="address" disabled)
+					input(name="distance" class="form__input form__input--address" value=`${place.distance}` data-input="address" disabled)
 				span(class="edit edit--trigger" data-trigger="address")
 					img(src="http://via.placeholder.com/100x100?text=E" alt="edit address")
 				span(class="edit edit--cancel" data-cancel="address")
@@ -24,7 +24,7 @@ mixin card-single(place = {})
 			form(action="" class="card__tags")
 				#tag__container
 					each tag, i in place.tags
-						input(class="form__input form__input--tag" name=`tags-${i}` value=`${tag}` data-input="tag" disabled)
+						input(class="form__input form__input--tag" name=`tag` value=`${tag}` data-input="tag" disabled)
 				span(class="edit edit--trigger" data-trigger="tag")
 					img(src="http://via.placeholder.com/100x100?text=E" alt="edit tags")
 				span(class="edit edit--cancel" data-cancel="tag")
