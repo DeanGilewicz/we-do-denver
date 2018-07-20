@@ -42,6 +42,10 @@ const placeSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now
 	},
+	updated: {
+		type: Date,
+		default: Date.now
+	},
 	visits: [{
 		cost: {
 			type: String,
@@ -60,7 +64,7 @@ const placeSchema = new mongoose.Schema({
 	}]
 });
 
-placeSchema.pre('save', function(next) {
+placeSchema.pre('save', async function(next) {
 	// rating
 	if( typeof this.rating !== "undefined" ) {
 		if( this.isModified('visits.rating') ) {
@@ -101,11 +105,16 @@ placeSchema.pre('save', function(next) {
 	if( this.isModified('name') ) {
 		// console.log("NAME IS MODIFIED");
 		this.slug = slug(this.name);
+		const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+		const placesWithSlug = await this.constructor.find({ slug: slugRegEx });
+		if( placesWithSlug.length ) {
+			this.slug = `${this.slug}-${placesWithSlug.length + 1}`;
+		}
 	} else if( !this.isModified('name') && typeof this.slug === 'undefined') {
 		// initially set the slug
 		this.slug = slug(this.name);
 		// console.log("NAME NOT MODIFIED");
-	} 
+	}
 
 	// category name, category slug, category icon - TODO: make sure slugs are unique
 	if( this.isModified('category.name') ) {
