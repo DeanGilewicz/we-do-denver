@@ -7,8 +7,9 @@ block content
 		.hero__bg.hero__bg--home
 			h1 #{pageTitle}
 	.container__place
-		form(action="/places/add-place" method="POST" class="card__name")
-			input(type="file" name="img" class="form__input form__input--image")
+		form(action="/places/add-place" method="POST" class="card__name" enctype="multipart/form-data")
+			//- image upload
+			input(type="file" name="img" class="form__input form__input--image" accept="image/gif, image/png, image/jpeg")
 			input(type="text" name="name" class="form__input form__input--name")
 			select(name="category[name]" class="form__input form__input--category")
 				option(value="") - Category -

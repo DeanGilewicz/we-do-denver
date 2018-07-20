@@ -1,11 +1,11 @@
 mixin card-category(place = {}, i = 0)
 	div(class="place place--"+(i+1))
 		.place__image
-			img(src="http://via.placeholder.com/600x200?text=hero" alt="")
+			img(src=( (place.img) ? `/uploads/${place.img}`: 'http://via.placeholder.com/600x200?text=hero' ) alt="")
 		.place__name
 			<h2>#{place.name}</h2>
 		.place__category
-			img(src="http://via.placeholder.com/50x50?text=icon" alt="")
+			img(src=( (place.category && place.category.icon) ? `${place.category.icon}` : 'http://via.placeholder.com/50x50?text=cat' ) alt="")
 			a(href=`/places/${place.category.slug}`)= place.category.name
 		.place__overview
 			.place__score

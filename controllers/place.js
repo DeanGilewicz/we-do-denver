@@ -20,8 +20,8 @@ exports.updatePlace = async (req, res) => {
 			runValidators: true
 		}
 	).exec();
+	req.flash('success', `Successfully updated <strong>${place.name}</strong>`);
 	res.json(req.body); // send JSON back!
-	// req.flash('success', `Successfully updated <strong>${place.name}</strong>`);
 	// res.redirect(`/place/${place._id}`);
 };
 

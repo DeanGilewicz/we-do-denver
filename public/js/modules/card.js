@@ -248,16 +248,16 @@ class CardActions {
 			this._ajaxPost('POST', this.endpointUrl, data)
 				.then( (res) => {
 					console.log('res', res);
-					this.responseMessage.textContent = "Update successful!";
-					this.response.classList.add('ajax__response--success');
-					const uiTimeOut = setTimeout( () => {
-						this.response.classList.remove('ajax__response--success');
-						this.responseMessage.textContent = "";
-						window.clearTimeout(uiTimeOut);
+					// this.responseMessage.textContent = "Update successful!";
+					// this.response.classList.add('ajax__response--success');
+					// const uiTimeOut = setTimeout( () => {
+					// 	this.response.classList.remove('ajax__response--success');
+					// 	this.responseMessage.textContent = "";
+					// 	window.clearTimeout(uiTimeOut);
 						if( this.redirectUrl ) {
 							window.location.href = this.redirectUrl;
 						}
-					}, 1000);
+					// }, 1000);
 					
 				})
 				.catch( (err) => {

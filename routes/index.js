@@ -14,7 +14,10 @@ router.get('/', homeController);
 router.get('/places', catchErrors(placesController.index));
 
 router.get('/places/add-place', placesController.addPlace);
-router.post('/places/add-place', catchErrors(placesController.createPlace));
+router.post('/places/add-place',
+	placesController.upload,
+	catchErrors(placesController.resize),
+	catchErrors(placesController.createPlace));
 
 router.get('/places/:category', categoryController);
 

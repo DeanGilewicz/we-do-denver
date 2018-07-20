@@ -38,6 +38,10 @@ const placeSchema = new mongoose.Schema({
 	tags: [String],
 	rating: String,
 	cost: String,
+	created: {
+		type: Date,
+		default: Date.now
+	},
 	visits: [{
 		cost: {
 			type: String,
