@@ -38,27 +38,31 @@ exports.visit = (req, res) => {
 	res.render('place/visit', { pageTitle: visit.id, place, visit });
 };
 
-exports.addVisit = (req, res) => {
-	const place = places.find( place => place.id == req.params.id ); // query data for requested place
+exports.addVisit = async (req, res) => {
+	// const place = places.find( place => place.id == req.params.id ); // query data for requested place
+	const place = await Place.findById(req.params.id);
 	res.render('place/add-visit', { pageTitle: 'Add Visit', place });
 }
 
 exports.createVisit = async (req, res) => {
-	// const placeId = req.params.id;
-	// Place.findByIdAndUpdate('5b458a14a258a22046f9c66e', {visitArr}, function(err, doc) {
-	// 	if( err ) throw err;
+	// console.log(req.body);
+	const placeId = req.params.id;
+	req.body.updated = Date.now();
+	// Place.findByIdAndUpdate(placeId, req.body, function(err, doc) {
+	// 	if(err) throw err;
 	// 	console.log('err', err);
 	// 	console.log('doc', doc);
 	// });
-	// Place.findById('5b458a14a258a22046f9c66e', async (err, doc) => {
-	// 	if( err ) throw err;
-	// 	doc.visits.push(req.body);
-	// 	await doc.save();
-	// 	res.redirect(`/place/${req.params.id}`);
-	// });
-	console.log('NEED TO FIX CREATE VISIT LOGIC');
-	res.redirect(`/place/${req.params.id}`);
-
+	Place.findById(placeId, async (err, doc) => {
+		if(err) throw err;
+		doc.visits.push(req.body.visits);
+		await doc.save();
+		req.flash('success', 'Successfully updated!');
+		res.redirect(`/place/${placeId}`);
+	});
+	
+	// res.redirect(`/place/${placeId}`);
+	// res.send('oh');
 	// const tagsArr = place.tags.map( (tag) => tag.split(/[ ,]+/).filter(Boolean));
 	// place.tags = tagsArr[0];
 	// await place.save();

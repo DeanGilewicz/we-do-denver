@@ -26,7 +26,7 @@ router.get('/categories', categoriesController);
 router.get('/place/:id', catchErrors(placeController.place));
 router.get('/place/:id/visits', catchErrors(placeController.visits));
 
-router.get('/place/:id/add-visit', placeController.addVisit);
+router.get('/place/:id/add-visit',  catchErrors(placeController.addVisit));
 router.post('/place/:id/add-visit', catchErrors(placeController.createVisit));
 
 router.post('/place/:id/update-place', catchErrors(placeController.updatePlace));

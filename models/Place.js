@@ -66,16 +66,16 @@ const placeSchema = new mongoose.Schema({
 
 placeSchema.pre('save', async function(next) {
 	// rating
-	if( typeof this.rating !== "undefined" ) {
+	if( typeof this.rating !== "undefined" && typeof this.visits !== "undefined" ) {
 		if( this.isModified('visits.rating') ) {
 			// calculate rating since something has changed
 			const ratingTotal = this.visits.reduce((sV, cV) => ({rating: parseInt(sV.rating,10) + parseInt(cV.rating,10)}));
 			// get average
 			const totalVisits = this.visits.length;
-			const aveRating = (ratingTotal / totalVisits).toFixed(2);
-			console.log('ratingTotal', ratingTotal);
-			console.log('totalVisits', totalVisits);
-			console.log('aveRating', aveRating);
+			const aveRating = (ratingTotal.rating / totalVisits).toFixed(2);
+			// console.log('ratingTotal', ratingTotal);
+			// console.log('totalVisits', totalVisits);
+			// console.log('aveRating', aveRating);
 			this.rating = aveRating;
 		}
 	} else {
@@ -84,16 +84,16 @@ placeSchema.pre('save', async function(next) {
 	}
 
 	// cost
-	if( typeof this.cost !== "undefined" ) {
+	if( typeof this.cost !== "undefined" && typeof this.visits !== "undefined" ) {
 		if( this.isModified('visits.cost') ) {
 			// calculate rating since something has changed
 			const costTotal = this.visits.reduce((sV, cV) => ({cost: parseInt(sV.cost,10) + parseInt(cV.cost,10)}));
 			// get average
 			const totalVisits = this.visits.length;
-			const aveCost = (costTotal / totalVisits).toFixed(2);
-			console.log('costTotal', costTotal);
-			console.log('totalVisits', totalVisits);
-			console.log('aveCost', aveCost);
+			const aveCost = (costTotal.cost / totalVisits).toFixed(2);
+			// console.log('costTotal', costTotal);
+			// console.log('totalVisits', totalVisits);
+			// console.log('aveCost', aveCost);
 			this.cost = aveCost;
 		}
 	} else {

@@ -1,14 +1,23 @@
 mixin card-visit-edit(place = {}, visit = {})
 	div(class=`card__visit__edit card__visit--${i}`)
-		form(id="js-visit-form" action=`/place/${place.id}/add-visit` method="POST" class="card__visit__form")
+		form(id="js-visit-form" action=`/place/${place._id}/add-visit` method="POST" class="card__visit__form")
 			.card__visit--rating
-				input(type="text" name="rating" value=`${visit.rating || ''}` class="form__input form__input--edit form__input--rating")
+				select(name="visits[rating]" class="form__input form__input--rating")
+					option(value="") Rating
+					option(value="3") See You Tomorrow
+					option(value="2") Will Visit Again
+					option(value="1") Won't Go Back
 			.card__visit--cost
-				input(type="text" name="cost" value=`${visit.cost || ''}` class="form__input form__input--edit form__input--cost")
+				select(name="visits[cost]" class="form__input form__input--cost")
+					option(value="") Cost
+					option(value="3") Pleasantly Surprised
+					option(value="2") What You'd Expect
+					option(value="1") Overpriced
 			.card__visit--comment
-				textarea(rows="1" name="comment" class="form__input form__input--edit form__input--comment") #{visit.comment || ''}
+				textarea(rows="2" name="visits[comment]" class="form__input form__input--edit form__input--comment" placeholder="comment") #{visit.comment || ''}
+			input(type="hidden" name="placeId" value=`${place._id}`)
 			.card__actions
-				a(href=`/place/${place.id}/visits` class="button button__visits--cancel") Cancel
+				a(href=`/place/${place._id}/visits` class="button button__visits--cancel") Cancel
 				button(class="button button__visit--save") Save
 	.ajax__response
 		.response__message
