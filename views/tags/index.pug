@@ -1,0 +1,24 @@
+extends ../layout
+
+include ../mixins/card-category
+
+block content
+	//- pre= h.dump(tags)
+	//- pre= h.dump(tag)
+	.hero
+		.hero__bg.hero__bg--home
+			h1 #{pageTitle}
+	.container__actions
+		a(href="/places" class="button button__visit--back") View Places
+		a(href=`/categories` class="button button__visit--back") View Categories
+	.container__tags
+		ul.tags
+			each t in tags
+				li.tag
+					a.tag__link(href=`/tags/${t._id}` class=(t._id === tag ? 'tag__link--active' : ''))
+						span.tag__text= t._id
+						span.tag__count= t.count
+	.container__places
+		each place in places
+			+card-category(place)
+		

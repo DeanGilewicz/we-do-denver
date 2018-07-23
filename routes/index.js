@@ -8,6 +8,7 @@ const placesController = require('../controllers/places');
 const placeController = require('../controllers/place');
 const categoriesController = require('../controllers/categories');
 const categoryController = require('../controllers/category');
+const tagsController = require('../controllers/tags');
 
 router.get('/', homeController);
 
@@ -32,5 +33,8 @@ router.post('/place/:id/add-visit', catchErrors(placeController.createVisit));
 router.post('/place/:id/update-place', catchErrors(placeController.updatePlace));
 
 router.get('/place/:id/visit/:visitId', placeController.visit);
+
+router.get('/tags', catchErrors(tagsController.index));
+router.get('/tags/:tag', catchErrors(tagsController.index));
 
 module.exports = router;

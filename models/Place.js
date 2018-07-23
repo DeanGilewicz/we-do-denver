@@ -101,7 +101,7 @@ placeSchema.pre('save', async function(next) {
 		this.cost = "-";
 	}
 
-	// name and slug - TODO: make sure slugs are unique
+	// name and slug
 	if( this.isModified('name') ) {
 		// console.log("NAME IS MODIFIED");
 		this.slug = slug(this.name);
@@ -136,6 +136,14 @@ placeSchema.pre('findOneAndUpdate', function(next) {
 	}
 	next();
 });
+
+placeSchema.statics.getTagsList = function() {
+	return this.aggregate([
+		{ $unwind: "$tags" },
+		{ $group: { _id: "$tags", count: { $sum: 1 } } },
+		{ $sort: { count: -1 } }
+    ]).cursor({}).exec().toArray();
+};
 
 module.exports = mongoose.model('Place', placeSchema);
 
