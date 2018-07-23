@@ -1,0 +1,14 @@
+extends ../layout
+
+include ../mixins/auth-form
+
+block content
+	.hero
+		.hero__bg.hero__bg--home
+			h1 Sign Up
+	.container__actions
+		a(href="/" class="button") Home
+	.container__register
+		+auth-form('register', 'Register', true)
+		
+

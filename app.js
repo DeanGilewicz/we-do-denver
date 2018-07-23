@@ -18,6 +18,12 @@ const routes = require('./routes/index');
 
 const errorHandlers = require('./handlers/errorHandlers');
 
+const passport = require('passport');
+
+// const cookieParser = require('cookie-parser');
+
+require('./handlers/passport');
+
 // create our Express app
 const app = express();
 
@@ -32,8 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Exposes a bunch of methods for validating data. Used heavily on userController.validateRegister
-// app.use(expressValidator());
+// Exposes a bunch of methods for validating data. Used heavily on auth.validateRegister
+app.use(expressValidator());
 
 // populates req.cookies with any cookies that came along with the request
 // app.use(cookieParser());
@@ -49,8 +55,8 @@ app.use(session({
 }));
 
 // // Passport JS is what we use to handle our logins
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // // The flash middleware let's us use req.flash('error', 'oh no!'), which will then pass that message to the next page the user requests
 app.use(flash());
@@ -59,7 +65,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.h = helpers;
   res.locals.flashes = req.flash();
-  // res.locals.user = req.user || null;
+  res.locals.user = req.user || null;
   res.locals.currentPath = req.path;
   next();
 });

@@ -10,7 +10,20 @@ const categoriesController = require('../controllers/categories');
 const categoryController = require('../controllers/category');
 const tagsController = require('../controllers/tags');
 
+const userController = require('../controllers/user');
+const authController = require('../controllers/authController');
+
 router.get('/', homeController);
+
+router.get('/login', userController.login);
+
+router.get('/register', userController.register);
+// 1. validate registration data - 2. register user - 3. log user in
+router.post('/register', 
+	userController.validateRegister,
+	userController.createUser,
+	authController.login
+); 
 
 router.get('/places', catchErrors(placesController.index));
 
