@@ -16,6 +16,9 @@ const authController = require('../controllers/authController');
 router.get('/', homeController);
 
 router.get('/login', userController.login);
+router.post('/login', authController.login);
+
+router.get('/logout', authController.logout);
 
 router.get('/register', userController.register);
 // 1. validate registration data - 2. register user - 3. log user in
@@ -23,7 +26,7 @@ router.post('/register',
 	userController.validateRegister,
 	userController.createUser,
 	authController.login
-); 
+);
 
 router.get('/places', catchErrors(placesController.index));
 

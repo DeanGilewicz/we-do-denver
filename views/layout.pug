@@ -13,9 +13,12 @@ html
             a.logo(href="/")
               img(src="http://via.placeholder.com/60x40?text=logo" alt="We Do Denver logo")
           nav.authenticate
-            a.link.link--nav(href="/register") Sign Up
-            span.divider |
-            a.link.link--nav(href="/login") Login
+            if user
+              a.link.link--nav(href="/logout") Logout
+            else
+              a.link.link--nav(href="/register") Sign Up
+              span.divider |
+              a.link.link--nav(href="/login") Login
       block messages
         if locals.flashes
           //- pre= h.dump(locals)
