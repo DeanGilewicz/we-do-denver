@@ -30,7 +30,7 @@ router.post('/register',
 
 router.get('/places', catchErrors(placesController.index));
 
-router.get('/places/add-place', placesController.addPlace);
+router.get('/places/add-place', authController.isLoggedIn, placesController.addPlace);
 router.post('/places/add-place',
 	placesController.upload,
 	catchErrors(placesController.resize),

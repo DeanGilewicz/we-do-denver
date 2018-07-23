@@ -21,6 +21,12 @@ const userSchema = new mongoose.Schema ({
 	}
 });
 
+// virtual field - no need to store this in db
+userSchema.virtual('gravatar').get(function() {
+	const hash = md5(this.email);
+	return `https://gravatar.com/avatar/${hash}?s=200`; 
+});
+
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' }); // has a .register method
 userSchema.plugin(mongodbErrorHandler); // better error for unique property
 
