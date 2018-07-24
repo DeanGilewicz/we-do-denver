@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+	.hero
+		.hero__bg.hero__bg--home
+			h1 #{pageTitle}
+	.container__actions
+		a(href="/" class="button") Home
+	.container__account
+		form(action="/account" method="POST")
+			label(for="name") Name
+			input(type="text" name="name" value=user.name)
+			label(for="email") Email
+			input(type="email" name="email" id="email" value=user.email)
+			input(type="submit" value="Update Account")
+		

@@ -10,6 +10,24 @@ exports.register = (req, res) => {
 	res.render('user/register');
 };
 
+exports.account = (req, res) => {
+	res.render('user/account', {pageTitle: 'My Account'} );
+};
+
+exports.updateAccount = async (req, res) => {
+	const updates = {
+		name: req.body.name,
+		email: req.body.email
+	};
+	const user = await User.findOneAndUpdate(
+		{ _id: req.user._id },
+		{ $set: updates },
+		{ new: true, runValidators: true, context: 'query' }
+	);
+	req.flash('success', 'Your account has been updated!');
+	res.redirect('back');
+};
+
 exports.validateRegister = (req, res, next) => {
 	req.sanitizeBody('name');
 	req.checkBody('name', 'You must supply a name!').notEmpty();
@@ -41,5 +59,3 @@ exports.createUser = async (req, res, next) => {
 	await register(user, password); // will store a password hash in db
 	next();
 };
-
-

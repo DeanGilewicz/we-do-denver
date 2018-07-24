@@ -28,6 +28,9 @@ router.post('/register',
 	authController.login
 );
 
+router.get('/account', authController.isLoggedIn, userController.account);
+router.post('/account', catchErrors(userController.updateAccount));
+
 router.get('/places', catchErrors(placesController.index));
 
 router.get('/places/add-place', authController.isLoggedIn, placesController.addPlace);
