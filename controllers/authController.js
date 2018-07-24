@@ -70,7 +70,6 @@ exports.confirmedPasswords = (req, res, next) => {
 };
 
 exports.updatePassword = async (req, res) => {
-	console.log('UPDATE PASSWORD');
 	// check if a user has this token (and token hasn't expired)
 	const user = await User.findOne({ 
 		resetPasswordToken: req.params.token,
@@ -80,7 +79,6 @@ exports.updatePassword = async (req, res) => {
 		req.flash('error', 'Password reset token is invalid or expired.');
 		return res.redirect('/login');
 	}
-	console.log('USER HERE');
 	// update user's password - method made available through plugin in the model (User.js)
 	const setPassword = promisify(user.setPassword, user);
 	await setPassword(req.body.password);
