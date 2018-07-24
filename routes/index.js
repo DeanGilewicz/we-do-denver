@@ -31,6 +31,14 @@ router.post('/register',
 router.get('/account', authController.isLoggedIn, userController.account);
 router.post('/account', catchErrors(userController.updateAccount));
 
+router.get('/account/reset/:token', catchErrors(authController.reset));
+router.post('/account/reset/:token',
+	authController.confirmedPasswords,
+	catchErrors(authController.updatePassword));
+
+router.get('/forgot-password', userController.forgotPassword);
+router.post('/forgot-password', catchErrors(authController.forgot));
+
 router.get('/places', catchErrors(placesController.index));
 
 router.get('/places/add-place', authController.isLoggedIn, placesController.addPlace);

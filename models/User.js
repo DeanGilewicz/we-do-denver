@@ -18,7 +18,9 @@ const userSchema = new mongoose.Schema ({
 		trim: true,
 		validate: [validator.isEmail,'Invalid Email Address'],
 		required: 'Please enter an email address'
-	}
+	},
+	resetPasswordToken: String,
+	resetPasswordExpires: Date
 });
 
 // virtual field - no need to store this in db

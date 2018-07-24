@@ -14,6 +14,10 @@ exports.account = (req, res) => {
 	res.render('user/account', {pageTitle: 'My Account'} );
 };
 
+exports.forgotPassword = (req, res) => {
+	res.render('user/forgot-password', {pageTitle: 'Forgot Password'} );
+};
+
 exports.updateAccount = async (req, res) => {
 	const updates = {
 		name: req.body.name,
