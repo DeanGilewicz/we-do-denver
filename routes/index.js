@@ -39,7 +39,7 @@ router.post('/account/reset/:token',
 router.get('/forgot-password', userController.forgotPassword);
 router.post('/forgot-password', catchErrors(authController.forgot));
 
-router.get('/places', catchErrors(placesController.index));
+router.get('/places', authController.isLoggedIn, catchErrors(placesController.index));
 
 router.get('/places/add-place', authController.isLoggedIn, placesController.addPlace);
 router.post('/places/add-place',

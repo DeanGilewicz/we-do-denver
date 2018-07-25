@@ -11,6 +11,11 @@ const categoryIcons = {
 };
 
 const placeSchema = new mongoose.Schema({
+	owner: {
+		type: mongoose.Schema.ObjectId,
+		ref: 'User',
+		required: 'You must supply an owner!'
+	},
 	name: {
 		type: String,
 		trim: true,

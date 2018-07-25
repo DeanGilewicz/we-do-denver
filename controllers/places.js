@@ -18,8 +18,8 @@ const multerOptions = {
 };
 
 exports.index = async (req, res) => {
-	// query db for places
-	const places = await Place.find();
+	// query db for places owned by currently logged in user
+	const places = await Place.find({ owner: {$eq: req.user._id} });
 	// console.log(places);
 	res.render('places/index', { pageTitle: 'Places', places });
 };
@@ -48,6 +48,7 @@ exports.resize = async (req, res, next) => {
 };
 
 exports.createPlace = async (req, res) => {
+	req.body.owner = req.user._id;
 	const place = new Place(req.body);
 	const tagsArr = place.tags.map( (tag) => tag.trim().split(/[,]+/).filter(Boolean));
 	place.tags = tagsArr[0];

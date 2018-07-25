@@ -5,7 +5,7 @@ const slug = require('slugs');
 
 exports.place = async (req, res) => {
 	// const place = Place.find( place => place.id == req.params.id ); // query data for requested place
-	const place = await Place.findById(req.params.id);
+	const place = await Place.findById(req.params.id).populate('owner'); // populate owner - uses the owner property on Place model to return the owner data in addition
 	// console.log(place);
 	res.render('place/index', { pageTitle: place.name, place });
 };
