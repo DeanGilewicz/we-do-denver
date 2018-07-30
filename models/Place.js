@@ -69,6 +69,13 @@ const placeSchema = new mongoose.Schema({
 	}]
 });
 
+// Define our indexes - which fields
+placeSchema.index({
+	name: 'text',
+	rating: 'text',
+	cost: 'text'
+});
+
 placeSchema.pre('save', async function(next) {
 	// rating
 	if( typeof this.rating !== "undefined" && typeof this.visits !== "undefined" ) {

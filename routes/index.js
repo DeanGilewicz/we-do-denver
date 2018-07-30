@@ -64,4 +64,8 @@ router.get('/place/:id/visit/:visitId', placeController.visit);
 router.get('/tags', catchErrors(tagsController.index));
 router.get('/tags/:tag', catchErrors(tagsController.index));
 
+/* API */
+
+router.get('/api/search', catchErrors(placesController.searchPlaces));
+
 module.exports = router;

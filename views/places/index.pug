@@ -1,5 +1,6 @@
 extends ../layout
 
+include ../mixins/search
 include ../mixins/card-category
 
 block content
@@ -11,6 +12,8 @@ block content
 		a(href="/tags" class="button") View Tags
 		if user
 			a(href="/places/add-place" class="button") Add Place
+	.container__search
+		+search()
 	.places
 		each place, i in places
 			+card-category(place, i)
