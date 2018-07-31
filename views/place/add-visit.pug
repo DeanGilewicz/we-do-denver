@@ -3,8 +3,10 @@ extends ../layout
 include ../mixins/card-visit-edit
 
 block content
-	.hero
-		.hero__bg.hero__bg--home
-			h1 #{pageTitle}
+	.hero.icon__pattern--visits
+		.hero__content
+			.padded-multiline
+				h1.title
+					span.twist.twist--left #{pageTitle}
 	.container__place
 		+card-visit-edit(place)

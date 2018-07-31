@@ -12,11 +12,16 @@ html
           nav.main
             a.logo(href="/")
               img(src="http://via.placeholder.com/60x40?text=logo" alt="We Do Denver logo")
+            span.divider |
+            a.link.link--nav(href="/categories") Categories
+            span.divider |
+            a.link.link--nav(href="/tags") Tags
           nav.authenticate
             if user
+              a.link.link--nav(href="/logout") Logout
+              span.divider |
               a.link.link--nav(href="/account")
                 img.avatar(src=user.gravatar alt="gravatar")
-              a.link.link--nav(href="/logout") Logout
             else
               a.link.link--nav(href="/register") Sign Up
               span.divider |

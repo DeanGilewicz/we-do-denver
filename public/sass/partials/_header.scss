@@ -22,4 +22,18 @@ header.header__main {
 		margin-right: 6px;
 	}
 
+	.avatar {
+		width: 40px;
+	}
+
+	nav.main {
+		display: flex;
+		align-items: center;
+	}
+
+	.authenticate {
+		display: flex;
+		align-items: center;
+	}
+
 }

@@ -1,11 +1,11 @@
-.hero__bg {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-
-	min-height: 100vh; // minus header
-
-	// min-height: 280px;
+.hero {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// background-repeat: no-repeat;
+	// background-size: cover;
+	// background-position: center center;
+	min-height: calc(100vh - 79px); // minus header
 
 	// @media only screen and (min-width: $medium) {
 	// 	min-height: 320px;
@@ -19,8 +19,40 @@
 	// 	min-height: 400px;
 	// }
 
-
-	&.hero__bg--home {
-		background-image: url('http://via.placeholder.com/600x400?text=hero');
+	.hero__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
+
+	.padded-multiline { 
+		line-height: 1.3; 
+		padding: 2px 0; 
+		margin: 0 auto 40px;
+	}
+
+	.title {
+		padding: 4px;
+		color: #fff; 
+		display: inline;
+		margin: 0;
+
+		.twist {
+			display: inline-block;
+			margin: 4px 8px;
+			padding: 4px 6px;
+			background-color: blue;
+		}
+
+		.twist--left {
+			transform: rotate(-3deg);
+		}
+
+		.twist--right {
+			transform: rotate(3deg);
+		}
+
+	}
+
 }

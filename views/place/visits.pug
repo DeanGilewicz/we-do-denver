@@ -3,9 +3,11 @@ extends ../layout
 include ../mixins/card-visit
 
 block content
-	.hero
-		.hero__bg.hero__bg--home
-			h1 #{pageTitle}
+	.hero.icon__pattern--visits
+		.hero__content
+			.padded-multiline
+				h1.title
+					span.twist.twist--left #{pageTitle}
 	.container__actions
 		a(href=`/place/${place._id}` class="button button__visit--back") Back
 		a(href=`/place/${place._id}/add-visit` class="button button__visit--add") Add Visit

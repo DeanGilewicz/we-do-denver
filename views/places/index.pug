@@ -4,12 +4,12 @@ include ../mixins/search
 include ../mixins/card-category
 
 block content
-	.hero
-		.hero__bg.hero__bg--home
-			h1 Places
+	.hero.icon__pattern--places
+		.hero__content
+			.padded-multiline
+				h1.title
+					span.twist.twist--left #{pageTitle}
 	.container__actions
-		a(href="/categories" class="button") View Categories
-		a(href="/tags" class="button") View Tags
 		if user
 			a(href="/places/add-place" class="button") Add Place
 	.container__search

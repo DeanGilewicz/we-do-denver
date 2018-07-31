@@ -52,15 +52,19 @@ const placeSchema = new mongoose.Schema({
 		default: Date.now
 	},
 	visits: [{
+		created: {
+			type: Date,
+			default: Date.now
+		},
 		cost: {
 			type: String,
 			trim: true,
 			required: 'Please enter a cost rating!'
 		},
 		rating: {
-			type: String,
-			trim: true,
-			required: 'Please enter a score rating!'
+			type: Number,
+			min: 1,
+			max: 5
 		},
 		comment: {
 			type: String,
