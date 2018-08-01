@@ -9,11 +9,12 @@ block content
 	.container__actions
 		a(href="/places" class="button button__visit--back") View Places
 	.categories
-		each place, i in places
-			a(href=`/places/${place.category.slug}` class=`category category--${i+1}`)
+		//- pre= h.dump(categories)
+		each cat, i in categories
+			a(href=`/places/${cat.slug}` class=`category category--${i+1} icon__pattern--${cat.slug}`)
 				.category__icon
-					img(src="http://via.placeholder.com/350x200?text=icon" alt="")
+					img(src=`${cat.icon}` alt=`${cat.name}`)
 				.category__name
-					h2 #{place.category.name}
+					h2 #{cat.name}
 		
 

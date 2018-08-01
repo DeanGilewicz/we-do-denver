@@ -49,7 +49,7 @@ router.post('/places/add-place',
 
 router.get('/places/:category', categoryController);
 
-router.get('/categories', categoriesController);
+router.get('/categories', catchErrors(categoriesController));
 
 router.get('/place/:id', catchErrors(placeController.place));
 router.get('/place/:id/visits', catchErrors(placeController.visits));

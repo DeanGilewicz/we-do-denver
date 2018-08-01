@@ -2,7 +2,6 @@
 /* FLOAT FLEXBOX CSS GRID */
 
 .categories {
-	border: 1px solid blue;
 	/* flexbox */
 	display: flex;
 	flex-wrap: wrap;
@@ -18,7 +17,7 @@
 .category {
 	width: 100%;
 	display: table;
-	border: 1px solid red;
+	border: 1px solid $blue_dark;
 	margin: 1rem 0;
 	/* flexbox */
 	display: flex;
@@ -71,12 +70,17 @@
 	display: table-cell;
 	vertical-align: middle;
 	padding: 10px 16px;
+
+	img {
+		max-height: 90px;
+	}
 }
 
 .category__name {
 	flex-basis: 60%;
 	display: table-cell;
 	vertical-align: middle;
+	text-align: center;
 	padding: 10px 16px;
 }
 

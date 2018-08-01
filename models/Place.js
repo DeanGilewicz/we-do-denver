@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const slug = require('slugs');
 const categoryIcons = {
-	"Fuel Me" : 'http://via.placeholder.com/350x150?text=FuelMe',
-	"Hike It" : 'http://via.placeholder.com/350x150?text=HikeIt',
-	"Thirst Quenching" : 'http://via.placeholder.com/350x150?text=ThirstQuenching',
-	"On The Slopes" : 'http://via.placeholder.com/350x150?text=OnTheSlopes',
-	"Entertain Us" : 'http://via.placeholder.com/350x150?text=EntertainUs',
-	"Shopping Bags" : 'http://via.placeholder.com/350x150?text=ShoppingBags'
+	"Fuel Me" : '/images/icon-fuel-me.svg',
+	"Hike It" : '/images/icon-hike-it.svg',
+	"Thirst Quenching" : '/images/icon-thirst-quenching.svg',
+	"On The Slopes" : '/images/icon-on-the-slopes.svg',
+	"Entertain Us" : '/images/icon-entertain-us.svg',
+	"Shopping Bags" : '/images/icon-shopping-bags.svg'
 };
 
 const placeSchema = new mongoose.Schema({
