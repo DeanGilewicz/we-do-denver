@@ -8,12 +8,12 @@ block content
 			.padded-multiline
 				h1.title
 					span.twist.twist--left #{pageTitle}
-	.container__place
-		form(action="/places/add-place" method="POST" class="card__name" enctype="multipart/form-data")
-			//- image upload
-			input(type="file" name="img" class="form__input form__input--image" accept="image/gif, image/png, image/jpeg")
-			input(type="text" name="name" class="form__input form__input--name")
-			select(name="category[name]" class="form__input form__input--category")
+	.add__place.wrapper__content
+		form(action="/places/add-place" method="POST" class="form__add__place" enctype="multipart/form-data")
+			label(for="name") Name
+			input(type="text" name="name" id="name" class="form__input form__input--name")
+			label(for="category") Category
+			select(name="category[name]" id="category" class="form__input form__input--category")
 				option(value="") - Category -
 				option(value="Entertain Us") Entertain Us
 				option(value="Fuel Me") Fuel Me
@@ -21,9 +21,19 @@ block content
 				option(value="On The Slopes") On The Slopes
 				option(value="Shopping Bags") Shopping Bags
 				option(value="Thirst Quenching") Thirst Quenching
-			textarea(rows="1" name="address" class="form__input form__input--address")
-			input(name="distance" class="form__input form__input--address")
-			textarea(rows="1" name="tags" class="form__input form__input--tag")
+			label(for="address") Address
+			textarea(rows="1" name="address" id="address" class="form__input form__input--address")
+			label(for="distance") Distance
+			input(name="distance" id="distance" class="form__input form__input--address")
+			label(for="tags") Tags
+			textarea(rows="1" name="tags" id="tags" class="form__input form__input--tag")
+			.form__input--image-wrapper
+				//- image upload
+				label(for="img" class="form__input--image-button") Choose Image
+				input(type="file" name="img" id="img" class="form__input form__input--image" accept="image/gif, image/png, image/jpeg")
+			.form__image--container
+				label(class="form__image--preview") Image Preview
+				img.image__preview
 			.card__actions
 				a(href=`/places` class="button button--cancel") Cancel
 				button(class="button button--save") Save

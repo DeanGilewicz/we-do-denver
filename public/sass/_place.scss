@@ -1,144 +1,112 @@
-.card {
-	max-width: 400px;
-	margin: 0 auto;
-	border: 1px solid $blue;
-}
+// .card {
+// 	max-width: 400px;
+// 	margin: 0 auto;
+// 	border: 1px solid $blue;
+// }
 
-.edit {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 0;
-	z-index: 5;
-	width: 30px;
-	height: 30px;
-	cursor: pointer;
+// .edit {
+// 	display: block;
+// 	position: absolute;
+// 	top: 0;
+// 	right: 0;
+// 	z-index: 5;
+// 	width: 30px;
+// 	height: 30px;
+// 	cursor: pointer;
 	
-	&.edit--trigger.hide {
-		display: none;
-	}
+// 	&.edit--trigger.hide {
+// 		display: none;
+// 	}
 	
-	&.edit--cancel {
-		left: 0;
-	}
+// 	&.edit--cancel {
+// 		left: 0;
+// 	}
 	
-	&.edit--delete {
-		top: auto;
-		bottom: 0;
-		left: 0;
-	}
+// 	&.edit--delete {
+// 		top: auto;
+// 		bottom: 0;
+// 		left: 0;
+// 	}
 	
-	&.edit--add {
-		top: auto;
-		bottom: 0;
-		right: 0;
-	}
+// 	&.edit--add {
+// 		top: auto;
+// 		bottom: 0;
+// 		right: 0;
+// 	}
 	
-	&.edit--cancel,
-	&.edit--save,
-	&.edit--delete,
-	&.edit--add {
-		display: none;
-	}
+// 	&.edit--cancel,
+// 	&.edit--save,
+// 	&.edit--delete,
+// 	&.edit--add {
+// 		display: none;
+// 	}
 	
-	&.edit--cancel.active,
-	&.edit--save.active,
-	&.edit--delete.active,
-	&.edit--add.active {
-		display: block;
-	}
-}
+// 	&.edit--cancel.active,
+// 	&.edit--save.active,
+// 	&.edit--delete.active,
+// 	&.edit--add.active {
+// 		display: block;
+// 	}
+// }
 
-.card__hero {
-	position: relative;
-	padding: 50px 1rem;
-	background-color: rgba(0,0,0,0.4);
-}
+// .card__hero {
+// 	position: relative;
+// 	padding: 50px 1rem;
+// 	background-color: rgba(0,0,0,0.4);
+// }
 
-.card__name {
-	margin: 0;
-	text-align: center;
-}
+// .card__name {
+// 	margin: 0;
+// 	text-align: center;
+// }
 
-.form__input {
-	width: 100%;
-	text-align: center;
-	border: 0;
-	background-color: transparent;
-	color: #000;
 
-	&:not(:disabled) {
-		background-color: #ffffff;
-	}
-}
 
-.form__input--edit {
-	border: 1px solid black;
-}
+// .card__location {
+// 	position: relative;
+// 	padding: 40px 1rem 30px;
+// 	font-style: normal;
+// 	text-transform: uppercase;
+// 	text-align: center;
+// 	line-height: 1.5;
+// }
 
-.form__input--name {
-	font-size: 28px;
-}
+// .card__tags {
+// 	position: relative;
+// 	padding: 40px 0 34px;
+// 	background-color: #eeeeee;
 
-.form__input--address {
-	resize: none;
-}
+// 	&::after {
+// 		content: '';
+// 		display: table;
+// 		clear: both;
+// 	}
+// }
 
-.card__location {
-	position: relative;
-	padding: 40px 1rem 30px;
-	font-style: normal;
-	text-transform: uppercase;
-	text-align: center;
-	line-height: 1.5;
-}
+// .card__details {
+// 	padding: 20px 1rem;
+// }
 
-.card__tags {
-	position: relative;
-	padding: 40px 0 34px;
-	background-color: #eeeeee;
-
-	&::after {
-		content: '';
-		display: table;
-		clear: both;
-	}
-}
-
-.form__input--tag {
-	float: left;
-	// min-width: 20%;
-	width: auto;
-	margin: 14px 0.5rem;
-	background-color: #aeaeae;
-	padding: 10px 0.5rem;
-	text-align: center;
-}
-
-.card__details {
-	padding: 20px 1rem;
-}
-
-.card__points,
-.card__visits,
-.card__cost,
-.card__comments {
-	margin-bottom: 20px;
+// .card__points,
+// .card__visits,
+// .card__cost,
+// .card__comments {
+// 	margin-bottom: 20px;
 	
-	h3, img {
-		display: inline-block;
-	}
+// 	h3, img {
+// 		display: inline-block;
+// 	}
 	
-	h3 {
-		margin: 0 0 0 1rem;
-		vertical-align: middle;
-	}
+// 	h3 {
+// 		margin: 0 0 0 1rem;
+// 		vertical-align: middle;
+// 	}
 	
-	img {
-		vertical-align: middle;
-	}
+// 	img {
+// 		vertical-align: middle;
+// 	}
 	
-}
+// }
 
 // .card__actions {
 	

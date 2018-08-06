@@ -8,6 +8,31 @@ const domReady = callback => {
 domReady( () => {
    	"use strict";
 
+   	if( document.querySelector('#img') ) {
+
+   		const readURL = input => {
+			if (input.files && input.files[0]) {
+				const imgPreviewContainer = document.querySelector('.form__image--container');
+				const imgPreviewEl = document.querySelector('.image__preview');
+				let reader = new FileReader();
+
+				reader.onload = function(e) {
+					imgPreviewEl.setAttribute('src', e.target.result);
+					imgPreviewContainer.style.display = 'block';
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		};
+
+   		const fileUploadInput = document.querySelector('#img');
+   		
+   		fileUploadInput.on('change', function(e) {
+   			readURL(this);
+   		});
+   	}
+
+
 	// restrict to dom element since hard to do for name of route
 
    	if( document.querySelector('#js-card') ) {
