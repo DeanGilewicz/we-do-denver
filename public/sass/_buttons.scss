@@ -1,11 +1,11 @@
 button,
 .button {
     text-decoration: none;
-    border: none;
+    border: 1px solid $blue;
     display: inline-block;
     margin: 0;
     padding: $spacing*0.8 $spacing*1.6;
-    font-size: 1.4rem;
+    font-size: 2rem;
     background-color: $blue;
     color: $white;
     text-align: center;

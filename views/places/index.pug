@@ -9,12 +9,12 @@ block content
 			.padded-multiline
 				h1.title
 					span.twist.twist--left #{pageTitle}
-	.container__actions
+	.container__actions.wrapper__content
 		if user
 			a(href="/places/add-place" class="button") Add Place
-	.container__search
-		+search()
-	.places
+		.container__search
+			+search()
+	.places.wrapper__content
 		each place, i in places
 			+card-category(place, i)
 		

@@ -1,4 +1,72 @@
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+	font-size: 1rem;
+}
+
+h1 {
+	font-size: 3.5rem;
+}
+
+h2 {
+	font-size: 3rem;
+}
+
+h3 {
+	font-size: 2.5rem;
+}
+
+h4 {
+	font-size: 2rem;
+}
+
+h5 {
+	font-size: 1.5rem;
+}
+
+h6 {
+	font-size: 1rem;
+}
+
+form input[type="text"],
+form select,
+form textarea {
+	margin: 10px;
+	border: 1px solid $blue !important;
+	padding: 0.8rem 1.6rem;
+	font-size: 2rem;
+	color: $white;
+
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		color: $white;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+		color: $white;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+		color: $white;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+		color: $white;
+	}
+}
+
 .wrapper__main {
 	max-width: $xlarge;
 	margin: 0 auto;
+}
+
+.wrapper__content {
+	padding: $spacing*1.4 $spacing*1.6;
+
+	@media only screen and (min-width: $medium) {
+		padding: $spacing*1.6 $spacing*2;
+	}
+
+	@media only screen and (min-width: $large) {
+		padding: $spacing*1.8 $spacing*2.4;
+	}
 }

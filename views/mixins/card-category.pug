@@ -5,8 +5,9 @@ mixin card-category(place = {}, i = 0)
 		.place__name
 			<h2>#{place.name}</h2>
 		.place__category
-			img(src=( (place.category && place.category.icon) ? `${place.category.icon}` : 'http://via.placeholder.com/50x50?text=cat' ) alt="")
-			a(href=`/places/${place.category.slug}`)= place.category.name
+			a(href=`/places/${place.category.slug}`)
+				img(src=( (place.category && place.category.icon) ? `${place.category.icon}` : 'http://via.placeholder.com/50x50?text=cat' ) alt=`${place.category.name}`)
+				h3.place__category__name= place.category.name
 		.place__overview
 			.place__score
 				h3= place.rating

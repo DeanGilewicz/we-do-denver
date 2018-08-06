@@ -1,17 +1,8 @@
 header.header__main {
 	display: flex;
 	justify-content: space-between;
-	padding: $spacing*1.4 $spacing*1.6;
 	background-color: $blue;
-
-	@media only screen and (min-width: $medium) {
-		padding: $spacing*1.6 $spacing*2;
-	}
-
-	@media only screen and (min-width: $large) {
-		padding: $spacing*1.8 $spacing*2.4;
-	}
-
+	
 	a,
 	.divider {
 		color: $gray;
