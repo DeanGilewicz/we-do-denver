@@ -2,51 +2,54 @@ mixin card-single(place = {})
 	div(id="js-card" class="card")
 		.card__hero
 			form(action="" class="card__name")
+				label name
 				input(type="text" name="name" value=`${place.name}` class="form__input form__input--name" data-input="name" disabled)
 				span(class="edit edit--trigger" data-trigger="name")
-					img(src="http://via.placeholder.com/100x100?text=E" alt="edit name")
+					img(src="/images/icon-edit.svg" alt="edit name")
 				span(class="edit edit--cancel" data-cancel="name")
-					img(src="http://via.placeholder.com/100x100?text=C" alt="cancel name")
+					img(src="/images/icon-cancel.svg" alt="cancel name")
 				span(class="edit edit--save" data-save="name")
-					img(src="http://via.placeholder.com/100x100?text=S" alt="save name")
+					img(src="/images/icon-update.svg" alt="save name")
 		address(class="card__location")
 			form(action="" class="card__address")
+				label address / distance (miles)
 				#address__container
 					textarea(rows="1" name="address" class="form__input form__input--address" data-input="address" disabled) #{place.address}
 					input(name="distance" class="form__input form__input--address" value=`${place.distance}` data-input="address" disabled)
 				span(class="edit edit--trigger" data-trigger="address")
-					img(src="http://via.placeholder.com/100x100?text=E" alt="edit address")
+					img(src="/images/icon-edit.svg" alt="edit address")
 				span(class="edit edit--cancel" data-cancel="address")
-					img(src="http://via.placeholder.com/100x100?text=C" alt="cancel address")
+					img(src="/images/icon-cancel.svg" alt="cancel address")
 				span(class="edit edit--save" data-save="address")
-					img(src="http://via.placeholder.com/100x100?text=S" alt="save address")
+					img(src="/images/icon-update.svg" alt="save address")
 		div
 			form(action="" class="card__tags")
+				label tags
 				#tag__container
 					each tag, i in place.tags
 						input(class="form__input form__input--tag" name=`tag` value=`${tag}` data-input="tag" disabled)
 				span(class="edit edit--trigger" data-trigger="tag")
-					img(src="http://via.placeholder.com/100x100?text=E" alt="edit tags")
+					img(src="/images/icon-edit.svg" alt="edit tags")
 				span(class="edit edit--cancel" data-cancel="tag")
-					img(src="http://via.placeholder.com/100x100?text=C" alt="cancel tags")
+					img(src="/images/icon-cancel.svg" alt="cancel tags")
 				span(class="edit edit--save" data-save="tag")
-					img(src="http://via.placeholder.com/100x100?text=S" alt="save tags")
+					img(src="/images/icon-update.svg" alt="save tags")
 				span(class="edit edit--delete" data-delete="tag")
-					img(src="http://via.placeholder.com/100x100?text=D" alt="delete tags")
+					img(src="/images/icon-delete.svg" alt="delete tags")
 				span(class="edit edit--add" data-add="tag")
-					img(src="http://via.placeholder.com/100x100?text=A" alt="add tags")
+					img(src="/images/icon-add.svg" alt="add tags")
 		.card__details
 			.card__points
-				img(src="http://via.placeholder.com/50x50" alt="")
+				img(src="/images/icon-rating.svg" alt="rating icon")
 				<h3>#{place.rating} pts</h3>
 			.card__visits
-				img(src="http://via.placeholder.com/50x50" alt="")
+				img(src="/images/icon-visits.svg" alt="visits icon")
 				<h3>#{place.visits.length} visits</h3>
 			.card__cost
-				img(src="http://via.placeholder.com/50x50" alt="")
+				img(src="/images/icon-cost.svg" alt="cost icon")
 				<h3>#{place.cost} cost</h3>
 			.card__comments
-				img(src="http://via.placeholder.com/50x50" alt="")
+				img(src="/images/icon-comment.svg" alt="comment icon")
 				- const numOfComments = place.visits.filter( (visit) => visit.comment );
 				- const commentText = ( numOfComments.length == 1 ) ? 'comment' : 'comments';
 				<h3>#{numOfComments.length} #{commentText}</h3>

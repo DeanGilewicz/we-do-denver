@@ -8,9 +8,9 @@ block content
 			.padded-multiline
 				h1.title
 					span.twist.twist--left #{place.name}
-	.container__actions
+	.container__actions.wrapper__content
 		a(href="/places" class="button button__visit--back") Back to Places
 		a(href=`/place/${place._id}/add-visit` class="button button__visit--add") Add Visit
-	.container__place
+	.container__place.wrapper__content
 		+card-single(place)
 		

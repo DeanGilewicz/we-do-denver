@@ -39,11 +39,19 @@
 
 }
 
+.place__hero {
+	height: 100px;
+	background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 .place__name {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 80px;
+	min-height: 100px;
+	padding: 1rem 2rem;
 
 	h2 {
 		text-transform: uppercase;
