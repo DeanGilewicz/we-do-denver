@@ -131,23 +131,23 @@
 	}
 }
 
-.ajax__response {
-	display: none;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 10;
-	padding: 20px 40px;
-	color: #fff;
+// .ajax__response {
+// 	display: none;
+// 	position: fixed;
+// 	bottom: 0;
+// 	left: 0;
+// 	right: 0;
+// 	z-index: 10;
+// 	padding: 20px 40px;
+// 	color: #fff;
 
-	&.ajax__response--error {
-		display: block;
-		background-color: #D50000;
-	}
+// 	&.ajax__response--error {
+// 		display: block;
+// 		background-color: #D50000;
+// 	}
 
-	&.ajax__response--success {
-		display: block;
-		background-color: #64DD17;
-	}
-}
+// 	&.ajax__response--success {
+// 		display: block;
+// 		background-color: #64DD17;
+// 	}
+// }

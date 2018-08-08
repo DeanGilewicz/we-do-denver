@@ -1,0 +1,13 @@
+.page__visits {
+
+	.container__place {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.card__visit {
+		padding: 1rem 2rem;
+		box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+	}
+
+}

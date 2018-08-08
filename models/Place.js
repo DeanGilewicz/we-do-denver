@@ -56,6 +56,14 @@ const placeSchema = new mongoose.Schema({
 			type: Date,
 			default: Date.now
 		},
+		prettyCreated: {
+			type: String,
+			trim: true
+		},
+		// updated: {
+		// 	type: Date,
+		// 	default: Date.now
+		// },
 		cost: {
 			type: String,
 			trim: true,
@@ -71,6 +79,8 @@ const placeSchema = new mongoose.Schema({
 			trim: true
 		}
 	}]
+},{
+    usePushEach: true // allows array.push to work correctly
 });
 
 // Define our indexes - which fields

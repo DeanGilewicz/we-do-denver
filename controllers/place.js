@@ -2,6 +2,7 @@ const places = require('../data/sample.json');
 const mongoose = require('mongoose');
 const Place = mongoose.model('Place');
 const slug = require('slugs');
+const moment = require('moment');
 
 exports.place = async (req, res) => {
 	// const place = Place.find( place => place.id == req.params.id ); // query data for requested place
@@ -29,7 +30,11 @@ exports.visits = async (req, res) => {
 	// const place = places.find( place => place.id == req.params.id ); // query data for requested place
 	const place = await Place.findById(req.params.id);
 	const visits = place.visits;
-	res.render('place/visits', { pageTitle: place.name, place, visits });
+	const modifiedVisits = visits.map( visit => {
+		visit.prettyCreated = moment(visit.created).format('MM/DD/YYYY'); // prettify the date
+		return visit;
+	});
+	res.render('place/visits', { pageTitle: place.name, place, visits: modifiedVisits });
 };
 
 exports.visit = (req, res) => {
@@ -47,7 +52,7 @@ exports.addVisit = async (req, res) => {
 exports.createVisit = async (req, res) => {
 	// console.log(req.body);
 	const placeId = req.params.id;
-	req.body.updated = Date.now();
+	// req.body.updated = Date.now();
 	// Place.findByIdAndUpdate(placeId, req.body, function(err, doc) {
 	// 	if(err) throw err;
 	// 	console.log('err', err);
@@ -55,10 +60,15 @@ exports.createVisit = async (req, res) => {
 	// });
 	Place.findById(placeId, async (err, doc) => {
 		if(err) throw err;
-		doc.visits.push(req.body.visits);
-		await doc.save();
-		req.flash('success', 'Successfully updated!');
-		res.redirect(`/place/${placeId}`);
+		try {
+			doc.visits.push(req.body.visits);
+			await doc.save();
+			req.flash('success', 'Successfully updated!');
+			res.redirect(`/place/${placeId}`);
+		} catch(err) {
+			console.error('Error', err);
+		}
+		
 	});
 	
 	// res.redirect(`/place/${placeId}`);

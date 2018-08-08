@@ -88,9 +88,9 @@ domReady( () => {
 
 	// restrict to dom element since hard to do for name of route
 
-	if( document.querySelector('#js-visit-form') ) {
-		// focus on first input on single visit form page
-		document.querySelector('input[name="rating"]').focus();
-	}
+	// if( document.querySelector('#js-visit-form') ) {
+	// 	// focus on first input on single visit form page
+	// 	document.querySelector('input[name="rating"]').focus();
+	// }
 
 });

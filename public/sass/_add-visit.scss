@@ -1,0 +1,13 @@
+.card__visit__edit {
+	max-width: 600px;
+	margin: 0 auto;
+	background-color: yellow;
+	padding: 2rem 3rem;
+
+	.card__actions {
+		display: flex;
+		justify-content: space-between;
+		padding-top: 4rem;
+	}
+	
+}
