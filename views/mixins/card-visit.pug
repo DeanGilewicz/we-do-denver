@@ -1,21 +1,25 @@
 mixin card-visit(place = {}, visit = {}, i)
 	div(class=`card__visit card__visit--${i}`)
 		.card__actions
-			a(href=`/place/${place._id}/visit/${visit._id}` class="")
-				img(src="/images/icon-edit.svg" alt="edit visit")
+			a(href=`/place/${place._id}/visit/${visit._id}` class="icon__edit--trigger")
+				img(src="/images/icon-edit.svg" alt="edit visit" class="icon__edit")
 		.card__visit--date
 			h4 #{visit.prettyCreated}
 		.card__visit--rating
-			h5 Experience Rating
-			p #{visit.rating}
+			h5 Experience
+				span  #{visit.rating}
 		.card__visit--cost
-			h5 Cost Rating
-			p #{visit.cost}
+			h5 Cost
+				span  #{visit.cost}
 		-if( visit.comment ) {
 			.card__visit--comment
 				h5 Comment
 				p #{visit.comment}
+		- } else {
+			.card__visit--comment
+				h5 Comment
+				p Currently no comment
 		- }
 		.card__actions
-			img(src="/images/icon-delete.svg" alt="delete visit")
+			img(src="/images/icon-delete.svg" alt="delete visit" class="icon__delete")
 

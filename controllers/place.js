@@ -1,5 +1,6 @@
 const places = require('../data/sample.json');
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId; // need to cast type when use aggregate 
 const Place = mongoose.model('Place');
 const slug = require('slugs');
 const moment = require('moment');
@@ -37,10 +38,16 @@ exports.visits = async (req, res) => {
 	res.render('place/visits', { pageTitle: place.name, place, visits: modifiedVisits });
 };
 
-exports.visit = (req, res) => {
-	const place = places.find( place => place.id == req.params.id ); // query data for requested place
-	const visit = place.visits.find( visit => visit.id == req.params.visitId );
-	res.render('place/visit', { pageTitle: visit.id, place, visit });
+exports.visit = async (req, res) => {
+	// const place = places.find( place => place.id == req.params.id ); // query data for requested place
+	// const visit = place.visits.find( visit => visit.id == req.params.visitId );
+	const place = await Place.aggregate([
+		{ $match : { _id: ObjectId(req.params.id) } },
+		{ $unwind: '$visits'},
+		{ $match : { 'visits._id' : ObjectId(req.params.visitId) } }
+	]).cursor({}).exec().toArray();
+	const singlePlace = place[0];
+	res.render('place/visit', { pageTitle: singlePlace.name, place: singlePlace, visit: singlePlace.visits });
 };
 
 exports.addVisit = async (req, res) => {

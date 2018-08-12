@@ -6,8 +6,54 @@
 	}
 
 	.card__visit {
+		display: flex;
+		flex-direction: column;
+		max-width: 200px;
+		min-width: 200px;
+		margin-right: 2rem;
 		padding: 1rem 2rem;
 		box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+
+		p {
+			margin: 0;
+			font-size: 1.4rem;
+		}
+
+		h5 span {
+			font-weight: normal;
+		}
+
+		.icon__edit--trigger {
+			display: inline-block;
+		}
+
+		.icon__edit {
+			width: 40px;
+		}
+
+		.icon__delete {
+			width: 24px;
+		}
+
+		.card__actions,
+		.card__visit--date {
+			text-align: center;
+		}
+
+		.card__actions:last-child {
+			margin-top: auto;
+		}
+
+		.card__visit--rating,
+		.card__visit--cost,
+		.card__visit--comment {
+			margin-top: 2rem;
+		}
+
+		.card__visit--comment {
+			margin-bottom: 2rem;
+		}
+
 	}
 
 }

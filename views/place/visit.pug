@@ -3,6 +3,8 @@ extends ../layout
 include ../mixins/card-visit-edit
 
 block content
+	pre= h.dump(place)
+	pre= h.dump(visit)
 	.hero
 		.hero__bg.hero__bg--home
 			h1 Visit: #{pageTitle}

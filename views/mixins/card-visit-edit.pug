@@ -5,16 +5,16 @@ mixin card-visit-edit(place = {}, visit = {})
 				label(for="rating") rating
 				select(name="visits[rating]" id="rating" class="form__input form__input--rating")
 					option(value="") - Rating -
-					option(value="3") 3 - See You Tomorrow
-					option(value="2") 2 - Will Visit Again
-					option(value="1") 1 - Won't Go Back
+					option(value="3" selected=(typeof visit.rating !== 'undefined' && visit.rating === 3 ? true : false)) 3 - See You Tomorrow
+					option(value="2" selected=(typeof visit.rating !== 'undefined' && visit.rating === 2 ? true : false)) 2 - Will Visit Again
+					option(value="1" selected=(typeof visit.rating !== 'undefined' && visit.rating === 1 ? true : false)) 1 - Won't Go Back
 			.card__visit--cost
 				label(for="cost") cost
 				select(name="visits[cost]" id="cost" class="form__input form__input--cost")
 					option(value="") - Cost -
-					option(value="3") 3 - Pleasantly Surprised
-					option(value="2") 2 - What You'd Expect
-					option(value="1") 1 - Overpriced
+					option(value="3" selected=(typeof visit.cost !== 'undefined' && visit.cost === '3' ? true : false)) 3 - Pleasantly Surprised
+					option(value="2" selected=(typeof visit.cost !== 'undefined' && visit.cost === '2' ? true : false)) 2 - What You'd Expect
+					option(value="1" selected=(typeof visit.cost !== 'undefined' && visit.cost === '1' ? true : false)) 1 - Overpriced
 			.card__visit--comment
 				label(for="comment") comment
 				textarea(rows="2" name="visits[comment]" id="comment" class="form__input form__input--edit form__input--comment" placeholder="I thought...") #{visit.comment || ''}
