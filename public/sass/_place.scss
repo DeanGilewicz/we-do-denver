@@ -13,6 +13,10 @@
 		max-width: 100px;
 	}
 
+	textarea.form__input--address {
+		resize: vertical;
+	}
+
 	.edit {
 		display: block;
 		position: absolute;

@@ -1,6 +1,6 @@
 extends ../layout
 
-include ../mixins/card-visit-edit
+include ../mixins/card-visit-add
 
 block content
 	.hero.icon__pattern--visits
@@ -9,4 +9,4 @@ block content
 				h1.title
 					span.twist.twist--left #{pageTitle}
 	.container__place.wrapper__content
-		+card-visit-edit(place)
+		+card-visit-add(place)

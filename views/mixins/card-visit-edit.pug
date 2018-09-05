@@ -1,23 +1,23 @@
 mixin card-visit-edit(place = {}, visit = {})
 	div(class=`card__visit__edit card__visit--${i}`)
-		form(id="js-visit-form" action=`/place/${place._id}/add-visit` method="POST" class="card__visit__form")
+		form(id="js-visit-form" action=`/place/${place._id}/visit/${visit._id}` method="POST" class="card__visit__form")
 			.card__visit--rating
 				label(for="rating") rating
-				select(name="visits[rating]" id="rating" class="form__input form__input--rating")
+				select(name="visit[rating]" id="rating" class="form__input form__input--rating")
 					option(value="") - Rating -
 					option(value="3" selected=(typeof visit.rating !== 'undefined' && visit.rating === 3 ? true : false)) 3 - See You Tomorrow
 					option(value="2" selected=(typeof visit.rating !== 'undefined' && visit.rating === 2 ? true : false)) 2 - Will Visit Again
 					option(value="1" selected=(typeof visit.rating !== 'undefined' && visit.rating === 1 ? true : false)) 1 - Won't Go Back
 			.card__visit--cost
 				label(for="cost") cost
-				select(name="visits[cost]" id="cost" class="form__input form__input--cost")
+				select(name="visit[cost]" id="cost" class="form__input form__input--cost")
 					option(value="") - Cost -
 					option(value="3" selected=(typeof visit.cost !== 'undefined' && visit.cost === '3' ? true : false)) 3 - Pleasantly Surprised
 					option(value="2" selected=(typeof visit.cost !== 'undefined' && visit.cost === '2' ? true : false)) 2 - What You'd Expect
 					option(value="1" selected=(typeof visit.cost !== 'undefined' && visit.cost === '1' ? true : false)) 1 - Overpriced
 			.card__visit--comment
 				label(for="comment") comment
-				textarea(rows="2" name="visits[comment]" id="comment" class="form__input form__input--edit form__input--comment" placeholder="I thought...") #{visit.comment || ''}
+				textarea(rows="2" name="visit[comment]" id="comment" class="form__input form__input--edit form__input--comment" placeholder="I thought...") #{visit.comment || ''}
 			input(type="hidden" name="placeId" value=`${place._id}`)
 			.card__actions
 				a(href=`/place/${place._id}/visits` class="button button__visits--cancel") Cancel

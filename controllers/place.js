@@ -56,6 +56,31 @@ exports.addVisit = async (req, res) => {
 	res.render('place/add-visit', { pageTitle: 'Add Visit', place });
 }
 
+exports.updateVisit = async (req, res) => {
+	// const place = places.find( place => place.id == req.params.id ); // query data for requested place
+	const placeId = req.params.id;
+	const visitId = req.params.id;
+	// console.log(visitId);
+
+	const place = await Place.updateOne(
+		{ _id: placeId, "visits._id": visitId },
+		{ $set: { "visits.$" : req.body.visit } }
+	);
+	console.log(place);
+	// Place.findById(placeId, async (err, doc) => {
+	// 	if(err) throw err;
+	// 	try {
+	// 		console.log('THIS IS IT: ', doc.visits[visitId]);
+	// 		doc.visits[visitId] = req.body.visit;
+	// 		await doc.save();
+	// 		req.flash('success', 'Successfully updated!');
+	// 		res.redirect(`/place/${placeId}/visits`);
+	// 	} catch(err) {
+	// 		console.error('Error', err);
+	// 	}
+	// });
+}
+
 exports.createVisit = async (req, res) => {
 	// console.log(req.body);
 	const placeId = req.params.id;
@@ -75,13 +100,5 @@ exports.createVisit = async (req, res) => {
 		} catch(err) {
 			console.error('Error', err);
 		}
-		
 	});
-	
-	// res.redirect(`/place/${placeId}`);
-	// res.send('oh');
-	// const tagsArr = place.tags.map( (tag) => tag.split(/[ ,]+/).filter(Boolean));
-	// place.tags = tagsArr[0];
-	// await place.save();
-	// res.redirect('/places');
 };

@@ -10,8 +10,9 @@ block content
 			.padded-multiline
 				h1.title
 					span.twist.twist--left #{pageTitle}
-	.container__actions
-		a(href="/places" class="button button__visit--back") View Places
+	.container__actions.wrapper__content
+		a(href="/places" class="button button__visit--places") View Places
+		a(href="/categories" class="button button__visit--categories") View Categories
 	.container__tags
 		ul.tags
 			each t in tags

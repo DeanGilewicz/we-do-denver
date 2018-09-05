@@ -60,6 +60,7 @@ router.post('/place/:id/add-visit', catchErrors(placeController.createVisit));
 router.post('/place/:id/update-place', catchErrors(placeController.updatePlace));
 
 router.get('/place/:id/visit/:visitId', catchErrors(placeController.visit));
+router.post('/place/:id/visit/:visitId', catchErrors(placeController.updateVisit));
 
 router.get('/tags', catchErrors(tagsController.index));
 router.get('/tags/:tag', catchErrors(tagsController.index));
