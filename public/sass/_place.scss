@@ -62,7 +62,7 @@
 		}
 	}
 
-	.card__hero {
+	.card__name-container {
 		position: relative;
 		// padding: 50px 1rem;
 		padding: 50px 0;
@@ -122,6 +122,15 @@
 			vertical-align: middle;
 		}
 		
+	}
+
+	.card__image-container {
+		position: relative;
+		padding: 50px 0;
+	}
+
+	.form__input--image-wrapper {
+		display: none;
 	}
 
 	.card__actions {

@@ -1,6 +1,23 @@
 mixin card-single(place = {})
 	div(id="js-card" class="card")
-		.card__hero
+		.card__image-container
+			form(action="" class="card__image")
+				label image
+				.form__image-container
+					img(src=`/uploads/${place.img}` alt=`${place.name}` id="current-image")
+					//- label(class="form__image--preview") Image Preview
+					img.image__preview
+				.form__input--image-wrapper
+					//- image upload
+					label(for="img-update" class="form__input--image-button") Change Image
+					input(type="file" name="img" id="img-update" class="form__input form__input--image" accept="image/gif, image/png, image/jpeg")
+				span(class="edit edit--trigger" data-trigger="image")
+					img(src="/images/icon-edit.svg" alt="edit image")
+				span(class="edit edit--cancel" data-cancel="image" id="image-cancel")
+					img(src="/images/icon-cancel.svg" alt="cancel image")
+				span(class="edit edit--save" data-save="image")
+					img(src="/images/icon-update.svg" alt="save image")
+		.card__name-container
 			form(action="" class="card__name")
 				label name
 				input(type="text" name="name" value=`${place.name}` class="form__input form__input--name" data-input="name" disabled)

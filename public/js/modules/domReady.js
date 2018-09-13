@@ -32,6 +32,45 @@ domReady( () => {
    		});
    	}
 
+   	if( document.querySelector('#img-update') ) {
+
+   		const currentImage = document.querySelector('#current-image');
+		const imgPreviewEl = document.querySelector('.image__preview');
+		const fileUploadInput = document.querySelector('#img-update');
+		const imageChangeCancel = document.querySelector('#image-cancel');
+		const editImageTrigger = document.querySelector('[data-trigger="image"]');
+		const changeImageTrigger = document.querySelector('.form__input--image-wrapper');
+
+   		const readURL = input => {
+
+			if (input.files && input.files[0]) {
+				let reader = new FileReader();
+
+				reader.onload = function(e) {
+					imgPreviewEl.setAttribute('src', e.target.result);
+					currentImage.style.display = 'none';
+				}
+
+				reader.readAsDataURL(input.files[0]);
+			}
+		};
+   		
+   		fileUploadInput.on('change', function(e) {
+   			readURL(this);
+   		});
+
+   		imageChangeCancel.addEventListener('click', () => {
+   			changeImageTrigger.style.display = 'none';
+   			imgPreviewEl.setAttribute('src', '');
+   			currentImage.style.display = 'block';
+   		});
+
+   		editImageTrigger.addEventListener('click', () => {
+   			imgPreviewEl.setAttribute('src', '');
+			currentImage.style.display = 'none';
+   			changeImageTrigger.style.display = 'block';
+   		});
+   	}
 
 	// restrict to dom element since hard to do for name of route
 
@@ -39,6 +78,18 @@ domReady( () => {
 
    		const urlArr = window.location.pathname.split('/');
 		const urlId = urlArr[urlArr.length-1];	// need to grab id to use when posting data (record that is being modified / deleted)
+
+		const imageOptions = {
+			card: document.querySelector('#js-card'),
+			trigger: document.querySelector('[data-trigger="image"]'),
+			cancel: document.querySelector('[data-cancel="image"]'),
+			save: document.querySelector('[data-save="image"]'),
+			inputs: document.querySelectorAll('[data-input="image"]'),
+			endpointUrl: `/place/${urlId}/update-place`,
+			redirectUrl: `/place/${urlId}`,
+			response: document.querySelector('.ajax__response'),
+			responseMessage: document.querySelector('.response__message')
+		};
 
 		const nameOptions = {
 			card: document.querySelector('#js-card'),
@@ -80,13 +131,12 @@ domReady( () => {
 			responseMessage: document.querySelector('.response__message')
 		};
 
+		const cardActionsImage = new CardActions(imageOptions);
 		const cardActionsName = new CardActions(nameOptions);
 		const cardActionsAddress = new CardActions(addressOptions);
 		const cardActionsTags = new CardActions(tagsOptions);
 
 	}
-
-	// restrict to dom element since hard to do for name of route
 
 	// if( document.querySelector('#js-visit-form') ) {
 	// 	// focus on first input on single visit form page
