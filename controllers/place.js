@@ -115,3 +115,10 @@ exports.createVisit = async (req, res) => {
 		}
 	});
 };
+
+exports.deleteVisit = async (req, res) => {
+	const visitId = req.params.visitId;
+	console.log(visitId);
+	// const placeId = req.params.id;
+	// await Place.deleteOne({ visits._id: placeId });
+};

@@ -15,6 +15,7 @@ const promisify = require('es6-promisify');
 const flash = require('connect-flash');
 
 const routes = require('./routes/index');
+const methodOverride = require('method-override')
 
 const errorHandlers = require('./handlers/errorHandlers');
 
@@ -37,6 +38,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Enable HTML Forms to post HTTP DETELE and  PUT
+app.use(methodOverride(function (req, res) {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    const method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 // Exposes a bunch of methods for validating data. Used heavily on auth.validateRegister
 app.use(expressValidator());

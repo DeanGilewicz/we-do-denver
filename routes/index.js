@@ -61,6 +61,7 @@ router.get('/place/:id/visits', catchErrors(placeController.visits));
 
 router.get('/place/:id/add-visit',  catchErrors(placeController.addVisit));
 router.post('/place/:id/add-visit', catchErrors(placeController.createVisit));
+router.delete('/place/:id/visit/:visitId', catchErrors(placeController.deleteVisit));
 
 router.post('/place/:id/update-place', catchErrors(placeController.updatePlace));
 
