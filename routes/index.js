@@ -52,6 +52,11 @@ router.get('/places/:category', categoryController);
 router.get('/categories', catchErrors(categoriesController));
 
 router.get('/place/:id', catchErrors(placeController.place));
+router.post('/place/:id/update-image',
+	placesController.upload,
+	catchErrors(placesController.resize),
+	catchErrors(placeController.updateImage));
+
 router.get('/place/:id/visits', catchErrors(placeController.visits));
 
 router.get('/place/:id/add-visit',  catchErrors(placeController.addVisit));

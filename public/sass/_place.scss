@@ -17,6 +17,12 @@
 		resize: vertical;
 	}
 
+	button.edit.edit--save {
+		border: none;
+	    padding: 0;
+		background-color: transparent;
+	}
+
 	.edit {
 		display: block;
 		position: absolute;

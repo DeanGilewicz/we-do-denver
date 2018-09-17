@@ -42,15 +42,12 @@ domReady( () => {
 		const changeImageTrigger = document.querySelector('.form__input--image-wrapper');
 
    		const readURL = input => {
-
 			if (input.files && input.files[0]) {
 				let reader = new FileReader();
-
 				reader.onload = function(e) {
 					imgPreviewEl.setAttribute('src', e.target.result);
 					currentImage.style.display = 'none';
 				}
-
 				reader.readAsDataURL(input.files[0]);
 			}
 		};
@@ -60,6 +57,7 @@ domReady( () => {
    		});
 
    		imageChangeCancel.addEventListener('click', () => {
+   			fileUploadInput.value = '';
    			changeImageTrigger.style.display = 'none';
    			imgPreviewEl.setAttribute('src', '');
    			currentImage.style.display = 'block';

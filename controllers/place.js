@@ -12,6 +12,19 @@ exports.place = async (req, res) => {
 	res.render('place/index', { pageTitle: place.name, place });
 };
 
+exports.updateImage = async (req, res) => {
+	const place = await Place.findOneAndUpdate(
+		{ _id: req.params.id },
+		req.body,
+		{
+			new: true, // return the new Place (updated one)
+			runValidators: true
+		}
+	).exec();
+	req.flash('success', `Successfully updated <strong>${place.name}</strong>`);
+	res.redirect(`/place/${place._id}`);
+};
+
 exports.updatePlace = async (req, res) => {
 	// console.log(req.body);
 	const place = await Place.findOneAndUpdate(

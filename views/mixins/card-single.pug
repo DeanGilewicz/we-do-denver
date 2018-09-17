@@ -1,7 +1,7 @@
 mixin card-single(place = {})
 	div(id="js-card" class="card")
 		.card__image-container
-			form(action="" class="card__image")
+			form(action=`/place/${place._id}/update-image` class="card__image" method="POST" enctype="multipart/form-data" id="form-image-update")
 				label image
 				.form__image-container
 					img(src=`/uploads/${place.img}` alt=`${place.name}` id="current-image")
@@ -15,7 +15,7 @@ mixin card-single(place = {})
 					img(src="/images/icon-edit.svg" alt="edit image")
 				span(class="edit edit--cancel" data-cancel="image" id="image-cancel")
 					img(src="/images/icon-cancel.svg" alt="cancel image")
-				span(class="edit edit--save" data-save="image")
+				button(class="edit edit--save" data-save="image")
 					img(src="/images/icon-update.svg" alt="save image")
 		.card__name-container
 			form(action="" class="card__name")
