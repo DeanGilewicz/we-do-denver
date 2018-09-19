@@ -12,6 +12,13 @@ exports.place = async (req, res) => {
 	res.render('place/index', { pageTitle: place.name, place });
 };
 
+exports.deletePlace = async (req, res) => {
+	const placeId = req.params.id;
+	await Place.remove( { "_id" : { $eq: placeId } } );
+	req.flash('success', 'Successfully deleted!');
+	res.redirect(`/places`);
+};
+
 exports.updateImage = async (req, res) => {
 	const place = await Place.findOneAndUpdate(
 		{ _id: req.params.id },

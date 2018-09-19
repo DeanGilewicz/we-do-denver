@@ -70,6 +70,12 @@ mixin card-single(place = {})
 				- const numOfComments = place.visits.filter( (visit) => visit.comment );
 				- const commentText = ( numOfComments.length == 1 ) ? 'comment' : 'comments';
 				<h3>#{numOfComments.length} #{commentText}</h3>
+			.card__delete
+				form(action=`/place/${place._id}` method="POST" enctype="application/x-www-form-urlencoded")
+					input(type="hidden" name="_method" value="DELETE")
+					button(class="delete")
+						img(src="/images/icon-delete.svg" alt="delete visit" class="icon__delete")
+					<h3>Delete Place</h3>
 		.card__actions
 			a(href=`/place/${place._id}/visits` class="button button--cta") Visits
 	.ajax__response

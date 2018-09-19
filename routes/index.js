@@ -56,6 +56,7 @@ router.post('/place/:id/update-image',
 	placesController.upload,
 	catchErrors(placesController.resize),
 	catchErrors(placeController.updateImage));
+router.delete('/place/:id', catchErrors(placeController.deletePlace));
 
 router.get('/place/:id/visits', catchErrors(placeController.visits));
 

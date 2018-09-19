@@ -139,6 +139,25 @@
 		display: none;
 	}
 
+	.card__delete {
+		img {
+			width: 36px;
+			vertical-align: middle;
+		}
+		h3 {
+			display: inline-block;
+		    margin: 0 0 0 1rem;
+			vertical-align: middle;
+			text-transform: uppercase;
+			font-size: 2rem;
+		}
+		button.delete {
+			border: none;
+		    padding: 0;
+			background-color: transparent;
+		}
+	}
+
 	.card__actions {
 		
 		.button {
