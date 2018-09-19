@@ -5,9 +5,9 @@ exports.index = async (req, res) => {
 	const tag = req.params.tag;
 	const tagQuery = tag || { $exists: true }
 	const pageTitle = (tag ? tag : "Tags");
-	const tagsPromise = Place.getTagsList();
+	const tagsPromise = await Place.getTagsList();
 	const placesPromise = Place.find({ tags: tagQuery });
 	const [tags, places] = await Promise.all([tagsPromise, placesPromise]);
 	res.render('tags/index', { pageTitle, tags, tag, places } );
-	// res.json(tags);
+	// res.render('tags/index', { pageTitle: "Tags", tags } );
 };

@@ -19,8 +19,8 @@ block content
 				li.tag
 					a.tag__link(href=`/tags/${t._id}` class=(t._id === tag ? 'tag__link--active' : ''))
 						span.tag__text= t._id
-						span.tag__count= t.count
-	.container__places
-		each place in places
-			+card-category(place)
-		
+						| 
+						span.tag__count= "(" + t.count + ")"
+		.container__places
+			each place in places
+				+card-category(place)
