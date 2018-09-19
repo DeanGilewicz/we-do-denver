@@ -50,8 +50,8 @@ exports.resize = async (req, res, next) => {
 exports.createPlace = async (req, res) => {
 	req.body.owner = req.user._id;
 	const place = new Place(req.body);
-	const tagsArr = place.tags.map( (tag) => tag.trim().split(/[,]+/).filter(Boolean));
-	place.tags = tagsArr[0];
+	const tagsArr = place.tags.join(',').split(/[,]+/).map((item)=>item.trim()).filter(Boolean);
+	place.tags = tagsArr;
 	await place.save();
 	req.flash('success', `You've created ${place.name}!`);
 	res.redirect('/places');
