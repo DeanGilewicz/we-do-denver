@@ -18,10 +18,30 @@ const multerOptions = {
 };
 
 exports.index = async (req, res) => {
+	const page = req.params.page || 1;
+	const limit = 4;
+	const skip = ( page * limit ) - limit;
 	// query db for places owned by currently logged in user
-	const places = await Place.find({ owner: {$eq: req.user._id} });
-	// console.log(places);
-	res.render('places/index', { pageTitle: 'Places', places });
+	const placesPromise = Place
+		.find({ owner: {$eq: req.user._id} })
+		.skip(skip)
+		.limit(limit)
+		.sort({ created: 'desc' });
+
+	const countPromise = Place.count();
+
+	const [places, count] = await Promise.all([placesPromise, countPromise]);
+
+	const pages = Math.ceil(count/limit);
+
+	// redirect to last page of pagination
+	if( !places.length && skip ) {
+		req.flash('info', `You asked for page ${page} but that does not exist. Instead you are on page ${pages}`);
+		res.redirect(`/places/page/${pages}`);
+		return;
+	}
+	
+	res.render('places/index', { pageTitle: 'Places', places, page, pages, count, paginationLinkUrl: '/places/page/' });
 };
 
 exports.addPlace = (req, res) => {

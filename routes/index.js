@@ -40,6 +40,7 @@ router.get('/forgot-password', userController.forgotPassword);
 router.post('/forgot-password', catchErrors(authController.forgot));
 
 router.get('/places', authController.isLoggedIn, catchErrors(placesController.index));
+router.get('/places/page/:page', authController.isLoggedIn, catchErrors(placesController.index));
 
 router.get('/places/add-place', authController.isLoggedIn, placesController.addPlace);
 router.post('/places/add-place',
@@ -59,6 +60,7 @@ router.post('/place/:id/update-image',
 router.delete('/place/:id', catchErrors(placeController.deletePlace));
 
 router.get('/place/:id/visits', catchErrors(placeController.visits));
+router.get('/place/:id/visits/page/:page', catchErrors(placeController.visits));
 
 router.get('/place/:id/add-visit',  catchErrors(placeController.addVisit));
 router.post('/place/:id/add-visit', catchErrors(placeController.createVisit));

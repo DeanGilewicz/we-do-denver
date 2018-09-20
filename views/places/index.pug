@@ -2,6 +2,7 @@ extends ../layout
 
 include ../mixins/search
 include ../mixins/card-category
+include ../mixins/pagination
 
 block content
 	.hero.icon__pattern--places
@@ -17,5 +18,6 @@ block content
 	.places.wrapper__content
 		each place, i in places
 			+card-category(place, i)
+	+pagination(page, pages, count, paginationLinkUrl)
 		
 

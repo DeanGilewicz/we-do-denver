@@ -1,6 +1,7 @@
 extends ../layout
 
 include ../mixins/card-visit
+include ../mixins/pagination
 
 block content
 	.page__visits
@@ -17,3 +18,4 @@ block content
 				a(href=`/places/${:id}/add-visit` class="button button__visit--add")
 			each visit, i in visits
 				+card-visit(place, visit, i)
+	+pagination(page, pages, count, paginationLinkUrl)

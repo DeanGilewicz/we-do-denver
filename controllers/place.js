@@ -48,14 +48,31 @@ exports.updatePlace = async (req, res) => {
 };
 
 exports.visits = async (req, res) => {
+	const page = req.params.page || 1;
+	const limit = 2;
+	const skip = ( page * limit ) - limit;
 	// const place = places.find( place => place.id == req.params.id ); // query data for requested place
 	const place = await Place.findById(req.params.id);
+	
 	const visits = place.visits;
+	
 	const modifiedVisits = visits.map( visit => {
 		visit.prettyCreated = moment(visit.created).format('MM/DD/YYYY'); // prettify the date
 		return visit;
 	});
-	res.render('place/visits', { pageTitle: place.name, place, visits: modifiedVisits });
+
+	const paginatedVisits = modifiedVisits.slice(skip, (skip + limit));
+	const count = modifiedVisits.length;
+	const pages = Math.ceil(count/limit);
+
+	// redirect to last page of pagination
+	if( !modifiedVisits.length && skip ) {
+		req.flash('info', `You asked for page ${page} but that does not exist. Instead you are on page ${pages}`);
+		res.redirect(`/place/${req.params.id}/visits/page/${pages}`);
+		return;
+	}
+
+	res.render('place/visits', { pageTitle: place.name, place, visits: paginatedVisits, page, pages, count, paginationLinkUrl: `/place/${req.params.id}/visits/page/` });
 };
 
 exports.visit = async (req, res) => {
