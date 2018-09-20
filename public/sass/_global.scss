@@ -107,6 +107,14 @@ form label {
 	}
 }
 
+.flash.flash__container {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	margin: 0;
+	padding: 1rem 2rem;
+}
+
 // .form__input--edit {
 // 	border: 1px solid black;
 // }
