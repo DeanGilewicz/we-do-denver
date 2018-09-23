@@ -28,7 +28,7 @@ exports.index = async (req, res) => {
 		.limit(limit)
 		.sort({ created: 'desc' });
 
-	const countPromise = Place.count();
+	const countPromise = Place.count({ owner: {$eq: req.user._id} });
 
 	const [places, count] = await Promise.all([placesPromise, countPromise]);
 

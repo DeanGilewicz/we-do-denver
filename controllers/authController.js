@@ -54,6 +54,24 @@ exports.forgot = async (req, res) => {
 	res.redirect('/login');
 };
 
+exports.registerEmail = async (req, res, next) => {
+	const name = req.body.name;
+	const email = req.body.email;
+	const user = { name, email };
+	// console.log(user);
+	if( !name || !email ) {
+		// don't send email just continue
+		next();
+	}
+	await mail.send({
+		user,
+		subject: "Welcome to We Do Denver!",
+		filename: "confirm-register"
+	});
+	next();
+}
+
+
 exports.reset = async (req, res) => {
 	// check if a user has this token (and token hasn't expired)
 	const user = await User.findOne({ 

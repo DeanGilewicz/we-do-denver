@@ -25,6 +25,7 @@ router.get('/register', userController.register);
 router.post('/register', 
 	userController.validateRegister,
 	userController.createUser,
+	catchErrors(authController.registerEmail),
 	authController.login
 );
 

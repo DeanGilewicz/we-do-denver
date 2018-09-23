@@ -1,10 +1,11 @@
 mixin pagination(page, pages, count, paginationLinkUrl)
-	.pagination__container
-		.pagination__prev
-			if page > 1
-				a(href=`${paginationLinkUrl}${page - 1}`) < Prev
-		.pagination__text
-			p Page #{page} of #{pages} (#{count} total)
-		.pagination__next
-			if page < pages
-				a(href=`${paginationLinkUrl}${parseFloat(page) + 1}`) Next >
+	if count
+		.pagination__container
+			.pagination__prev
+				if page > 1
+					a(href=`${paginationLinkUrl}${page - 1}`) < Prev
+			.pagination__text
+				p Page #{page} of #{pages} (#{count} total)
+			.pagination__next
+				if page < pages
+					a(href=`${paginationLinkUrl}${parseFloat(page) + 1}`) Next >
