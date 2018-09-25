@@ -40,10 +40,19 @@
 }
 
 .place__hero {
-	height: 100px;
+	height: 140px;
 	background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+
+	@media (min-width: $medium__large) {
+		height: 160px;
+	}
+
+	@media (min-width: $large) {
+		height: 180px;
+	}
+	
 }
 
 .place__name {

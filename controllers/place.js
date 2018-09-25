@@ -96,25 +96,32 @@ exports.addVisit = async (req, res) => {
 exports.updateVisit = async (req, res) => {
 	// const place = places.find( place => place.id == req.params.id ); // query data for requested place
 	const placeId = req.params.id;
-	const visitId = req.params.id;
+	const visitId = req.params.visitId;
 
-	const place = await Place.updateOne(
+	// update visit on Place
+	await Place.updateOne(
 		{ _id: placeId, "visits._id": visitId },
-		{ $set: { "visits.$" : req.body.visit } }
+		{ $set: { "visits.$.comment" : req.body.visit.comment, "visits.$.cost" : req.body.visit.cost, "visits.$.rating" : req.body.visit.rating } }
 	);
 
-	Place.findById(placeId, async (err, doc) => {
-		if(err) throw err;
-		try {
-			console.log('THIS IS IT: ', doc.visits[visitId]);
-			doc.visits[visitId] = req.body.visit;
-			await doc.save();
-			req.flash('success', 'Successfully updated!');
-			res.redirect(`/place/${placeId}/visits`);
-		} catch(err) {
-			console.error('Error', err);
-		}
+	await Place.findById(placeId, async (err, place) => {
+		const ratingTotal = place.visits.reduce((sV, cV) => ({rating: parseInt(sV.rating,10) + parseInt(cV.rating,10)}));
+		const costTotal = place.visits.reduce((sV, cV) => ({cost: parseInt(sV.cost,10) + parseInt(cV.cost,10)}));
+		// get average visits
+		const totalVisits = place.visits.length;
+		// calculate averages
+		const aveCost = (costTotal.cost / totalVisits).toFixed(2);
+		const aveRating = (ratingTotal.rating / totalVisits).toFixed(2);
+		// set values on Place
+		place.cost = aveCost;
+		place.rating = aveRating;
+		// save
+		await place.save();
 	});
+
+	req.flash('success', 'Successfully updated!');
+	res.redirect(`/place/${placeId}/visits`);
+
 }
 
 exports.createVisit = async (req, res) => {
@@ -146,6 +153,22 @@ exports.deleteVisit = async (req, res) => {
 		{ "_id" : placeId },
 		{ "$pull" : { "visits" : { "_id" : visitId } } }
 	);
+
+	await Place.findById(placeId, async (err, place) => {
+		const ratingTotal = place.visits.reduce((sV, cV) => ({rating: parseInt(sV.rating,10) + parseInt(cV.rating,10)}));
+		const costTotal = place.visits.reduce((sV, cV) => ({cost: parseInt(sV.cost,10) + parseInt(cV.cost,10)}));
+		// get average visits
+		const totalVisits = place.visits.length;
+		// calculate averages
+		const aveCost = (costTotal.cost / totalVisits).toFixed(2);
+		const aveRating = (ratingTotal.rating / totalVisits).toFixed(2);
+		// set values on Place
+		place.cost = aveCost;
+		place.rating = aveRating;
+		// save
+		await place.save();
+	});
+
 	req.flash('success', 'Successfully deleted!');
 	res.redirect(`/place/${placeId}/visits`);
 };
