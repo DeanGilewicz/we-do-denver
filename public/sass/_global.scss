@@ -39,6 +39,11 @@ form select {
     background-repeat: no-repeat;
 }
 
+.sort__places select {
+    margin: 0;
+    width: 150px;
+}
+
 form label {
 	display: block;
 	text-transform: uppercase;
@@ -109,8 +114,9 @@ form label {
 
 .flash.flash__container {
 	position: fixed;
-	width: 100%;
 	bottom: 0;
+	z-index: 10;
+	width: 100%;
 	margin: 0;
 	padding: 1rem 2rem;
 }

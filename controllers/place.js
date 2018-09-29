@@ -1,4 +1,4 @@
-const places = require('../data/sample.json');
+// const places = require('../data/sample.json');
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId; // need to cast type when use aggregate 
 const Place = mongoose.model('Place');
@@ -105,8 +105,8 @@ exports.updateVisit = async (req, res) => {
 	);
 
 	await Place.findById(placeId, async (err, place) => {
-		const ratingTotal = place.visits.reduce((sV, cV) => ({rating: parseInt(sV.rating,10) + parseInt(cV.rating,10)}));
-		const costTotal = place.visits.reduce((sV, cV) => ({cost: parseInt(sV.cost,10) + parseInt(cV.cost,10)}));
+		const ratingTotal = place.visits.reduce((sV, cV) => ({rating: sV.rating + cV.rating}));
+		const costTotal = place.visits.reduce((sV, cV) => ({cost: sV.cost + cV.cost}));
 		// get average visits
 		const totalVisits = place.visits.length;
 		// calculate averages
@@ -155,8 +155,8 @@ exports.deleteVisit = async (req, res) => {
 	);
 
 	await Place.findById(placeId, async (err, place) => {
-		const ratingTotal = place.visits.reduce((sV, cV) => ({rating: parseInt(sV.rating,10) + parseInt(cV.rating,10)}));
-		const costTotal = place.visits.reduce((sV, cV) => ({cost: parseInt(sV.cost,10) + parseInt(cV.cost,10)}));
+		const ratingTotal = place.visits.reduce((sV, cV) => ({rating: sV.rating + cV.rating}));
+		const costTotal = place.visits.reduce((sV, cV) => ({cost: sV.cost + cV.cost}));
 		// get average visits
 		const totalVisits = place.visits.length;
 		// calculate averages

@@ -121,6 +121,11 @@
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
+
+	img {
+		max-width: 30px;
+	}
+	
 }
 
 .place__score,
@@ -215,6 +220,11 @@
 			margin-right: 0;
 		}
 	}
+}
+
+.container__sort {
+	margin-left: auto;
+	padding-right: 2rem;
 }
 
 // @supports (display: grid) {

@@ -1,4 +1,4 @@
-const places = require('../data/sample.json');
+// const places = require('../data/sample.json');
 const mongoose = require('mongoose');
 const Place = mongoose.model('Place');
 const multer = require('multer');
@@ -18,15 +18,30 @@ const multerOptions = {
 };
 
 exports.index = async (req, res) => {
+	const sortBy = req.query.q || 'created';
+	const sort = {};
+	sort[sortBy] = req.query.s || 'desc';
+	const querySort = ( req.query.s === 'desc' ) ? -1 : 1;
 	const page = req.params.page || 1;
 	const limit = 4;
 	const skip = ( page * limit ) - limit;
-	// query db for places owned by currently logged in user
-	const placesPromise = Place
-		.find({ owner: {$eq: req.user._id} })
-		.skip(skip)
-		.limit(limit)
-		.sort({ created: 'desc' });
+	let placesPromise;
+  	if( sortBy === 'visits') {
+  		placesPromise = Place.aggregate([
+	  		{ "$match" : {owner: {$eq: req.user._id}} },
+			{ "$addFields" : { "totalVisits": {$size: "$visits"} } },
+			{ "$sort" : { "totalVisits": querySort } },
+			{ "$skip" : skip },
+			{ "$limit" : limit }
+		]).cursor({}).exec().toArray();
+  	} else {
+  		// query db for places owned by currently logged in user
+		placesPromise = Place
+			.find({ owner: {$eq: req.user._id} })
+			.sort(sort)
+			.skip(skip)
+			.limit(limit);
+  	}
 
 	const countPromise = Place.count({ owner: {$eq: req.user._id} });
 

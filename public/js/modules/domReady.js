@@ -1,4 +1,5 @@
 import CardActions from './card';
+import axios from 'axios';
 
 const domReady = callback => {
 	"use strict";
@@ -70,7 +71,16 @@ domReady( () => {
    		});
    	}
 
-	// restrict to dom element since hard to do for name of route
+   	// dropdown sort places
+   	if( document.querySelector('#js-sort-places') ) {
+   		const sortEl = document.querySelector('#js-sort-places select');
+   		sortEl.addEventListener('change', function() {
+   			const valueSplit = `${this.value}`.split('-');
+   			const sortValue = valueSplit[0];
+   			const sortOrder = valueSplit[1];
+   			window.location.href = `/places?q=${sortValue}&s=${sortOrder}`;
+   		});
+   	} 
 
    	if( document.querySelector('#js-card') ) {
 
@@ -135,10 +145,5 @@ domReady( () => {
 		const cardActionsTags = new CardActions(tagsOptions);
 
 	}
-
-	// if( document.querySelector('#js-visit-form') ) {
-	// 	// focus on first input on single visit form page
-	// 	document.querySelector('input[name="rating"]').focus();
-	// }
 
 });

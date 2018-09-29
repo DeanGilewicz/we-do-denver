@@ -1,25 +1,25 @@
 mixin card-category(place = {}, i = 0)
 	div(class="place place--"+(i+1))
 		.place__image
-			div(class="place__hero" style=`background-image:url(${(place.img) ? `/uploads/${place.img}` : 'http://via.placeholder.com/300x200?text=noImg'});`)
+			div(class="place__hero" style=`background-image:url(${(place.img) ? `/uploads/${place.img}` : '/images/placeholder.png'});`)
 		.place__name
 			<h2>#{place.name}</h2>
 		.place__category
 			a(href=`/places/${place.category.slug}`)
-				img(src=( (place.category && place.category.icon) ? `${place.category.icon}` : 'http://via.placeholder.com/50x50?text=cat' ) alt=`${place.category.name}`)
+				img(src=( (place.category && place.category.icon) ? `${place.category.icon}` : '/images/placeholder.png' ) alt=`${place.category.name}`)
 				h3.place__category__name= place.category.name
 		.place__overview
 			.place__score
 				h3= place.rating
-				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
+				img(src="/images/icon-rating.svg" alt="")
 				h4 pts
 			.place__distance
 				h3= place.distance
-				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
+				img(src="/images/icon-distance.svg" alt="")
 				h4 miles
 			.place__visits
 				h3= place.visits.length
-				img(src="http://via.placeholder.com/50x50?text=icon" alt="")
+				img(src="/images/icon-visits.svg" alt="")
 				h4 visits
 		.place__cta
 			a(href=`/place/${place._id}` class="button button--cta") View

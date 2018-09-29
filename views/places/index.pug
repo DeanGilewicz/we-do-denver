@@ -13,6 +13,18 @@ block content
 	.container__actions.wrapper__content
 		if user
 			a(href="/places/add-place" class="button") Add Place
+		.container__sort
+			form#js-sort-places.sort__places
+				select(name="sort")
+					option(value="") Sort 
+					option(value="cost-asc") Cost (low-high)
+					option(value="cost-desc") Cost (high-low)
+					option(value="rating-asc") Rating (low-high)
+					option(value="rating-desc") Rating (high-low)
+					option(value="visits-asc") Visits (low-high)
+					option(value="visits-desc") Visits (high-low)
+					option(value="distance-asc") Miles (low-high)
+					option(value="distance-desc") Miles (high-low)
 		.container__search
 			+search()
 	.places.wrapper__content

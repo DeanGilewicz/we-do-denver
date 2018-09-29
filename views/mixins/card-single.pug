@@ -4,7 +4,7 @@ mixin card-single(place = {})
 			form(action=`/place/${place._id}/update-image` class="card__image" method="POST" enctype="multipart/form-data" id="form-image-update")
 				label image
 				.form__image-container
-					img(src=`/uploads/${place.img}` alt=`${place.name}` id="current-image")
+					img(src=`${(place.img) ? `/uploads/${place.img}` : '/images/placeholder.png'}` alt=`${place.name}` id="current-image")
 					//- label(class="form__image--preview") Image Preview
 					img.image__preview
 				.form__input--image-wrapper

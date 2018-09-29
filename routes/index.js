@@ -78,5 +78,6 @@ router.get('/tags/:tag', catchErrors(tagsController.index));
 /* API */
 
 router.get('/api/search', catchErrors(placesController.searchPlaces));
+// router.get('/api/sort', catchErrors(placesController.sortPlaces));
 
 module.exports = router;

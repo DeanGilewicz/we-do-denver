@@ -25,7 +25,7 @@ const placeSchema = new mongoose.Schema({
 		type: String,
 		trim: true
 	},
-	distance: String,
+	distance: Number,
 	img: String,
 	category: {
 		icon: {
@@ -41,8 +41,8 @@ const placeSchema = new mongoose.Schema({
 	},
 	slug: String,
 	tags: [String],
-	rating: String,
-	cost: String,
+	rating: Number,
+	cost: Number,
 	created: {
 		type: Date,
 		default: Date.now
@@ -65,7 +65,7 @@ const placeSchema = new mongoose.Schema({
 		// 	default: Date.now
 		// },
 		cost: {
-			type: String,
+			type: Number,
 			trim: true,
 			required: 'Please enter a cost rating!'
 		},
@@ -86,8 +86,9 @@ const placeSchema = new mongoose.Schema({
 // Define our indexes - which fields
 placeSchema.index({
 	name: 'text',
-	rating: 'text',
-	cost: 'text'
+	rating: 'number',
+	cost: 'number',
+	distance: 'number'
 });
 
 placeSchema.pre('save', async function(next) {
@@ -95,36 +96,30 @@ placeSchema.pre('save', async function(next) {
 	if( typeof this.rating !== "undefined" && typeof this.visits !== "undefined" ) {
 		if( this.isModified('visits.rating') ) {
 			// calculate rating since something has changed
-			const ratingTotal = this.visits.reduce((sV, cV) => ({rating: parseInt(sV.rating,10) + parseInt(cV.rating,10)}));
+			const ratingTotal = this.visits.reduce((sV, cV) => ({rating: sV.rating + cV.rating}));
 			// get average
 			const totalVisits = this.visits.length;
 			const aveRating = (ratingTotal.rating / totalVisits).toFixed(2);
-			// console.log('ratingTotal', ratingTotal);
-			// console.log('totalVisits', totalVisits);
-			// console.log('aveRating', aveRating);
 			this.rating = aveRating;
 		}
 	} else {
 		// blank so set it to "-"
-		this.rating = "-";
+		this.rating = 0;
 	}
 
 	// cost
 	if( typeof this.cost !== "undefined" && typeof this.visits !== "undefined" ) {
 		if( this.isModified('visits.cost') ) {
 			// calculate rating since something has changed
-			const costTotal = this.visits.reduce((sV, cV) => ({cost: parseInt(sV.cost,10) + parseInt(cV.cost,10)}));
+			const costTotal = this.visits.reduce((sV, cV) => ({cost: sV.cost + cV.cost}));
 			// get average
 			const totalVisits = this.visits.length;
 			const aveCost = (costTotal.cost / totalVisits).toFixed(2);
-			// console.log('costTotal', costTotal);
-			// console.log('totalVisits', totalVisits);
-			// console.log('aveCost', aveCost);
 			this.cost = aveCost;
 		}
 	} else {
 		// blank so set it to "-"
-		this.cost = "-";
+		this.cost = 0;
 	}
 
 	// name and slug
