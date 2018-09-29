@@ -73,12 +73,45 @@ domReady( () => {
 
    	// dropdown sort places
    	if( document.querySelector('#js-sort-places') ) {
+
+   		const getQueryStringParams = query => {
+		    return query ? (/^[?#]/.test(query) ? query.slice(1) : query)
+	            .split('&')
+	            .reduce((params, param) => {
+	                    let [key, value] = param.split('=');
+	                    params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+	                    return params;
+	                }, {}
+	            )
+	        : {}
+		};
+		
+		// check if query params exist in url
+		const queryParams = getQueryStringParams(window.location.search);
+		let dropdownValue;
+		if( Object.keys(queryParams).length !== 0 && queryParams.constructor === Object ) {
+			// construct the value for drop down so can sync value between dropdown and url
+			dropdownValue = queryParams.q + '-' + queryParams.s;
+		}
+		
+		// ref to select element
    		const sortEl = document.querySelector('#js-sort-places select');
+
+   		// if query params then sync dropdown
+   		if( dropdownValue ) {
+   			sortEl.value = dropdownValue;
+   		}
+
+   		// add event for sorting
    		sortEl.addEventListener('change', function() {
-   			const valueSplit = `${this.value}`.split('-');
-   			const sortValue = valueSplit[0];
-   			const sortOrder = valueSplit[1];
-   			window.location.href = `/places?q=${sortValue}&s=${sortOrder}`;
+   			if( this.value !== "" ) {
+   				const valueSplit = `${this.value}`.split('-');
+	   			const sortValue = valueSplit[0];
+	   			const sortOrder = valueSplit[1];
+	   			window.location.href = `/places?q=${sortValue}&s=${sortOrder}`;
+   			} else {
+   				window.location.href = '/places';
+   			}
    		});
    	} 
 
