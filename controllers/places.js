@@ -18,14 +18,24 @@ const multerOptions = {
 };
 
 exports.index = async (req, res) => {
+	// console.log(req.query);
+	// ?q=distance&s=asc
+	// { q: 'distance', s: 'asc' }
+	
 	const sortBy = req.query.q || 'created';
+	const orderBy = req.query.s || 'desc';
 	const sort = {};
-	sort[sortBy] = req.query.s || 'desc';
-	const querySort = ( req.query.s === 'desc' ) ? -1 : 1;
+	sort[sortBy] = orderBy;
+	
+	const queryString = ( sortBy === 'created' && orderBy === 'desc' ) ? '' : `?q=${sortBy}&s=${orderBy}`;
+	const querySort = ( orderBy === 'desc' ) ? -1 : 1;
+
 	const page = req.params.page || 1;
 	const limit = 4;
 	const skip = ( page * limit ) - limit;
+
 	let placesPromise;
+
   	if( sortBy === 'visits') {
   		placesPromise = Place.aggregate([
 	  		{ "$match" : {owner: {$eq: req.user._id}} },
@@ -56,7 +66,7 @@ exports.index = async (req, res) => {
 		return;
 	}
 	
-	res.render('places/index', { pageTitle: 'Places', places, page, pages, count, paginationLinkUrl: '/places/page/' });
+	res.render('places/index', { pageTitle: 'Places', places, page, pages, count, paginationLinkUrl: '/places/page/', queryString });
 };
 
 exports.addPlace = (req, res) => {
