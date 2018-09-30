@@ -12,10 +12,18 @@ block content
 						span.twist.twist--left #{pageTitle}
 		.container__actions.wrapper__content
 			a(href=`/place/${place._id}` class="button button__visit--back") Back
+			.container__sort
+				form#js-sort-visits.sort__visits
+					select(name="sort")
+						option(value="") Sort 
+						option(value="cost-asc") Cost (low-high)
+						option(value="cost-desc") Cost (high-low)
+						option(value="rating-asc") Rating (low-high)
+						option(value="rating-desc") Rating (high-low)
 			a(href=`/place/${place._id}/add-visit` class="button button__visit--add") Add Visit
 		.container__place.wrapper__content
 			//- .place__add--visit
 				a(href=`/places/${:id}/add-visit` class="button button__visit--add")
 			each visit, i in visits
 				+card-visit(place, visit, i)
-	+pagination(page, pages, count, paginationLinkUrl)
+	+pagination(page, pages, count, paginationLinkUrl, queryString)

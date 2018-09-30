@@ -48,31 +48,54 @@ exports.updatePlace = async (req, res) => {
 };
 
 exports.visits = async (req, res) => {
+
+	const propComparator = (propName, direction) => (a, b) => {
+		// if asc
+		if( direction === 'asc' ) {
+			if( a[propName] > b[propName] ) {
+				return 1;
+			}
+		}
+		// if desc
+		if( direction === 'desc' ) {
+			if( a[propName] < b[propName] ) {
+				return -1;
+			}
+		}
+		// same
+		return 0;
+	}
+
+	const sortBy = req.query.q || 'created';
+	const orderBy = req.query.s || 'desc';
+	const queryString = ( sortBy === 'created' && orderBy === 'desc' ) ? '' : `?q=${sortBy}&s=${orderBy}`;
+
 	const page = req.params.page || 1;
 	const limit = 2;
 	const skip = ( page * limit ) - limit;
-	// const place = places.find( place => place.id == req.params.id ); // query data for requested place
+	
 	const place = await Place.findById(req.params.id);
 	
-	const visits = place.visits;
-	
-	const modifiedVisits = visits.map( visit => {
-		visit.prettyCreated = moment(visit.created).format('MM/DD/YYYY'); // prettify the date
-		return visit;
-	});
+	const visits = place.visits
+		.map( visit => {
+			visit.prettyCreated = moment(visit.created).format('MM/DD/YYYY'); // prettify the date
+			return visit;
+		})
+		.sort(propComparator(sortBy,orderBy))
+		.slice(skip, (skip + limit));
+	// console.log(visits);
 
-	const paginatedVisits = modifiedVisits.slice(skip, (skip + limit));
-	const count = modifiedVisits.length;
+	const count = place.visits.length;
 	const pages = Math.ceil(count/limit);
 
 	// redirect to last page of pagination
-	if( !modifiedVisits.length && skip ) {
+	if( !visits.length && skip ) {
 		req.flash('info', `You asked for page ${page} but that does not exist. Instead you are on page ${pages}`);
 		res.redirect(`/place/${req.params.id}/visits/page/${pages}`);
 		return;
 	}
 
-	res.render('place/visits', { pageTitle: place.name, place, visits: paginatedVisits, page, pages, count, paginationLinkUrl: `/place/${req.params.id}/visits/page/` });
+	res.render('place/visits', { pageTitle: place.name, place, visits, page, pages, count, paginationLinkUrl: `/place/${req.params.id}/visits/page/`, queryString });
 };
 
 exports.visit = async (req, res) => {

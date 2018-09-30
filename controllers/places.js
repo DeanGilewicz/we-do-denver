@@ -17,11 +17,7 @@ const multerOptions = {
 	} 
 };
 
-exports.index = async (req, res) => {
-	// console.log(req.query);
-	// ?q=distance&s=asc
-	// { q: 'distance', s: 'asc' }
-	
+exports.index = async (req, res) => {	
 	const sortBy = req.query.q || 'created';
 	const orderBy = req.query.s || 'desc';
 	const sort = {};
