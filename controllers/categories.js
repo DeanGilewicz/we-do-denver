@@ -14,6 +14,7 @@ module.exports = async (req, res) => {
 
 	// use mongodb aggregate query - distinct query is only for one thing
 	const uniqueCategories = await Place.aggregate([
+		{ "$match" : {owner: {$eq: req.user._id}} },
 		{ $group: { _id: '$category.slug', slug: { $first: '$category.slug' }, name: { $first: '$category.name' }, icon: { $first: '$category.icon' } } },
 		{ $project: { _id: false } }
 	]).cursor({}).exec().toArray();
