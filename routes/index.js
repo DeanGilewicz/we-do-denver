@@ -7,7 +7,6 @@ const homeController = require('../controllers/index');
 const placesController = require('../controllers/places');
 const placeController = require('../controllers/place');
 const categoriesController = require('../controllers/categories');
-const categoryController = require('../controllers/category');
 const tagsController = require('../controllers/tags');
 
 const userController = require('../controllers/user');
@@ -46,7 +45,15 @@ router.post('/account', authController.isLoggedIn, catchErrors(userController.up
 
 router.get('/categories',
 	authController.isLoggedIn,
-	catchErrors(categoriesController));
+	catchErrors(categoriesController.index));
+
+router.get('/categories/:category',
+	authController.isLoggedIn,
+	catchErrors(categoriesController.category));
+
+router.get('/categories/:category/page/:page',
+	authController.isLoggedIn,
+	catchErrors(categoriesController.category));
 
 router.get('/tags',
 	authController.isLoggedIn,
@@ -66,10 +73,6 @@ router.post('/places/add-place',
 	placesController.upload,
 	catchErrors(placesController.resize),
 	catchErrors(placesController.createPlace));
-
-router.get('/places/:category',
-	authController.isLoggedIn,
-	categoryController);
 
 router.get('/place/:id', 
 	authController.isLoggedIn,

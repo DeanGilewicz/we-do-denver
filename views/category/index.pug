@@ -1,15 +1,31 @@
 extends ../layout
 
 include ../mixins/card-category
+include ../mixins/pagination
 
 block content
-	.hero
-		.hero__bg.hero__bg--home
-			h1 #{pageTitle}
-	.container__actions
-		a(href="/places" class="button button__visit--back") View Places
+	.hero(class=`icon__pattern--${categorySlug}`)
+		.hero__content
+			.padded-multiline
+				h1.title
+					span.twist.twist--left #{pageTitle}
+	.container__actions.wrapper__content
 		a(href=`/categories` class="button button__visit--back") View Categories
-	.container__places
+		.container__sort
+			form#js-sort-category.sort__category
+				select(name="sort")
+					option(value="") Sort 
+					option(value="cost-asc") Cost (low-high)
+					option(value="cost-desc") Cost (high-low)
+					option(value="rating-asc") Rating (low-high)
+					option(value="rating-desc") Rating (high-low)
+					option(value="visits-asc") Visits (low-high)
+					option(value="visits-desc") Visits (high-low)
+					option(value="distance-asc") Miles (low-high)
+					option(value="distance-desc") Miles (high-low)
+		a(href="/places" class="button button__visit--back") View Places
+	.container__places.wrapper__content
 		each place in places
 			+card-category(place)
+	+pagination(page, pages, count, paginationLinkUrl, queryString)
 		
