@@ -1,6 +1,7 @@
 extends ../layout
 
 include ../mixins/card-category
+include ../mixins/pagination
 
 block content
 	//- pre= h.dump(tags)
@@ -13,17 +14,21 @@ block content
 	.container__actions.wrapper__content
 		a(href="/places" class="button button__visit--places") View Places
 		a(href="/categories" class="button button__visit--categories") View Categories
-	.container__tags
-		ul.tags
-			li.tag
-				a.tag__link(href='/tags' class=( typeof tag === 'undefined' ? 'tag__link--active' : ''))
-					span.tag__text All
-			each t in tags
-				li.tag
-					a.tag__link(href=`/tags/${t._id}` class=(t._id === tag ? 'tag__link--active' : ''))
-						span.tag__text= t._id
-						| 
-						span.tag__count= "(" + t.count + ")"
-		.container__places
-			each place in places
-				+card-category(place)
+	if places.length > 0
+		.container__tags.wrapper__content
+			if tags.length > 0
+				ul.tags
+					li.tag
+						a.tag__link(href='/tags' class=( typeof tag === 'undefined' ? 'tag__link--active' : ''))
+							span.tag__text All
+					each t in tags
+						li.tag
+							a.tag__link(href=`/tags/${t._id}` class=(t._id === tag ? 'tag__link--active' : ''))
+								span.tag__text= t._id
+								| 
+								span.tag__count= "(" + t.count + ")"
+			.container__places
+				each place in places
+					+card-category(place)
+		+pagination(page, pages, count, paginationLinkUrl, queryString)
+

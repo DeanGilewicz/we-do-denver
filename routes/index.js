@@ -59,7 +59,15 @@ router.get('/tags',
 	authController.isLoggedIn,
 	catchErrors(tagsController.index));
 
+router.get('/tags/page/:page',
+	authController.isLoggedIn,
+	catchErrors(tagsController.index));
+
 router.get('/tags/:tag',
+	authController.isLoggedIn,
+	catchErrors(tagsController.index));
+
+router.get('/tags/:tag/page/:page',
 	authController.isLoggedIn,
 	catchErrors(tagsController.index));
 

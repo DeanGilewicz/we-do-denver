@@ -158,13 +158,26 @@ placeSchema.pre('findOneAndUpdate', function(next) {
 	next();
 });
 
-placeSchema.statics.getTagsList = function() {
-	return this.aggregate([
-		{ $unwind: "$tags" },
-		{ $group: { _id: "$tags", count: { $sum: 1 } } },
-		{ $sort: { count: -1 } }
-    ]).cursor({}).exec().toArray();
-};
+// placeSchema.statics.getTagsList = function() {
+	// return this
+		// .find({
+		// owner: {$eq: "5ba5d657e521d70af3874cd4"}
+		// })
+	// .aggregate([
+		// { $lookup: {
+		// 	from: "user",
+		// 	localField: "_id",
+		// 	foreignField: "owner",
+		// 	as: "link"
+  //    		}
+ 	// 	}
+	 	// { "$match" : {'owner._id': {$eq: "5ba5d657e521d70af3874cd4"}} }
+ 		// { $match : {'owner._id': "5ba5d657e521d70af3874cd4"} }
+		// { $unwind: "$tags" },
+		// { $group: { _id: "$tags", count: { $sum: 1 } } },
+		// { $sort: { count: -1 } }
+    // ]).cursor({}).exec().toArray();
+// };
 
 module.exports = mongoose.model('Place', placeSchema);
 

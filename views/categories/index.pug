@@ -9,13 +9,14 @@ block content
 	.container__actions.wrapper__content
 		a(href="/places" class="button button__visit--places") View Places
 		a(href="/tags" class="button button__visit--tags") View Tags
-	.categories.wrapper__content
-		//- pre= h.dump(categories)
-		each cat, i in categories
-			a(href=`/categories/${cat.slug}` class=`category category--${i+1} icon__pattern--${cat.slug}`)
-				.category__icon
-					img(src=`${cat.icon}` alt=`${cat.name}`)
-				.category__name
-					h2 #{cat.name}
+	if categories.length > 0
+		.categories.wrapper__content
+			//- pre= h.dump(categories)
+			each cat, i in categories
+				a(href=`/categories/${cat.slug}` class=`category category--${i+1} icon__pattern--${cat.slug}`)
+					.category__icon
+						img(src=`${cat.icon}` alt=`${cat.name}`)
+					.category__name
+						h2 #{cat.name}
 		
 

@@ -27,9 +27,10 @@ block content
 					option(value="distance-desc") Miles (high-low)
 		.container__search
 			+search()
-	.places.wrapper__content
-		each place, i in places
-			+card-category(place, i)
+	if places.length > 0
+		.places.wrapper__content
+			each place, i in places
+				+card-category(place, i)
 	+pagination(page, pages, count, paginationLinkUrl, queryString)
 		
 
