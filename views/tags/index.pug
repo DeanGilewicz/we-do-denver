@@ -15,6 +15,9 @@ block content
 		a(href="/categories" class="button button__visit--categories") View Categories
 	.container__tags
 		ul.tags
+			li.tag
+				a.tag__link(href='/tags' class=( typeof tag === 'undefined' ? 'tag__link--active' : ''))
+					span.tag__text All
 			each t in tags
 				li.tag
 					a.tag__link(href=`/tags/${t._id}` class=(t._id === tag ? 'tag__link--active' : ''))
