@@ -4,6 +4,7 @@ html {
 
 body {
 	min-height: 100%;
+	background-color: $gray_light;
 }
 
 form input,
@@ -123,7 +124,7 @@ form label {
 	}
 
 	&:not(:disabled) {
-		background-color: #ffffff;
+		background-color: $white;
 	}
 }
 
