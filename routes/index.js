@@ -130,6 +130,6 @@ router.post('/place/:id/visit/:visitId',
 
 
 /* API */
-router.get('/api/search', catchErrors(placesController.searchPlaces));
+// router.get('/api/search', catchErrors(placesController.searchPlaces));
 
 module.exports = router;

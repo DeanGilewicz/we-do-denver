@@ -98,15 +98,15 @@ exports.createPlace = async (req, res) => {
 	res.redirect('/places');
 };
 
-exports.searchPlaces = async (req, res) => {
-	const places = await Place.find({
-		$text: {
-			$search: req.query.q
-		}
-	}, {
-		score: { $meta: 'textScore' }
-	}).sort({
-		score: { $meta: 'textScore' }
-	});
-	res.json(places);
-};
+// exports.searchPlaces = async (req, res) => {
+// 	const places = await Place.find({
+// 		$text: {
+// 			$search: req.query.q
+// 		}
+// 	}, {
+// 		score: { $meta: 'textScore' }
+// 	}).sort({
+// 		score: { $meta: 'textScore' }
+// 	});
+// 	res.json(places);
+// };

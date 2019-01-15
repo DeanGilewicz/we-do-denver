@@ -20,11 +20,26 @@ header.header__main {
 	nav.main {
 		display: flex;
 		align-items: center;
+
+		.link,
+		.divider {
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-size: 1.5rem;
+		}
 	}
 
 	.authenticate {
 		display: flex;
 		align-items: center;
+
+		.link,
+		.divider {
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			font-size: 1.5rem;
+		}
+
 	}
 
 }

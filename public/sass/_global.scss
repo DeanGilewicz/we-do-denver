@@ -18,16 +18,20 @@ form textarea {
 	font-size: 2rem;
 	color: $black;
 
-	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	&::-webkit-input-placeholder {
+		/* Chrome/Opera/Safari */
 		color: $black;
 	}
-	&::-moz-placeholder { /* Firefox 19+ */
+	&::-moz-placeholder {
+		/* Firefox 19+ */
 		color: $black;
 	}
-	&:-ms-input-placeholder { /* IE 10+ */
+	&:-ms-input-placeholder {
+		/* IE 10+ */
 		color: $black;
 	}
-	&:-moz-placeholder { /* Firefox 18- */
+	&:-moz-placeholder {
+		/* Firefox 18- */
 		color: $black;
 	}
 }
@@ -35,9 +39,10 @@ form textarea {
 form select {
 	-webkit-appearance: none;
 	-webkit-border-radius: 0;
+	border-radius: 0;
 	background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'><path fill='#444' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'></path></svg>");
-    background-position: 100% 50%;
-    background-repeat: no-repeat;
+	background-position: 100% 50%;
+	background-repeat: no-repeat;
 }
 
 .container__sort {
@@ -46,18 +51,18 @@ form select {
 }
 
 .sort__category select {
-    margin: 0;
-    width: 200px;
+	margin: 0;
+	width: 200px;
 }
 
 .sort__places select {
-    margin: 0;
-    width: 200px;
+	margin: 0;
+	width: 200px;
 }
 
 .sort__visits select {
-    margin: 0;
-    width: 200px;
+	margin: 0;
+	width: 200px;
 }
 
 form label {
@@ -69,7 +74,7 @@ form label {
 .form__input--image-wrapper {
 	display: inline-block;
 	overflow-y: hidden;
-	
+
 	.form__input--image {
 		display: none;
 	}
@@ -83,7 +88,6 @@ form label {
 		border: 1px solid $black;
 		text-align: center;
 	}
-
 }
 
 .form__image--container {
@@ -101,14 +105,14 @@ form label {
 }
 
 .wrapper__content {
-	padding: $spacing*1.4 $spacing*1.6;
+	padding: $spacing * 1.4 $spacing * 1.6;
 
 	@media only screen and (min-width: $medium) {
-		padding: $spacing*1.6 $spacing*2;
+		padding: $spacing * 1.6 $spacing * 2;
 	}
 
 	@media only screen and (min-width: $large) {
-		padding: $spacing*1.8 $spacing*2.4;
+		padding: $spacing * 1.8 $spacing * 2.4;
 	}
 }
 
@@ -119,9 +123,9 @@ form label {
 	color: $black;
 	// box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
 
-	&:disabled {
-		
-	}
+	// &:disabled {
+
+	// }
 
 	&:not(:disabled) {
 		background-color: $white;
@@ -158,5 +162,3 @@ form label {
 // 	padding: 10px 0.5rem;
 // 	text-align: center;
 // }
-
-

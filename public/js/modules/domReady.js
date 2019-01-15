@@ -1,5 +1,5 @@
 import CardActions from './card';
-import axios from 'axios';
+// import axios from 'axios';
 
 const domReady = callback => {
 	"use strict";
