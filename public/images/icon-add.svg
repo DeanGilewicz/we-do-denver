@@ -1,1 +1,3 @@
-<svg id="7cd1cd4d-9fda-4be9-9baa-c09de678bdcc" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 78"><title>icon-add</title><path d="M44,11V44H11V56H44V89H56V56H89V44H56V11Z" transform="translate(-11 -11)"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-add">
+	<path class="secondary" fill-rule="evenodd" d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"/>
+</svg>

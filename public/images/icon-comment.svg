@@ -1,10 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-<style type="text/css">
-	.st0{stroke:#FFFFFF;stroke-width:10;stroke-miterlimit:10;}
-</style>
-<title>07</title>
-<path class="st0" d="M88,15.8H12v57h25.2L50,84.2l12.8-11.4H88V15.8z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-chat-group-alt">
+	<rect width="16" height="13" x="2" y="2" class="secondary" rx="2"/>
+	<path class="primary" d="M6 16V8c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v13a1 1 0 0 1-1.7.7L16.58 18H8a2 2 0 0 1-2-2z"/>
 </svg>
