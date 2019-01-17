@@ -1,7 +1,14 @@
 header.header__main {
-	display: flex;
-	justify-content: space-between;
 	background-color: $black;
+
+	@media (min-width: $medium__large) {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	@media (min-width: $large) {
+
+	}
 	
 	a,
 	.divider {
@@ -18,8 +25,12 @@ header.header__main {
 	}
 
 	nav.main {
-		display: flex;
-		align-items: center;
+		text-align: center;
+
+		@media (min-width: $medium__large) {
+			display: flex;
+			align-items: center;
+		}
 
 		.link,
 		.divider {
@@ -27,14 +38,23 @@ header.header__main {
 			letter-spacing: 1px;
 			font-size: 1.5rem;
 		}
+
 	}
 
 	.authenticate {
-		display: flex;
-		align-items: center;
+		text-align: center;
+		margin-top: 20px;
+
+		@media (min-width: $medium__large) {
+			display: flex;
+			align-items: center;
+			margin-top: 0;
+		}
 
 		.link,
 		.divider {
+			display: inline-block;
+			vertical-align: middle;
 			text-transform: uppercase;
 			letter-spacing: 1px;
 			font-size: 1.5rem;
