@@ -41,7 +41,10 @@ mixin card-single(place = {})
 					img(src="/images/icon-update.svg" alt="save address")
 		div
 			form(action="" class="card__tags")
-				label tags
+				if tags
+					label tags
+				else
+					label no tags - click edit icon to add
 				#tag__container
 					each tag, i in place.tags
 						input(class="form__input form__input--tag" name=`tag` value=`${tag}` data-input="tag" disabled)
@@ -57,25 +60,25 @@ mixin card-single(place = {})
 					img(src="/images/icon-add.svg" alt="add tags")
 		.card__details
 			.card__points
-				img(src="/images/icon-rating.svg" alt="rating icon")
+				//- img(src="/images/icon-rating.svg" alt="rating icon")
 				<h3>#{place.rating} pts</h3>
 			.card__visits
-				img(src="/images/icon-visits.svg" alt="visits icon")
+				//- img(src="/images/icon-visits.svg" alt="visits icon")
 				<h3>#{place.visits.length} visits</h3>
 			.card__cost
-				img(src="/images/icon-cost.svg" alt="cost icon")
+				//- img(src="/images/icon-cost.svg" alt="cost icon")
 				<h3>#{place.cost} cost</h3>
 			.card__comments
-				img(src="/images/icon-comment.svg" alt="comment icon")
+				//- img(src="/images/icon-comment.svg" alt="comment icon")
 				- const numOfComments = place.visits.filter( (visit) => visit.comment );
 				- const commentText = ( numOfComments.length == 1 ) ? 'comment' : 'comments';
 				<h3>#{numOfComments.length} #{commentText}</h3>
 			.card__delete
 				form(action=`/place/${place._id}` method="POST" enctype="application/x-www-form-urlencoded")
 					input(type="hidden" name="_method" value="DELETE")
+					<h3>Delete Place</h3>
 					button(class="delete")
 						img(src="/images/icon-delete.svg" alt="delete visit" class="icon__delete")
-					<h3>Delete Place</h3>
 		.card__actions
 			a(href=`/place/${place._id}/visits` class="button button--cta") Visits
 	.ajax__response

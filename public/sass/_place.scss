@@ -5,6 +5,7 @@
 	padding: 2rem 3rem;
 
 	label {
+		margin-bottom: 5px;
 		text-transform: uppercase;
 		text-align: left;
 	}
@@ -68,6 +69,10 @@
 		}
 	}
 
+	.form__image-container {
+		margin-top: 10px;
+	}
+
 	.card__name-container {
 		position: relative;
 		// padding: 50px 1rem;
@@ -120,7 +125,7 @@
 		}
 		
 		h3 {
-			margin: 0 0 0 1rem;
+			margin: 0;
 			vertical-align: middle;
 		}
 		
@@ -130,9 +135,19 @@
 		
 	}
 
+	.card__visits img,
+	.card__comments img {
+		max-width: 32px;
+	}
+
+	.card__cost img {
+		max-width: 44px;
+	}
+
 	.card__image-container {
 		position: relative;
 		padding: 50px 0;
+		background-color: $yellow_dark;
 	}
 
 	.form__input--image-wrapper {
@@ -140,20 +155,21 @@
 	}
 
 	.card__delete {
+		text-align: right;
 		img {
 			width: 36px;
 			vertical-align: middle;
 		}
 		h3 {
 			display: inline-block;
-		    margin: 0 0 0 1rem;
+		  margin: 0 1rem 0 0;
 			vertical-align: middle;
 			text-transform: uppercase;
 			font-size: 2rem;
 		}
 		button.delete {
 			border: none;
-		    padding: 0;
+		  padding: 0;
 			background-color: transparent;
 		}
 	}
