@@ -78,10 +78,10 @@ exports.reset = async (req, res) => {
 		resetPasswordToken: req.params.token,
 		resetPasswordExpires: { $gt: Date.now() }
 	});
-	// if(!user) {
-	// 	req.flash('error', 'Password reset token is invalid or expired.');
-	// 	return res.redirect('/login');
-	// }
+	if(!user) {
+		req.flash('error', 'Password reset token is invalid or expired.');
+		return res.redirect('/login');
+	}
 	// if there is a user - show reset password form
 	res.render('user/reset-password', {pageTitle: 'Reset Password'} );
 };
