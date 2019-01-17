@@ -1,23 +1,15 @@
-// @font-face {
-//     font-family: 'panama';
-//     src: url('/fonts/panama-bold-webfont.woff2') format('woff2'),
-//          url('/fonts/panama-bold-webfont.woff') format('woff');
-//     font-weight: normal;
-//     font-style: normal;
-// }
-
 html {
 	font-size: 10px;
 }
 
 body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-size: 1rem;
 	color: $black;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
-	// font-family: 'Panama';
 	font-weight: 600;
 	letter-spacing: 2px;
 }
