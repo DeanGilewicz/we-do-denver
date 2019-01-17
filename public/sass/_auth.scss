@@ -1,0 +1,43 @@
+.container__login,
+.container__register,
+.container__password-forgot,
+.container__password-reset,
+.container__account {
+	max-width: 400px;
+	margin: 50px auto 0;
+	padding: 20px;
+	background-color: $gray_middle;
+
+	h1 {
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	form {
+
+		label {
+			margin-top: 10px;
+		}
+
+		input {
+			width: 100%;
+		}
+
+		input[type="submit"] {
+			margin-top: 20px;
+			background-color: $blue;
+			color: $white;
+			cursor: pointer;
+		}
+
+	}
+
+	.login__forgot,
+	.login__trigger {
+		margin-top: 10px;
+		text-align: right;
+		text-transform: uppercase;
+		font-size: 14px;
+	}
+
+}

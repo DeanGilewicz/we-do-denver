@@ -3,13 +3,8 @@ extends ../layout
 include ../mixins/auth-form
 
 block content
-	.hero
-		.hero__bg.hero__bg--home
-			h1 Login
-	.container__actions
-		a(href="/" class="button") Home
 	.container__login
-		+auth-form('login', 'Log In')
-		a(href="/forgot-password") Forgot Password?
-		
-
+		h1 Login
+		+auth-form('login', 'Go')
+		div.login__forgot
+			a(href="/forgot-password") Forgot Password?

@@ -1,7 +1,7 @@
 mixin auth-form(endPoint, submitVal, passwordConfirm)
 	form(action=`/${endPoint}` method="POST")
 		label(for="name") Name
-		input(type="text" name="name")
+		input(type="text" name="name" id="name")
 		label(for="email") Email
 		input(type="email" name="email" id="email")
 		label(for="password") Password
