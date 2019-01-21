@@ -71,7 +71,7 @@ exports.visits = async (req, res) => {
 	const queryString = ( sortBy === 'created' && orderBy === 'desc' ) ? '' : `?q=${sortBy}&s=${orderBy}`;
 
 	const page = req.params.page || 1;
-	const limit = 2;
+	const limit = 6;
 	const skip = ( page * limit ) - limit;
 	
 	const place = await Place.findById(req.params.id);

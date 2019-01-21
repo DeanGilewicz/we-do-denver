@@ -37,7 +37,7 @@ exports.category = async (req, res) => {
 	const querySort = ( orderBy === 'desc' ) ? -1 : 1;
 
 	const page = req.params.page || 1;
-	const limit = 4;
+	const limit = 9;
 	const skip = ( page * limit ) - limit;
 
 	let placesPromise;

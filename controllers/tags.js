@@ -6,7 +6,7 @@ exports.index = async (req, res) => {
 	const tag = req.params.tag;
 
 	const page = req.params.page || 1;
-	const limit = 4;
+	const limit = 9;
 	const skip = ( page * limit ) - limit;
 
 	const tagQuery = tag || { $exists: true }
