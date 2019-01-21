@@ -13,13 +13,13 @@ const transport = nodemailer.createTransport({
 	}
 });
 
-// Test Send
+// Test Send - upon starting server
 // transport.sendMail({
-// 	from: "Dean Gilewicz <gilewiczd@gmail.com>",
+// 	from: "author <author@gmail.com>",
 // 	to: "mrmrs@example.com",
 // 	subject: "Just trying things out",
 // 	html: "This <strong>works</strong> great!",
-// 	text: "This is great!"
+// 	text: "This works great!"
 // });
 
 const generateHtml = (filename, options = {}) => {
@@ -32,7 +32,7 @@ exports.send = async (options) => {
 	const html = generateHtml(options.filename, options);
 	const text = htmlToText.fromString(html);
 	const mailOptions = {
-		from: 'Dean Gilewicz <gilewiczd@gmail.com>',
+		from: 'We Do Denver <wedodenver@gmail.com>',
 		to: options.user.email,
 		subject: options.subject,
 		html,
