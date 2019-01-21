@@ -1,42 +1,35 @@
-/* mixins */
-// @mixin oneBlockSize {
-// 	.place__name {
-// 		order: -1;
-// 		font-size: 12px;
-// 	}
-// 	.place__overview {
-// 		font-size: 12px;
-// 		img {
-// 			display: none;
-// 			width: 30px;
-// 			height: 30px;
-// 		}
-// 		h3,h4 {
-// 			display: inline-block;
-// 			margin: 6px 0;
-// 		}
-// 		h3 {
-// 			margin-bottom: 0;
-// 		}
-// 	}
-// 	.place__cta .button {
-// 		font-size: 12px;
-// 	}
-// }
-
 .container__actions {
-	display: flex;
-	justify-content: space-between;
 	background-color: $gray_dark;
 
-	.container__search {
-		display: inline-block;
+	@media (min-width: $medium__large) {
+		display: flex;
+		justify-content: space-between;
 	}
 
-	.search__input {
-		margin: 0;
-		background-color: $white;
+	a {
+		width: 100%;
+
+		@media (min-width: $medium__large) {
+			width: auto;
+		}
+
+		&:nth-child(2) {
+			margin-top: 1rem;
+			@media (min-width: $medium__large) {
+				margin-top: 0;
+			}
+		}
+
 	}
+
+	// .container__search {
+	// 	display: inline-block;
+	// }
+
+	// .search__input {
+	// 	margin: 0;
+	// 	background-color: $white;
+	// }
 }
 
 .place__hero {
@@ -133,10 +126,12 @@
 /* FLOAT FLEXBOX CSS GRID - Layout */
 
 .places {
-	/* flexbox */
-	display: flex;
-	flex-wrap: wrap;
-	// justify-content: space-between;
+
+	@media (min-width: $medium__large) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
 }
 
 .places::after {
@@ -150,7 +145,7 @@
 	border: 1px solid $gray_dark;
 	background-color: $white;
 
-	@media only screen and (min-width: 640px) {
+	@media (min-width: $medium__large) {
 		float: left;
 		width: 46%;
 		margin: 0 4% 30px;

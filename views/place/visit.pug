@@ -5,8 +5,14 @@ include ../mixins/card-visit-edit
 block content
 	//- pre= h.dump(place)
 	//- pre= h.dump(visit)
-	.hero
-		.hero__bg.hero__bg--home
-			h1 Visit: #{pageTitle}
+	.hero.icon__pattern--places
+		.hero__content
+			.padded-multiline
+				h1.title
+					span.twist.twist--left
+						h1 
+							span Edit Visit: 
+							| #{pageTitle}
+			//- h1 Visit: #{pageTitle}
 	.container__place
 		+card-visit-edit(place, visit)

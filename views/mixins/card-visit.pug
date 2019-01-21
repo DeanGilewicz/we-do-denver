@@ -6,18 +6,18 @@ mixin card-visit(place = {}, visit = {}, i)
 		.card__visit--date
 			h4 #{visit.prettyCreated}
 		.card__visit--rating
-			h5 Experience
+			h5 Experience:
 				span  #{visit.rating}
 		.card__visit--cost
-			h5 Cost
+			h5 Cost:
 				span  #{visit.cost}
 		-if( visit.comment ) {
 			.card__visit--comment
-				h5 Comment
+				h5 Comment:
 				p #{visit.comment}
 		- } else {
 			.card__visit--comment
-				h5 Comment
+				h5 Comment:
 				p Currently no comment
 		- }
 		.card__actions

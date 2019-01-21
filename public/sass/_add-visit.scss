@@ -1,13 +1,36 @@
 .card__visit__edit {
 	max-width: 600px;
-	margin: 0 auto;
-	background-color: $yellow;
+	margin: 2rem auto;
 	padding: 2rem 3rem;
+	background-color: $yellow;
 
 	.card__actions {
-		display: flex;
-		justify-content: space-between;
-		padding-top: 4rem;
+		padding-top: 2rem;
+
+		@media (min-width: $medium__large) {
+			display: flex;
+			justify-content: space-between;
+			padding-top: 4rem;
+		}
+
+		.button {
+			width: 100%;
+
+			@media (min-width: $medium__large) {
+				width: auto;
+			}
+
+		}
+
+		.button:nth-child(2) {
+			margin-top: 1rem;
+
+			@media (min-width: $medium__large) {
+				margin-top: 0;
+			}
+
+		}
+
 	}
 	
 }

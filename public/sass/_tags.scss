@@ -1,5 +1,6 @@
 .container__tags {
 	padding: 14px 20px;
+
 	.tags {
 		display: flex;
 		flex-wrap: wrap;
@@ -7,10 +8,12 @@
 		margin: 0;
 		padding: 0;
 	}
+
 	.tag {
 		margin: 0.5rem;
 		padding: 0;
 	}
+
 	.tag__link {
 		display: inline-block;
 		border: 2px solid $black;
@@ -19,14 +22,15 @@
 		background-color: $black;
 		color: $white;
 	}
+
 	.tag__link--active {
 		border: 2px solid $black;
 		background-color: $white;
 		color: $black;
 	}
+
 	.container__places {
-		display: flex;
-		flex-wrap: wrap;
-		padding: 14px 0.5rem;
+		margin-top: 2rem;
 	}
+
 }

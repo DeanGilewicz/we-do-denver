@@ -41,7 +41,7 @@ mixin card-single(place = {})
 					img(src="/images/icon-update.svg" alt="save address")
 		div
 			form(action="" class="card__tags")
-				if tags
+				if place.tags
 					label tags
 				else
 					label no tags - click edit icon to add

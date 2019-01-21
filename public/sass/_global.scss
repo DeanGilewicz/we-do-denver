@@ -46,23 +46,26 @@ form select {
 }
 
 .container__sort {
-	margin-left: auto;
-	padding-right: 2rem;
+	margin-top: 1rem;
+	
+	@media (min-width: $medium__large) {
+		margin-top: 0;
+		margin-left: auto;
+		// padding-right: 2rem;
+	}
+
 }
 
+.sort__places select,
+.sort__visits select,
 .sort__category select {
 	margin: 0;
-	width: 200px;
-}
+	width: 100%;
 
-.sort__places select {
-	margin: 0;
-	width: 200px;
-}
-
-.sort__visits select {
-	margin: 0;
-	width: 200px;
+	@media (min-width: $medium__large) {
+		width: 200px;
+	}
+	
 }
 
 form label {
@@ -73,6 +76,7 @@ form label {
 
 .form__input--image-wrapper {
 	display: inline-block;
+	margin-top: 1rem;
 	overflow-y: hidden;
 
 	.form__input--image {
@@ -92,8 +96,10 @@ form label {
 
 .form__image--container {
 	display: none;
+	margin-top: 1rem;
 
 	.image__preview {
+		width: 100%;
 		max-width: 300px;
 		border: 1px solid $black;
 	}
