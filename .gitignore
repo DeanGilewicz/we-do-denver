@@ -1,7 +1,6 @@
 variables.env
 variables.env.now
 /node_modules/**
-/public/dist/**
 *.log
 .idea
 .DS_Store
