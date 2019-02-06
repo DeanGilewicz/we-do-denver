@@ -3,19 +3,19 @@ const User = mongoose.model('User');
 const promisify = require('es6-promisify');
 
 exports.login = (req, res) => {
-	res.render('user/login');
+	res.render('user/login', { pageTitle: "Login" });
 };
 
 exports.register = (req, res) => {
-	res.render('user/register');
+	res.render('user/register', { pageTitle: "Register" });
 };
 
 exports.account = (req, res) => {
-	res.render('user/account', {pageTitle: 'My Account'} );
+	res.render('user/account', { pageTitle: 'My Account' } );
 };
 
 exports.forgotPassword = (req, res) => {
-	res.render('user/forgot-password', {pageTitle: 'Forgot Password'} );
+	res.render('user/forgot-password', { pageTitle: 'Forgot Password' } );
 };
 
 exports.updateAccount = async (req, res) => {
