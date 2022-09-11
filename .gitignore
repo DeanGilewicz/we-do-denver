@@ -1,6 +1,6 @@
 variables.env
 variables.env.now
-/node_modules/**
+node_modules
 *.log
 .idea
 .DS_Store
