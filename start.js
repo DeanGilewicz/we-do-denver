@@ -14,7 +14,7 @@ require("dotenv").config({ path: "variables.env" });
 
 // Connect to our Database and handle any bad connections
 mongoose.connect(
-	process.env.DATABASE,
+	process.env.DATABASE_URL,
 	{
 		useCreateIndex: true,
 		useFindAndModify: false,
