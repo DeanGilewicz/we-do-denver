@@ -64,7 +64,7 @@ app.use(
 		key: process.env.KEY,
 		resave: false,
 		saveUninitialized: false,
-		store: MongoStore.create({ mongoUrl: process.env.DATABASE }),
+		store: MongoStore.create({ mongoUrl: process.env.DATABASE_URL }),
 	})
 );
 
