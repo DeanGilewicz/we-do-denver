@@ -1,133 +1,189 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const { catchErrors } = require('../handlers/errorHandlers');
+const { catchErrors } = require("../handlers/errorHandlers");
 
-const homeController = require('../controllers/index');
-const placesController = require('../controllers/places');
-const placeController = require('../controllers/place');
-const categoriesController = require('../controllers/categories');
-const tagsController = require('../controllers/tags');
+const homeController = require("../controllers/index");
+const placesController = require("../controllers/places");
+const placeController = require("../controllers/place");
+const categoriesController = require("../controllers/categories");
+const tagsController = require("../controllers/tags");
 
-const userController = require('../controllers/user');
-const authController = require('../controllers/authController');
+const userController = require("../controllers/user");
+const authController = require("../controllers/authController");
 
 /* NOT LOGGED IN */
 
-router.get('/', homeController);
+router.get("/", homeController);
 
-router.get('/login', userController.login);
-router.post('/login', authController.login);
+router.get("/login", userController.login);
+router.post("/login", authController.login);
 
-router.get('/logout', authController.logout);
+router.get("/logout", authController.logout);
 
-router.get('/register', userController.register);
+router.get("/register", userController.register);
 // 1. validate registration data - 2. register user - 3. log user in
-router.post('/register', 
+router.post(
+	"/register",
 	userController.validateRegister,
 	userController.createUser,
 	catchErrors(authController.registerEmail),
 	authController.login
 );
 
-router.get('/forgot-password', userController.forgotPassword);
-router.post('/forgot-password', catchErrors(authController.forgot));
+router.get("/forgot-password", userController.forgotPassword);
+router.post("/forgot-password", catchErrors(authController.forgot));
 
-router.get('/account/reset/:token', catchErrors(authController.reset));
-router.post('/account/reset/:token',
+router.get("/account/reset/:token", catchErrors(authController.reset));
+router.post(
+	"/account/reset/:token",
 	authController.confirmedPasswords,
-	catchErrors(authController.updatePassword));
+	catchErrors(authController.updatePassword)
+);
 
 /* MUST BE LOGGED IN */
 
-router.get('/account', authController.isLoggedIn, userController.account);
-router.post('/account', authController.isLoggedIn, catchErrors(userController.updateAccount));
-
-router.get('/categories',
+router.get("/account", authController.isLoggedIn, userController.account);
+router.post(
+	"/account",
 	authController.isLoggedIn,
-	catchErrors(categoriesController.index));
+	catchErrors(userController.updateAccount)
+);
 
-router.get('/categories/:category',
+router.get(
+	"/categories",
 	authController.isLoggedIn,
-	catchErrors(categoriesController.category));
+	catchErrors(categoriesController.index)
+);
 
-router.get('/categories/:category/page/:page',
+router.get(
+	"/categories/:category",
 	authController.isLoggedIn,
-	catchErrors(categoriesController.category));
+	catchErrors(categoriesController.category)
+);
 
-router.get('/tags',
+router.get(
+	"/categories/:category/page/:page",
 	authController.isLoggedIn,
-	catchErrors(tagsController.index));
+	catchErrors(categoriesController.category)
+);
 
-router.get('/tags/page/:page',
+router.get(
+	"/tags",
 	authController.isLoggedIn,
-	catchErrors(tagsController.index));
+	catchErrors(tagsController.index)
+);
 
-router.get('/tags/:tag',
+router.get(
+	"/tags/page/:page",
 	authController.isLoggedIn,
-	catchErrors(tagsController.index));
+	catchErrors(tagsController.index)
+);
 
-router.get('/tags/:tag/page/:page',
+router.get(
+	"/tags/:tag",
 	authController.isLoggedIn,
-	catchErrors(tagsController.index));
+	catchErrors(tagsController.index)
+);
 
-router.get('/places', authController.isLoggedIn, catchErrors(placesController.index));
-router.get('/places/page/:page', authController.isLoggedIn, catchErrors(placesController.index));
+router.get(
+	"/tags/:tag/page/:page",
+	authController.isLoggedIn,
+	catchErrors(tagsController.index)
+);
 
-router.get('/places/add-place', authController.isLoggedIn, placesController.addPlace);
+router.get(
+	"/places",
+	authController.isLoggedIn,
+	catchErrors(placesController.index)
+);
+router.get(
+	"/places/page/:page",
+	authController.isLoggedIn,
+	catchErrors(placesController.index)
+);
 
-router.post('/places/add-place',
+router.get(
+	"/places/add-place",
+	authController.isLoggedIn,
+	placesController.addPlace
+);
+
+router.post(
+	"/places/add-place",
 	authController.isLoggedIn,
 	placesController.upload,
 	catchErrors(placesController.resize),
-	catchErrors(placesController.createPlace));
+	catchErrors(placesController.createPlace)
+);
 
-router.get('/place/:id', 
+router.get(
+	"/place/:id",
 	authController.isLoggedIn,
-	catchErrors(placeController.place));
+	catchErrors(placeController.place)
+);
 
-router.post('/place/:id/update-image',
+router.post(
+	"/place/:id/update-image",
 	authController.isLoggedIn,
 	placesController.upload,
 	catchErrors(placesController.resize),
-	catchErrors(placeController.updateImage));
+	catchErrors(placeController.updateImage)
+);
 
-router.delete('/place/:id',
+router.delete(
+	"/place/:id",
 	authController.isLoggedIn,
-	catchErrors(placeController.deletePlace));
+	catchErrors(placeController.deletePlace)
+);
 
-router.get('/place/:id/visits',
+router.get(
+	"/place/:id/visits",
 	authController.isLoggedIn,
-	catchErrors(placeController.visits));
+	catchErrors(placeController.visits)
+);
 
-router.get('/place/:id/visits/page/:page',
+router.get(
+	"/place/:id/visits/page/:page",
 	authController.isLoggedIn,
-	catchErrors(placeController.visits));
+	catchErrors(placeController.visits)
+);
 
-router.get('/place/:id/add-visit',
+router.get(
+	"/place/:id/add-visit",
 	authController.isLoggedIn,
-	catchErrors(placeController.addVisit));
+	catchErrors(placeController.addVisit)
+);
 
-router.post('/place/:id/add-visit',
+router.post(
+	"/place/:id/add-visit",
 	authController.isLoggedIn,
-	catchErrors(placeController.createVisit));
+	catchErrors(placeController.createVisit)
+);
 
-router.delete('/place/:id/visit/:visitId',
+router.delete(
+	"/place/:id/visit/:visitId",
 	authController.isLoggedIn,
-	catchErrors(placeController.deleteVisit));
+	catchErrors(placeController.deleteVisit)
+);
 
-router.post('/place/:id/update-place',
+router.post(
+	"/place/:id/update-place",
 	authController.isLoggedIn,
-	catchErrors(placeController.updatePlace));
+	catchErrors(placeController.updatePlace)
+);
 
-router.get('/place/:id/visit/:visitId',
+router.get(
+	"/place/:id/visit/:visitId",
 	authController.isLoggedIn,
-	catchErrors(placeController.visit));
+	catchErrors(placeController.visit)
+);
 
-router.post('/place/:id/visit/:visitId',
+router.post(
+	"/place/:id/visit/:visitId",
 	authController.isLoggedIn,
-	catchErrors(placeController.updateVisit));
-
+	catchErrors(placeController.updateVisit)
+);
 
 /* API */
 // router.get('/api/search', catchErrors(placesController.searchPlaces));

@@ -1,4 +1,5 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /*
   webpack sees every file as a module.
@@ -36,7 +37,7 @@ const postcss = {
 // this is our sass/css loader. It handles files that are require('something.scss')
 const styles = {
 	test: /\.(scss|css)$/,
-	use: ["style-loader", "css-loader", postcss, "sass-loader"],
+	use: [MiniCssExtractPlugin.loader, "css-loader", postcss, "sass-loader"],
 };
 
 // put it all together
@@ -62,10 +63,10 @@ const config = {
 	},
 	// finally we pass it an array of our plugins - uncomment if you want to uglify
 	// plugins: [uglify]
-	// plugins: [
-	// here is where we tell it to output our css to a separate file
-	// new MiniCssExtractPlugin(),
-	// ],
+	plugins: [
+		// here is where we tell it to output our css to a separate file
+		new MiniCssExtractPlugin(),
+	],
 };
 // webpack can be funny about some packages using a soon to be deprecated API so we quieten it.
 // process.noDeprecation = true;

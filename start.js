@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 // Make sure we are running node 16+
 const [major] = process.versions.node.split(".").map(parseFloat);
-if (major < 16) {
+if (major < 18) {
 	console.log(
 		"You are on an older version of node and need to upgrade. Please go to nodejs.org and download version 16 or greater."
 	);

@@ -8,10 +8,9 @@ const expressValidator = require("express-validator");
 
 const bodyParser = require("body-parser");
 
-const mongoose = require("mongoose");
-const MongoStore = require("connect-mongo")(session);
+const MongoStore = require("connect-mongo");
 
-const promisify = require("es6-promisify");
+const { promisify } = require("es6-promisify");
 const flash = require("connect-flash");
 
 const routes = require("./routes/index");
@@ -65,7 +64,7 @@ app.use(
 		key: process.env.KEY,
 		resave: false,
 		saveUninitialized: false,
-		store: new MongoStore({ mongooseConnection: mongoose.connection }),
+		store: MongoStore.create({ mongoUrl: process.env.DATABASE }),
 	})
 );
 

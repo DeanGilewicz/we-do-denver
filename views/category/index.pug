@@ -14,7 +14,7 @@ block content
 		.container__sort
 			form#js-sort-category.sort__category
 				select(name="sort")
-					option(value="") Sort 
+					option(value="") Sort
 					option(value="cost-asc") Cost (low-high)
 					option(value="cost-desc") Cost (high-low)
 					option(value="rating-asc") Rating (low-high)
@@ -28,4 +28,4 @@ block content
 		each place in places
 			+card-category(place)
 	+pagination(page, pages, count, paginationLinkUrl, queryString)
-		
+
