@@ -20,8 +20,6 @@ const errorHandlers = require("./handlers/errorHandlers");
 
 const passport = require("passport");
 
-// const cookieParser = require('cookie-parser');
-
 require("./handlers/passport");
 
 // create our Express app
@@ -34,13 +32,13 @@ app.set("view engine", "pug"); // we use the engine pug, mustache or EJS work gr
 // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
 app.use(express.static(path.join(__dirname, "public")));
 
-// Takes the raw requests and turns them into usable properties on req.body
+// takes the raw requests and turns them into usable properties on req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Enable HTML Forms to post HTTP DELETE and PUT
+// enable HTML forms to post HTTP DELETE and PUT
 app.use(
-	methodOverride(function(req, res) {
+	methodOverride(function (req, res) {
 		if (req.body && typeof req.body === "object" && "_method" in req.body) {
 			// look in urlencoded POST bodies and delete it
 			const method = req.body._method;
@@ -50,14 +48,11 @@ app.use(
 	})
 );
 
-// Exposes a bunch of methods for validating data. Used heavily on auth.validateRegister
+// exposes a bunch of methods for validating data. Used heavily on auth.validateRegister
 app.use(expressValidator());
 
-// populates req.cookies with any cookies that came along with the request
-// app.use(cookieParser());
-
-// Sessions allow us to store data on visitors from request to request
-// This keeps users logged in and allows us to send flash messages
+// sessions allow us to store data on visitors from request to request
+// this keeps users logged in and allows us to send flash messages
 app.use(
 	session({
 		secret: process.env.SECRET,
@@ -68,11 +63,11 @@ app.use(
 	})
 );
 
-// // Passport JS is what we use to handle our logins
+// Passport JS is what we use to handle our logins
 app.use(passport.initialize());
 app.use(passport.session());
 
-// // The flash middleware let's us use req.flash('error', 'oh no!'), which will then pass that message to the next page the user requests
+// the flash middleware let's us use req.flash('error', 'oh no!'), which will then pass that message to the next page the user requests
 app.use(flash());
 
 // pass variables to our templates + all requests
@@ -90,10 +85,10 @@ app.use((req, res, next) => {
 	next();
 });
 
-// After the above middleware, we can now handle our own routes
+// after the above middleware, we can now handle our own routes
 app.use("/", routes);
 
-// If user requested route not handled with our routes, we 404 them and forward to error handler
+// if user requested route not handled with our routes, we 404 them and forward to error handler
 app.use(errorHandlers.notFound);
 
 // we now see if these errors are just validation errors
@@ -101,7 +96,7 @@ app.use(errorHandlers.flashValidationErrors);
 
 // if not a validation error then this is a really bad error we didn't expect
 if (app.get("env") === "development") {
-	/* Development Error Handler - Prints stack trace */
+	// development error handler - prints stack trace
 	app.use(errorHandlers.developmentErrors);
 }
 

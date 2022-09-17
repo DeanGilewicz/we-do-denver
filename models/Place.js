@@ -96,7 +96,7 @@ placeSchema.index({
 	distance: "number",
 });
 
-placeSchema.pre("save", async function(next) {
+placeSchema.pre("save", async function (next) {
 	// rating
 	if (
 		typeof this.rating !== "undefined" &&
@@ -136,7 +136,6 @@ placeSchema.pre("save", async function(next) {
 
 	// name and slug
 	if (this.isModified("name")) {
-		// console.log("NAME IS MODIFIED");
 		this.slug = slug(this.name);
 		const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, "i");
 		const placesWithSlug = await this.constructor.find({ slug: slugRegEx });
@@ -146,7 +145,6 @@ placeSchema.pre("save", async function(next) {
 	} else if (!this.isModified("name") && typeof this.slug === "undefined") {
 		// initially set the slug
 		this.slug = slug(this.name);
-		// console.log("NAME NOT MODIFIED");
 	}
 
 	// category name, category slug, category icon - TODO: make sure slugs are unique
@@ -165,7 +163,7 @@ placeSchema.pre("save", async function(next) {
 	next();
 });
 
-placeSchema.pre("findOneAndUpdate", function(next) {
+placeSchema.pre("findOneAndUpdate", function (next) {
 	// need to update slug automatically if name is modified
 	if (this.getUpdate().name) {
 		this.findOneAndUpdate({}, { $set: { slug: slug(this.getUpdate().name) } });

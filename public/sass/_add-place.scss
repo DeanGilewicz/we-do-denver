@@ -1,5 +1,4 @@
 .add__place {
-	
 	.form__add__place {
 		max-width: 600px;
 		margin: 0 auto;
@@ -22,7 +21,6 @@
 			@media (min-width: $medium__large) {
 				width: auto;
 			}
-
 		}
 
 		.button:last-of-type {
@@ -31,9 +29,6 @@
 			@media (min-width: $medium__large) {
 				margin-top: 0;
 			}
-
 		}
-
 	}
-
 }

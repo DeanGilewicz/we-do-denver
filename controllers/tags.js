@@ -52,7 +52,7 @@ exports.index = async (req, res) => {
 		return;
 	}
 
-	// /tags does not have a param like /tags/:tag
+	// tags does not have a param like /tags/:tag
 	if (!tag) {
 		res.render("tags/index", {
 			pageTitle,

@@ -14,7 +14,7 @@ exports.login = passport.authenticate("local", {
 });
 
 exports.logout = (req, res, next) => {
-	req.logout(function(err) {
+	req.logout(function (err) {
 		if (err) {
 			return next(err);
 		}
@@ -37,7 +37,6 @@ exports.forgot = async (req, res) => {
 	// see if user with email address exists
 	const user = await User.findOne({ email: req.body.email });
 	if (!user) {
-		// console.log('no user!');
 		req.flash("error", "A password reset has been mailed to you.");
 		return res.redirect("/login");
 	}
@@ -46,9 +45,7 @@ exports.forgot = async (req, res) => {
 	user.resetPasswordExpires = Date.now() + 3600000; // 1 hour from now
 	await user.save();
 	// send an email with the token
-	const resetUrl = `http://${req.headers.host}/account/reset/${
-		user.resetPasswordToken
-	}`;
+	const resetUrl = `http://${req.headers.host}/account/reset/${user.resetPasswordToken}`;
 	await mail.send({
 		user,
 		subject: "Password Reset",
@@ -64,7 +61,6 @@ exports.registerEmail = async (req, res, next) => {
 	const name = req.body.name;
 	const email = req.body.email;
 	const user = { name, email };
-	// console.log(user);
 	if (!name || !email) {
 		// don't send email just continue
 		next();

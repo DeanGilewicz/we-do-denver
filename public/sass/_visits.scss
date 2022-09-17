@@ -1,5 +1,4 @@
 .page__visits {
-
 	.container__sort {
 		margin-bottom: 1rem;
 
@@ -7,18 +6,13 @@
 			margin-bottom: 0;
 			margin-right: 1rem;
 		}
-
 	}
 
 	.container__place {
-		// padding-top: 2rem;
-		// padding-bottom: 2rem;
-
 		@media (min-width: $medium__large) {
 			display: flex;
 			flex-wrap: wrap;
 		}
-
 	}
 
 	.card__visit {
@@ -26,8 +20,8 @@
 		flex-direction: column;
 		margin-bottom: 1rem;
 		padding: 1rem 2rem;
-		box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
-		
+		box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+
 		@media (min-width: $medium__large) {
 			margin-right: 2rem;
 			max-width: 200px;
@@ -77,10 +71,8 @@
 
 		button.delete {
 			border: none;
-		    padding: 0;
+			padding: 0;
 			background-color: transparent;
 		}
-
 	}
-
 }

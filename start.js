@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-// Make sure we are running node 16+
+// Make sure we are running node 18+
 const [major] = process.versions.node.split(".").map(parseFloat);
 if (major < 18) {
 	console.log(
@@ -13,15 +13,12 @@ if (major < 18) {
 require("dotenv").config({ path: "variables.env" });
 
 // Connect to our Database and handle any bad connections
-mongoose.connect(
-	process.env.DATABASE_URL,
-	{
-		useCreateIndex: true,
-		useFindAndModify: false,
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	}
-);
+mongoose.connect(process.env.DATABASE_URL, {
+	useCreateIndex: true,
+	useFindAndModify: false,
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 mongoose.connection.on("error", (err) => {
 	console.error(`${err.message}`);

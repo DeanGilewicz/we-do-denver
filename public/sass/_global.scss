@@ -47,12 +47,11 @@ form select {
 
 .container__sort {
 	margin-top: 1rem;
-	
+
 	@media (min-width: $medium__large) {
 		margin-top: 0;
 		margin-left: auto;
 	}
-
 }
 
 .sort__places select,
@@ -64,7 +63,6 @@ form select {
 	@media (min-width: $medium__large) {
 		width: 200px;
 	}
-	
 }
 
 .sort__category {

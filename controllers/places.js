@@ -119,16 +119,3 @@ exports.createPlace = async (req, res) => {
 	req.flash("success", `You've created ${place.name}!`);
 	res.redirect("/places");
 };
-
-// exports.searchPlaces = async (req, res) => {
-// 	const places = await Place.find({
-// 		$text: {
-// 			$search: req.query.q
-// 		}
-// 	}, {
-// 		score: { $meta: 'textScore' }
-// 	}).sort({
-// 		score: { $meta: 'textScore' }
-// 	});
-// 	res.json(places);
-// };
