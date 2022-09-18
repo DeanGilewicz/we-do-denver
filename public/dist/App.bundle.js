@@ -101,7 +101,7 @@ var CardActions = /*#__PURE__*/function () {
     this.response = response;
     this.responseMessage = responseMessage;
     /* dynamic - SPA ui */
-    // copy of intial inputs - for rolling back - base reference once manipulate DOM - not modified 
+    // copy of intial inputs - for rolling back - base reference once manipulate DOM - not modified
 
     this.rollback = _toConsumableArray(this.formInputs).map(function (input) {
       return input.cloneNode(true);
@@ -110,23 +110,22 @@ var CardActions = /*#__PURE__*/function () {
     this.inputIndex = 0;
     /* events */
 
-    var wrapperElId = this.card.getAttribute('id');
-    var triggerElAttr = this.trigger.getAttribute('data-trigger');
-    var cancelElAttr = this.cancel.getAttribute('data-cancel');
-    var saveElAttr = this.save.getAttribute('data-save'); // set ref to data name for DOM els
+    var wrapperElId = this.card.getAttribute("id");
+    var triggerElAttr = this.trigger.getAttribute("data-trigger");
+    var cancelElAttr = this.cancel.getAttribute("data-cancel");
+    var saveElAttr = this.save.getAttribute("data-save"); // set ref to data name for DOM els
 
-    this.attrValue = triggerElAttr; // console.log('attrvalue', this.attrValue);
-    // set up focus event on container of mulitple inputs to keep track of last selected input
+    this.attrValue = triggerElAttr; // set up focus event on container of mulitple inputs to keep track of last selected input
 
-    if (this.formInputs.length > 0 && typeof multiInputContainer !== 'undefined') {
-      this.multiInputContainer.addEventListener('focus', function (e) {
-        var elIndex = e.target.name.split('-')[1];
+    if (this.formInputs.length > 0 && typeof multiInputContainer !== "undefined") {
+      this.multiInputContainer.addEventListener("focus", function (e) {
+        var elIndex = e.target.name.split("-")[1];
         _this.inputIndex = parseInt(elIndex, 0);
       }, true);
     } // trigger
 
 
-    this._eventDelegate("#".concat(wrapperElId), 'click', "[data-trigger=".concat(this.attrValue, "]"), function (e) {
+    this._eventDelegate("#".concat(wrapperElId), "click", "[data-trigger=".concat(this.attrValue, "]"), function (e) {
       _this._hideTrigger();
 
       _this._showCancel();
@@ -141,7 +140,7 @@ var CardActions = /*#__PURE__*/function () {
     }); // cancel
 
 
-    this._eventDelegate("#".concat(wrapperElId), 'click', "[data-cancel=".concat(this.attrValue, "]"), function (e) {
+    this._eventDelegate("#".concat(wrapperElId), "click", "[data-cancel=".concat(this.attrValue, "]"), function (e) {
       _this._resetInputValue();
 
       _this._disableInput();
@@ -158,28 +157,28 @@ var CardActions = /*#__PURE__*/function () {
 
       _this.responseMessage.textContent = "";
 
-      _this.response.classList.remove('ajax__response--error');
+      _this.response.classList.remove("ajax__response--error");
     }); // save
 
 
-    this._eventDelegate("#".concat(wrapperElId), 'click', "[data-save=".concat(this.attrValue, "]"), function (e) {
+    this._eventDelegate("#".concat(wrapperElId), "click", "[data-save=".concat(this.attrValue, "]"), function (e) {
       _this._saveInputValue();
     }); // delete
 
 
-    if (typeof this.deleteInput !== 'undefined') {
-      var deleteElAttr = this.deleteInput.getAttribute('data-delete');
+    if (typeof this.deleteInput !== "undefined") {
+      var deleteElAttr = this.deleteInput.getAttribute("data-delete");
 
-      this._eventDelegate("#".concat(wrapperElId), 'click', "[data-delete=".concat(this.attrValue, "]"), function (e) {
+      this._eventDelegate("#".concat(wrapperElId), "click", "[data-delete=".concat(this.attrValue, "]"), function (e) {
         _this._deleteInput();
       });
     } // add
 
 
-    if (typeof this.addInput !== 'undefined') {
-      var addElAttr = this.addInput.getAttribute('data-add');
+    if (typeof this.addInput !== "undefined") {
+      var addElAttr = this.addInput.getAttribute("data-add");
 
-      this._eventDelegate("#".concat(wrapperElId), 'click', "[data-add=".concat(this.attrValue, "]"), function (e) {
+      this._eventDelegate("#".concat(wrapperElId), "click", "[data-add=".concat(this.attrValue, "]"), function (e) {
         _this._addInput();
       });
     }
@@ -188,59 +187,59 @@ var CardActions = /*#__PURE__*/function () {
   _createClass(CardActions, [{
     key: "_hideTrigger",
     value: function _hideTrigger() {
-      this.trigger.classList.add('hide');
+      this.trigger.classList.add("hide");
     }
   }, {
     key: "_showTrigger",
     value: function _showTrigger() {
-      this.trigger.classList.remove('hide');
+      this.trigger.classList.remove("hide");
     }
   }, {
     key: "_hideCancel",
     value: function _hideCancel() {
-      this.cancel.classList.remove('active');
+      this.cancel.classList.remove("active");
     }
   }, {
     key: "_showCancel",
     value: function _showCancel() {
-      this.cancel.classList.add('active');
+      this.cancel.classList.add("active");
     }
   }, {
     key: "_hideSave",
     value: function _hideSave() {
-      this.save.classList.remove('active');
+      this.save.classList.remove("active");
     }
   }, {
     key: "_showSave",
     value: function _showSave() {
-      this.save.classList.add('active');
+      this.save.classList.add("active");
     }
   }, {
     key: "_hideDelete",
     value: function _hideDelete() {
-      if (typeof this.deleteInput !== 'undefined') {
-        this.deleteInput.classList.remove('active');
+      if (typeof this.deleteInput !== "undefined") {
+        this.deleteInput.classList.remove("active");
       }
     }
   }, {
     key: "_showDelete",
     value: function _showDelete() {
-      if (typeof this.deleteInput !== 'undefined') {
-        this.deleteInput.classList.add('active');
+      if (typeof this.deleteInput !== "undefined") {
+        this.deleteInput.classList.add("active");
       }
     }
   }, {
     key: "_hideAdd",
     value: function _hideAdd() {
-      if (typeof this.addInput !== 'undefined') {
-        this.addInput.classList.remove('active');
+      if (typeof this.addInput !== "undefined") {
+        this.addInput.classList.remove("active");
       }
     }
   }, {
     key: "_showAdd",
     value: function _showAdd() {
-      if (typeof this.addInput !== 'undefined') {
-        this.addInput.classList.add('active');
+      if (typeof this.addInput !== "undefined") {
+        this.addInput.classList.add("active");
       }
     }
   }, {
@@ -262,7 +261,7 @@ var CardActions = /*#__PURE__*/function () {
         return "<input class=\"form__input form__input--".concat(_this2.attrValue, "\" name=\"").concat(_this2.attrValue, "-").concat(i, "\" value=\"").concat(el.value, "\" data-input=\"").concat(_this2.attrValue, "\" />");
       }); // update DOM
 
-      this.multiInputContainer.innerHTML = domInputsHtml.join('');
+      this.multiInputContainer.innerHTML = domInputsHtml.join("");
     }
   }, {
     key: "_addInput",
@@ -270,23 +269,18 @@ var CardActions = /*#__PURE__*/function () {
       var _this3 = this;
 
       // create DOM node
-      var additionalInput = document.createElement('input');
+      var additionalInput = document.createElement("input");
       additionalInput.classList.add("form__input", "form__input--".concat(this.attrValue));
-      additionalInput.setAttribute('name', "".concat(this.attrValue, "-").concat(this.formInputs.length));
-      additionalInput.setAttribute('value', "");
-      additionalInput.setAttribute('data-input', "".concat(this.attrValue));
-      var updatedArray = [].concat(_toConsumableArray(this.formInputs), [additionalInput]); // console.log(this.formInputs);
-      // console.log(additionalInput);
-      // console.log(updatedArray);
-      // update reference for formInputs
-      // this.formInputs = updatedArray;
-      // set up dom
+      additionalInput.setAttribute("name", "".concat(this.attrValue, "-").concat(this.formInputs.length));
+      additionalInput.setAttribute("value", "");
+      additionalInput.setAttribute("data-input", "".concat(this.attrValue));
+      var updatedArray = [].concat(_toConsumableArray(this.formInputs), [additionalInput]); // set up dom
 
       var domInputsHtml = updatedArray.map(function (el, i) {
         return "<input class=\"form__input form__input--".concat(_this3.attrValue, "\" name=\"").concat(_this3.attrValue, "-").concat(i, "\" value=\"").concat(el.value, "\" data-input=\"").concat(_this3.attrValue, "\" />");
       }); // update DOM
 
-      this.multiInputContainer.innerHTML = domInputsHtml.join(''); // get reference to dom elements
+      this.multiInputContainer.innerHTML = domInputsHtml.join(""); // get reference to dom elements
 
       this.formInputs = this.multiInputContainer.querySelectorAll("[data-input=\"".concat(this.attrValue, "\"]")); // focus in last input
 
@@ -297,7 +291,7 @@ var CardActions = /*#__PURE__*/function () {
     value: function _disableInput() {
       if (this.formInputs.length > 0) {
         this.formInputs.forEach(function (formInput) {
-          formInput.setAttribute('disabled', 'disabled');
+          formInput.setAttribute("disabled", "disabled");
           formInput.blur();
         });
       }
@@ -307,14 +301,14 @@ var CardActions = /*#__PURE__*/function () {
     value: function _enableInput() {
       var _this4 = this;
 
-      if (this.formInputs.length > 0 && typeof this.multiInputContainer !== 'undefined') {
+      if (this.formInputs.length > 0 && typeof this.multiInputContainer !== "undefined") {
         // get reference to newly added DOM elements
         this.formInputs = this.multiInputContainer.querySelectorAll("[data-input=\"".concat(this.attrValue, "\"]"));
       }
 
       if (this.formInputs.length > 0) {
         this.formInputs.forEach(function (formInput, i) {
-          formInput.removeAttribute('disabled');
+          formInput.removeAttribute("disabled");
 
           if (i === 0) {
             formInput.focus();
@@ -329,13 +323,13 @@ var CardActions = /*#__PURE__*/function () {
     value: function _resetInputValue() {
       var _this5 = this;
 
-      if (this.formInputs.length > 0 && typeof this.multiInputContainer !== 'undefined') {
+      if (this.formInputs.length > 0 && typeof this.multiInputContainer !== "undefined") {
         // reset to initial elements
         this.formInputs = this.rollback; // update DOM
 
         this.multiInputContainer.innerHTML = this.formInputs.map(function (el, i) {
           return "<input class=\"form__input form__input--".concat(_this5.attrValue, "\" name=\"").concat(_this5.attrValue, "-").concat(i, "\" value=\"").concat(el.value, "\" data-input=\"").concat(_this5.attrValue, "\" disabled />");
-        }).join('');
+        }).join("");
       } else if (this.formInputs.length > 0) {
         // reset value
         this.formInputs.forEach(function (formInput, i) {
@@ -355,8 +349,8 @@ var CardActions = /*#__PURE__*/function () {
         var data = {};
         this.formInputs.forEach(function (formInput) {
           // handle tags differently since data structure is { tags: ['this','is','it'] }
-          if (formInput.name.indexOf('tag') > -1) {
-            if (typeof data.tags === 'undefined') {
+          if (formInput.name.indexOf("tag") > -1) {
+            if (typeof data.tags === "undefined") {
               // create a tags property as an array if doesn't already exist
               data.tags = [];
               data.tags.push(formInput.value);
@@ -366,10 +360,10 @@ var CardActions = /*#__PURE__*/function () {
           } else {
             data[formInput.name] = formInput.value;
           }
-        }); // console.log('DATA', data);
+        });
 
-        this._ajaxPost('POST', this.endpointUrl, data).then(function (res) {
-          console.log('res', res); // this.responseMessage.textContent = "Update successful!";
+        this._ajaxPost("POST", this.endpointUrl, data).then(function (res) {
+          console.log("res", res); // this.responseMessage.textContent = "Update successful!";
           // this.response.classList.add('ajax__response--success');
           // const uiTimeOut = setTimeout( () => {
           // 	this.response.classList.remove('ajax__response--success');
@@ -378,16 +372,15 @@ var CardActions = /*#__PURE__*/function () {
 
           if (_this6.redirectUrl) {
             window.location.href = _this6.redirectUrl;
-          } // }, 1000);
-
+          }
         }).catch(function (err) {
-          console.error('err', err);
+          console.error("err", err);
           _this6.responseMessage.textContent = "Unable to update. Please try again.";
 
-          _this6.response.classList.add('ajax__response--error');
+          _this6.response.classList.add("ajax__response--error");
 
           var uiTimeOut = setTimeout(function () {
-            _this6.response.classList.remove('ajax__response--error');
+            _this6.response.classList.remove("ajax__response--error");
 
             _this6.responseMessage.textContent = "";
             window.clearTimeout(uiTimeOut);
@@ -398,13 +391,9 @@ var CardActions = /*#__PURE__*/function () {
   }, {
     key: "_eventDelegate",
     value: function _eventDelegate(elSelector, eventName, selector, fn) {
-      var element = document.querySelector(elSelector); // console.log(element);
-      // console.log(eventName);
-      // console.log(selector);
-
+      var element = document.querySelector(elSelector);
       element.addEventListener(eventName, function (event) {
-        var possibleTargets = element.querySelectorAll(selector); // console.log(possibleTargets);
-
+        var possibleTargets = element.querySelectorAll(selector);
         var target = event.target;
 
         for (var i = 0, l = possibleTargets.length; i < l; i++) {
@@ -444,7 +433,7 @@ var CardActions = /*#__PURE__*/function () {
       var promiseObj = new Promise(function (resolve, reject) {
         var xhr = new XMLHttpRequest();
         xhr.open(methodType, url, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify(data));
 
         xhr.onreadystatechange = function () {
@@ -456,14 +445,14 @@ var CardActions = /*#__PURE__*/function () {
               resolve(respJson);
             } else {
               reject(xhr.status);
-              console.log("xhr failed");
+              console.error("xhr failed");
             }
           } else {
             console.log("xhr processing going on");
           }
         };
 
-        console.log("request sent succesfully");
+        console.log("request sent successfully");
       });
       return promiseObj;
     }
@@ -496,7 +485,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
- // import axios from 'axios';
+
 
 var domReady = function domReady(callback) {
   "use strict";
@@ -511,78 +500,78 @@ var domReady = function domReady(callback) {
 domReady(function () {
   "use strict";
 
-  if (document.querySelector('#img')) {
+  if (document.querySelector("#img")) {
     var readURL = function readURL(input) {
       if (input.files && input.files[0]) {
-        var imgPreviewContainer = document.querySelector('.form__image--container');
-        var imgPreviewEl = document.querySelector('.image__preview');
+        var imgPreviewContainer = document.querySelector(".form__image--container");
+        var imgPreviewEl = document.querySelector(".image__preview");
         var reader = new FileReader();
 
         reader.onload = function (e) {
-          imgPreviewEl.setAttribute('src', e.target.result);
-          imgPreviewContainer.style.display = 'block';
+          imgPreviewEl.setAttribute("src", e.target.result);
+          imgPreviewContainer.style.display = "block";
         };
 
         reader.readAsDataURL(input.files[0]);
       }
     };
 
-    var fileUploadInput = document.querySelector('#img');
-    fileUploadInput.on('change', function (e) {
+    var fileUploadInput = document.querySelector("#img");
+    fileUploadInput.on("change", function (e) {
       readURL(this);
     });
   }
 
-  if (document.querySelector('#img-update')) {
-    var currentImage = document.querySelector('#current-image');
-    var imgPreviewEl = document.querySelector('.image__preview');
+  if (document.querySelector("#img-update")) {
+    var currentImage = document.querySelector("#current-image");
+    var imgPreviewEl = document.querySelector(".image__preview");
 
-    var _fileUploadInput = document.querySelector('#img-update');
+    var _fileUploadInput = document.querySelector("#img-update");
 
-    var imageChangeCancel = document.querySelector('#image-cancel');
+    var imageChangeCancel = document.querySelector("#image-cancel");
     var editImageTrigger = document.querySelector('[data-trigger="image"]');
-    var changeImageTrigger = document.querySelector('.form__input--image-wrapper');
+    var changeImageTrigger = document.querySelector(".form__input--image-wrapper");
 
     var _readURL = function _readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-          imgPreviewEl.setAttribute('src', e.target.result);
-          currentImage.style.display = 'none';
+          imgPreviewEl.setAttribute("src", e.target.result);
+          currentImage.style.display = "none";
         };
 
         reader.readAsDataURL(input.files[0]);
       }
     };
 
-    _fileUploadInput.on('change', function (e) {
+    _fileUploadInput.on("change", function (e) {
       _readURL(this);
     });
 
-    imageChangeCancel.addEventListener('click', function () {
-      _fileUploadInput.value = '';
-      changeImageTrigger.style.display = 'none';
-      imgPreviewEl.setAttribute('src', '');
-      currentImage.style.display = 'block';
+    imageChangeCancel.addEventListener("click", function () {
+      _fileUploadInput.value = "";
+      changeImageTrigger.style.display = "none";
+      imgPreviewEl.setAttribute("src", "");
+      currentImage.style.display = "block";
     });
-    editImageTrigger.addEventListener('click', function () {
-      imgPreviewEl.setAttribute('src', '');
-      currentImage.style.display = 'none';
-      changeImageTrigger.style.display = 'block';
+    editImageTrigger.addEventListener("click", function () {
+      imgPreviewEl.setAttribute("src", "");
+      currentImage.style.display = "none";
+      changeImageTrigger.style.display = "block";
     });
   } // dropdown sort category
 
 
-  if (document.querySelector('#js-sort-category')) {
+  if (document.querySelector("#js-sort-category")) {
     var getQueryStringParams = function getQueryStringParams(query) {
-      return query ? (/^[?#]/.test(query) ? query.slice(1) : query).split('&').reduce(function (params, param) {
-        var _param$split = param.split('='),
+      return query ? (/^[?#]/.test(query) ? query.slice(1) : query).split("&").reduce(function (params, param) {
+        var _param$split = param.split("="),
             _param$split2 = _slicedToArray(_param$split, 2),
             key = _param$split2[0],
             value = _param$split2[1];
 
-        params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+        params[key] = value ? decodeURIComponent(value.replace(/\+/g, " ")) : "";
         return params;
       }, {}) : {};
     }; // check if query params exist in url
@@ -593,22 +582,22 @@ domReady(function () {
 
     if (Object.keys(queryParams).length !== 0 && queryParams.constructor === Object) {
       // construct the value for drop down so can sync value between dropdown and url
-      dropdownValue = queryParams.q + '-' + queryParams.s;
+      dropdownValue = queryParams.q + "-" + queryParams.s;
     } // ref to select element
 
 
-    var sortEl = document.querySelector('#js-sort-category select'); // if query params then sync dropdown
+    var sortEl = document.querySelector("#js-sort-category select"); // if query params then sync dropdown
 
     if (dropdownValue) {
       sortEl.value = dropdownValue;
     } // add event for sorting
 
 
-    sortEl.addEventListener('change', function () {
-      var categorySlug = window.location.pathname.split('/')[2];
+    sortEl.addEventListener("change", function () {
+      var categorySlug = window.location.pathname.split("/")[2];
 
       if (this.value !== "") {
-        var valueSplit = "".concat(this.value).split('-');
+        var valueSplit = "".concat(this.value).split("-");
         var sortValue = valueSplit[0];
         var sortOrder = valueSplit[1];
         window.location.href = "/categories/".concat(categorySlug, "?q=").concat(sortValue, "&s=").concat(sortOrder);
@@ -619,15 +608,15 @@ domReady(function () {
   } // dropdown sort places
 
 
-  if (document.querySelector('#js-sort-places')) {
+  if (document.querySelector("#js-sort-places")) {
     var _getQueryStringParams = function _getQueryStringParams(query) {
-      return query ? (/^[?#]/.test(query) ? query.slice(1) : query).split('&').reduce(function (params, param) {
-        var _param$split3 = param.split('='),
+      return query ? (/^[?#]/.test(query) ? query.slice(1) : query).split("&").reduce(function (params, param) {
+        var _param$split3 = param.split("="),
             _param$split4 = _slicedToArray(_param$split3, 2),
             key = _param$split4[0],
             value = _param$split4[1];
 
-        params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+        params[key] = value ? decodeURIComponent(value.replace(/\+/g, " ")) : "";
         return params;
       }, {}) : {};
     }; // check if query params exist in url
@@ -639,11 +628,11 @@ domReady(function () {
 
     if (Object.keys(_queryParams).length !== 0 && _queryParams.constructor === Object) {
       // construct the value for drop down so can sync value between dropdown and url
-      _dropdownValue = _queryParams.q + '-' + _queryParams.s;
+      _dropdownValue = _queryParams.q + "-" + _queryParams.s;
     } // ref to select element
 
 
-    var _sortEl = document.querySelector('#js-sort-places select'); // if query params then sync dropdown
+    var _sortEl = document.querySelector("#js-sort-places select"); // if query params then sync dropdown
 
 
     if (_dropdownValue) {
@@ -651,34 +640,34 @@ domReady(function () {
     } // add event for sorting
 
 
-    _sortEl.addEventListener('change', function () {
+    _sortEl.addEventListener("change", function () {
       if (this.value !== "") {
-        var valueSplit = "".concat(this.value).split('-');
+        var valueSplit = "".concat(this.value).split("-");
         var sortValue = valueSplit[0];
         var sortOrder = valueSplit[1];
         window.location.href = "/places?q=".concat(sortValue, "&s=").concat(sortOrder);
       } else {
-        window.location.href = '/places';
+        window.location.href = "/places";
       }
     });
   } // dropdown sort visits
 
 
-  if (document.querySelector('#js-sort-visits')) {
+  if (document.querySelector("#js-sort-visits")) {
     var _getQueryStringParams2 = function _getQueryStringParams2(query) {
-      return query ? (/^[?#]/.test(query) ? query.slice(1) : query).split('&').reduce(function (params, param) {
-        var _param$split5 = param.split('='),
+      return query ? (/^[?#]/.test(query) ? query.slice(1) : query).split("&").reduce(function (params, param) {
+        var _param$split5 = param.split("="),
             _param$split6 = _slicedToArray(_param$split5, 2),
             key = _param$split6[0],
             value = _param$split6[1];
 
-        params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+        params[key] = value ? decodeURIComponent(value.replace(/\+/g, " ")) : "";
         return params;
       }, {}) : {};
-    }; // get place id since dynamic in url 
+    }; // get place id since dynamic in url
 
 
-    var placeId = window.location.pathname.split('/')[2]; // .filter(item => item !== "" && item !== 'place' && item !== 'visits');
+    var placeId = window.location.pathname.split("/")[2]; // .filter(item => item !== "" && item !== 'place' && item !== 'visits');
     // check if query params exist in url
 
     var _queryParams2 = _getQueryStringParams2(window.location.search);
@@ -687,11 +676,11 @@ domReady(function () {
 
     if (Object.keys(_queryParams2).length !== 0 && _queryParams2.constructor === Object) {
       // construct the value for drop down so can sync value between dropdown and url
-      _dropdownValue2 = _queryParams2.q + '-' + _queryParams2.s;
+      _dropdownValue2 = _queryParams2.q + "-" + _queryParams2.s;
     } // ref to select element
 
 
-    var _sortEl2 = document.querySelector('#js-sort-visits select'); // if query params then sync dropdown
+    var _sortEl2 = document.querySelector("#js-sort-visits select"); // if query params then sync dropdown
 
 
     if (_dropdownValue2) {
@@ -699,9 +688,9 @@ domReady(function () {
     } // add event for sorting
 
 
-    _sortEl2.addEventListener('change', function () {
+    _sortEl2.addEventListener("change", function () {
       if (this.value !== "") {
-        var valueSplit = "".concat(this.value).split('-');
+        var valueSplit = "".concat(this.value).split("-");
         var sortValue = valueSplit[0];
         var sortOrder = valueSplit[1];
         window.location.href = "/place/".concat(placeId, "/visits?q=").concat(sortValue, "&s=").concat(sortOrder);
@@ -711,57 +700,57 @@ domReady(function () {
     });
   }
 
-  if (document.querySelector('#js-card')) {
-    var urlArr = window.location.pathname.split('/');
+  if (document.querySelector("#js-card")) {
+    var urlArr = window.location.pathname.split("/");
     var urlId = urlArr[urlArr.length - 1]; // need to grab id to use when posting data (record that is being modified / deleted)
 
     var imageOptions = {
-      card: document.querySelector('#js-card'),
+      card: document.querySelector("#js-card"),
       trigger: document.querySelector('[data-trigger="image"]'),
       cancel: document.querySelector('[data-cancel="image"]'),
       save: document.querySelector('[data-save="image"]'),
       inputs: document.querySelectorAll('[data-input="image"]'),
       endpointUrl: "/place/".concat(urlId, "/update-place"),
       redirectUrl: "/place/".concat(urlId),
-      response: document.querySelector('.ajax__response'),
-      responseMessage: document.querySelector('.response__message')
+      response: document.querySelector(".ajax__response"),
+      responseMessage: document.querySelector(".response__message")
     };
     var nameOptions = {
-      card: document.querySelector('#js-card'),
+      card: document.querySelector("#js-card"),
       trigger: document.querySelector('[data-trigger="name"]'),
       cancel: document.querySelector('[data-cancel="name"]'),
       save: document.querySelector('[data-save="name"]'),
       inputs: document.querySelectorAll('[data-input="name"]'),
       endpointUrl: "/place/".concat(urlId, "/update-place"),
       redirectUrl: "/place/".concat(urlId),
-      response: document.querySelector('.ajax__response'),
-      responseMessage: document.querySelector('.response__message')
+      response: document.querySelector(".ajax__response"),
+      responseMessage: document.querySelector(".response__message")
     };
     var addressOptions = {
-      card: document.querySelector('#js-card'),
+      card: document.querySelector("#js-card"),
       trigger: document.querySelector('[data-trigger="address"]'),
       cancel: document.querySelector('[data-cancel="address"]'),
       save: document.querySelector('[data-save="address"]'),
       inputs: document.querySelectorAll('[data-input="address"]'),
-      multiInputContainer: document.querySelector('#address__container'),
+      multiInputContainer: document.querySelector("#address__container"),
       endpointUrl: "/place/".concat(urlId, "/update-place"),
       redirectUrl: "/place/".concat(urlId),
-      response: document.querySelector('.ajax__response'),
-      responseMessage: document.querySelector('.response__message')
+      response: document.querySelector(".ajax__response"),
+      responseMessage: document.querySelector(".response__message")
     };
     var tagsOptions = {
-      card: document.querySelector('#js-card'),
+      card: document.querySelector("#js-card"),
       trigger: document.querySelector('[data-trigger="tag"]'),
       cancel: document.querySelector('[data-cancel="tag"]'),
       save: document.querySelector('[data-save="tag"]'),
       inputs: document.querySelectorAll('[data-input="tag"]'),
-      multiInputContainer: document.querySelector('#tag__container'),
+      multiInputContainer: document.querySelector("#tag__container"),
       deleteEl: document.querySelector('[data-delete="tag"]'),
       addEl: document.querySelector('[data-add="tag"]'),
       endpointUrl: "/place/".concat(urlId, "/update-place"),
       redirectUrl: "/place/".concat(urlId),
-      response: document.querySelector('.ajax__response'),
-      responseMessage: document.querySelector('.response__message')
+      response: document.querySelector(".ajax__response"),
+      responseMessage: document.querySelector(".response__message")
     };
     var cardActionsImage = new _card__WEBPACK_IMPORTED_MODULE_0__["default"](imageOptions);
     var cardActionsName = new _card__WEBPACK_IMPORTED_MODULE_0__["default"](nameOptions);
@@ -851,9 +840,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_bling__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/bling */ "./public/js/modules/bling.js");
 /* harmony import */ var _modules_domReady__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/domReady */ "./public/js/modules/domReady.js");
 
- // import typeAhead from './modules/typeAhead';
 
- // typeAhead( $('.search') );
+
 }();
 /******/ })()
 ;
