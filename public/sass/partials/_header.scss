@@ -6,10 +6,10 @@ header.header__main {
 		justify-content: space-between;
 	}
 
-	@media (min-width: $large) {
+	// @media (min-width: $large) {
 
-	}
-	
+	// }
+
 	a,
 	.divider {
 		color: $white;
@@ -38,7 +38,6 @@ header.header__main {
 			letter-spacing: 1px;
 			font-size: 1.5rem;
 		}
-
 	}
 
 	.authenticate {
@@ -59,7 +58,5 @@ header.header__main {
 			letter-spacing: 1px;
 			font-size: 1.5rem;
 		}
-
 	}
-
 }

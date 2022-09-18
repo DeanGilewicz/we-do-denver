@@ -51,7 +51,10 @@ exports.validateRegister = (req, res, next) => {
 
 	const errors = req.validationErrors();
 	if (errors) {
-		req.flash("error", errors.map((err) => err.msg));
+		req.flash(
+			"error",
+			errors.map((err) => err.msg)
+		);
 		res.render("user/register", { body: req.body, flashes: req.flash() }); // explicitly pass flashes since happening on same request
 		return; // stop
 	}
@@ -62,8 +65,9 @@ exports.createUser = async (req, res, next) => {
 	const { email, name, password } = req.body;
 	const user = new User({ email, name });
 	// callback based function so transforming to promise based function
-	// User.register(user, password, function(err, user) { /... });
-	const register = promisify(User.register, User); // method promisfying lives on an object so need to pass this object (User) as second param
-	await register(user, password); // will store a password hash in db
+	// method promisfying lives on an object so need to pass this object (User) as second param
+	const register = promisify(User.register, User);
+	// will store a password hash in db
+	await register(user, password);
 	next();
 };

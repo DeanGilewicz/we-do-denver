@@ -19,17 +19,7 @@
 				margin-top: 0;
 			}
 		}
-
 	}
-
-	// .container__search {
-	// 	display: inline-block;
-	// }
-
-	// .search__input {
-	// 	margin: 0;
-	// 	background-color: $white;
-	// }
 }
 
 .place__hero {
@@ -126,12 +116,10 @@
 /* FLOAT FLEXBOX CSS GRID - Layout */
 
 .places {
-
 	@media (min-width: $medium__large) {
 		display: flex;
 		flex-wrap: wrap;
 	}
-
 }
 
 .places::after {

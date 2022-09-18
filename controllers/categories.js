@@ -29,7 +29,6 @@ exports.index = async (req, res) => {
 		.cursor({})
 		.exec()
 		.toArray();
-	// console.log('uniqueCategories', uniqueCategories);
 
 	res.render("categories/index", {
 		categories: uniqueCategories,

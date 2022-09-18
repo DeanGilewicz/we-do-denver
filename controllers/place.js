@@ -6,9 +6,7 @@ const slug = require("slugs");
 const moment = require("moment");
 
 exports.place = async (req, res) => {
-	// const place = Place.find( place => place.id == req.params.id ); // query data for requested place
 	const place = await Place.findById(req.params.id).populate("owner"); // populate owner - uses the owner property on Place model to return the owner data in addition
-	// console.log(place);
 	res.render("place/index", { pageTitle: place.name, place });
 };
 
@@ -29,14 +27,12 @@ exports.updateImage = async (req, res) => {
 };
 
 exports.updatePlace = async (req, res) => {
-	// console.log(req.body);
 	const place = await Place.findOneAndUpdate({ _id: req.params.id }, req.body, {
 		new: true, // return the new Place (updated one)
 		runValidators: true,
 	}).exec();
 	req.flash("success", `Successfully updated <strong>${place.name}</strong>`);
 	res.json(req.body); // send JSON back!
-	// res.redirect(`/place/${place._id}`);
 };
 
 exports.visits = async (req, res) => {
@@ -77,7 +73,6 @@ exports.visits = async (req, res) => {
 		})
 		.sort(propComparator(sortBy, orderBy))
 		.slice(skip, skip + limit);
-	// console.log(visits);
 
 	const count = place.visits.length;
 	const pages = Math.ceil(count / limit);
@@ -170,14 +165,7 @@ exports.updateVisit = async (req, res) => {
 };
 
 exports.createVisit = async (req, res) => {
-	// console.log(req.body);
 	const placeId = req.params.id;
-	// req.body.updated = Date.now();
-	// Place.findByIdAndUpdate(placeId, req.body, function(err, doc) {
-	// 	if(err) throw err;
-	// 	console.log('err', err);
-	// 	console.log('doc', doc);
-	// });
 	Place.findById(placeId, async (err, doc) => {
 		if (err) throw err;
 		try {

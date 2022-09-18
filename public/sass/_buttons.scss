@@ -1,45 +1,43 @@
 button,
 .button {
-    text-decoration: none;
-    border: 1px solid $blue;
-    display: inline-block;
-    margin: 0;
-    padding: $spacing*0.8 $spacing*1.6;
-    font-size: 2rem;
-    background-color: $blue;
-    color: $white;
-    text-align: center;
-    cursor: pointer;
-    transition: background 250ms ease-in-out, 
-                transform 150ms ease;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+	text-decoration: none;
+	border: 1px solid $blue;
+	display: inline-block;
+	margin: 0;
+	padding: $spacing * 0.8 $spacing * 1.6;
+	font-size: 2rem;
+	background-color: $blue;
+	color: $white;
+	text-align: center;
+	cursor: pointer;
+	transition: background 250ms ease-in-out, transform 150ms ease;
+	-webkit-appearance: none;
+	-moz-appearance: none;
 
-    &:hover,
-    &:focus {
-    	background: $blue_dark;
-    }
+	&:hover,
+	&:focus {
+		background: $blue_dark;
+	}
 
-    &:focus {
-    	outline: 1px solid $white;
-    	outline-offset: -2px;
-    }
+	&:focus {
+		outline: 1px solid $white;
+		outline-offset: -2px;
+	}
 
-    &:active {
-    	transform: scale(0.96);
-    }
+	&:active {
+		transform: scale(0.96);
+	}
 
-    &.button--cta {
-        text-transform: uppercase;
-        width: 100%;
-    }
+	&.button--cta {
+		text-transform: uppercase;
+		width: 100%;
+	}
 
-    &.flash__remove {
-        color: $black;
-        &:hover,
-        &:focus {
-            background: none;
-        }
-    }
+	&.flash__remove {
+		color: $black;
+		&:hover,
+		&:focus {
+			background: none;
+		}
+	}
 }
-

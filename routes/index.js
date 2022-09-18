@@ -185,7 +185,4 @@ router.post(
 	catchErrors(placeController.updateVisit)
 );
 
-/* API */
-// router.get('/api/search', catchErrors(placesController.searchPlaces));
-
 module.exports = router;
